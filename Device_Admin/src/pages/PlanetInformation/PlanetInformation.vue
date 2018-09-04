@@ -12,7 +12,7 @@
   					文艺星球星球主
   				</div>
   			</div>
-  			<div class="goedit textBlue h3Title">
+  			<div class="goedit textBlue h3Title" @click="showMsy(1)">
 					个人资料  				
   			</div>
   		</div>
@@ -21,7 +21,7 @@
   				总收益折合： ≈ 600CNY
   			</div>
   			<div class="goedit textBlue h3Title">
-					个人资料  				
+					收益详情				
   			</div>
   		</div>
   	</div>
@@ -29,8 +29,8 @@
   		<div class="textMain h2Title">
   			星球信息
   		</div>
-  		<div class="goedit textBlue h2Title">
-  			编辑星球资料>
+  		<div class="goedit textBlue h2Title" @click="showMsy(2)">
+  			编辑星球资料
   		</div>
   	</div>
   	<div class="plantitem">
@@ -94,15 +94,15 @@
   			<p class="textMain h0Title">142</p>
   		</div>
   	</div>
-  	<div class="msyBox">
+  	<div class="msyBox" v-show="msyShow>0">
   		<div class="msyBoxCon">
   			<div class="msyBoxTitle">
 	  			<div class="title h1Title">
 	  				修改
 	  			</div>
-	  			<div class="el-icon-close h0Title close"></div>
+	  			<div class="el-icon-close h0Title close" @click="closeMsy"></div>
 	  		</div>
-  			<div class="msyBoxItem">
+  			<div class="msyBoxItem" v-show="msyShow==1">
   				<div class="boxl">昵称</div>
   				<div class="boxr">
   					<el-input
@@ -113,7 +113,18 @@
 						</el-input>
   				</div>
   			</div>
-  			<div class="msyBoxItem">
+  			<div class="msyBoxItem" v-show="msyShow==2">
+  				<div class="boxl">星球名称</div>
+  				<div class="boxr">
+  					<el-input
+  						size="mini"
+						  placeholder="请输入内容"
+						  v-model="nickname"
+						  clearable>
+						</el-input>
+  				</div>
+  			</div>
+  			<div class="msyBoxItem" v-show="msyShow==1">
   				<div class="boxl">头像</div>
   				<div class="boxr">
   					<div class="avatar-uploader">
@@ -124,7 +135,7 @@
 						</div>
   				</div>
   			</div>
-  			<div class="msyBoxItem">
+  			<div class="msyBoxItem" v-show="msyShow==2">
   				<div class="boxl">星球背景图</div>
   				<div class="boxr">
   					<div class="avatar-uploader">
@@ -135,12 +146,12 @@
 						</div>
   				</div>
   			</div>
-  			<div class="msyBoxItem">
+  			<div class="msyBoxItem" v-show="msyShow==2">
   				<div class="boxl">星球介绍</div>
   				<div class="boxr">
   					<el-input
   						type="textarea"
-						  autosize
+						  rows="5"
 						  placeholder="请输入内容"
 						  v-model="nickname"
 						  clearable>

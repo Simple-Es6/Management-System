@@ -36,9 +36,12 @@
 	text-align: center;
 }
 .plantitem .item .goedit{
+	cursor: pointer;
 	flex-shrink: 0;
 	width: 100px;
 	text-align: right;
+}
+.goedit{
 	cursor: pointer;
 }
 .plantitem .item .itembig{
@@ -84,7 +87,7 @@
 	padding:0 20px 30px 20px;
 	width:400px;
 	height:auto;
-	min-height:400px;
+	min-height:370px;
 	max-height:600px;
 	background: #FFFFFF;
 	border-radius: 8px;
@@ -127,6 +130,7 @@
 	flex-grow: 1;
 }
 .msyBox .msyBoxCon  .boxSub{
+	margin-top: 50px;
 	padding: 0 30px;
 }
 .avatar-uploader{
