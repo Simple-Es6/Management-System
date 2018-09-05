@@ -18,9 +18,6 @@ export default {
 	margin: 0;
 	box-sizing: border-box;
 }
-input{
-	display: none;
-}
 body{
 	width: 100%;
 	height: 100%;

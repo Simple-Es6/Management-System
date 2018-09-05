@@ -27,58 +27,12 @@
         data() {
             return {
                 items: [
-                	{
-                    	'name':'管理员首页',
-                    	'path':'AdminPage',
-                    	'icon':'',
-                    	'index':'/home/AdminPage',
-                    	'isSon':false
-                    },
                     {
                     	'name':'艺人首页',
                     	'path':'Artist',
                     	'icon':'',
                     	'index':'Artist',
                     	'isSon':false
-                    },
-                    {
-                    	'name':'设备',
-                    	'path':'MyMusic',
-                    	'isSon':true,
-                    	'index':'/home/voicebox',
-                    	'icon':'',
-                    	'list':[
-                    		{
-                    			'name':'小未音箱',
-                    			'path':'VoiceBox',
-                    			'index':'/home/voicebox',
-                    			'isSon':false
-                            },
-                            {
-                    			'name':'黑珍珠',
-                    			'path':'BlackPearl',
-                    			'index':'/home/blackpearl',
-                    			'isSon':false
-                    		},
-                    		{
-                    			'name':'播放记录',
-                    			'path':'PlayRecord',
-                    			'index':'/home/playrecord',
-                    			'isSon':false
-                            },
-                            {
-                    			'name':'音箱设置',
-                    			'path':'BoxSetting',
-                    			'index':'/home/boxsetting',
-                    			'isSon':false
-                            },
-                            {
-                    			'name':'SN管理',
-                    			'path':'SnAdmin',
-                    			'index':'/home/snadmin',
-                    			'isSon':false
-                            }
-                    	]
                     },
                     {
                     	'name':'音乐管理',
@@ -126,43 +80,45 @@
                     	'icon':'',
                     	'index':'/home/fans',
                     	'isSon':false
-                    },
-                    {
-                    	'name':'星球信息',
-                    	'path':'PlanetInformation',
+					},
+					{
+                    	'name':'审核',
+                    	'path':'Check',
                     	'icon':'',
-                    	'index':'/home/planetinformation',
-                    	'isSon':false
+                    	'index':'/home/Check',
+						'isSon':true,
+						'list':[
+							{
+								'name':'艺人审核',
+								'path':'/home/artistCheck',
+								'icon':'',
+								'index':'/home/artistCheck',
+								'isSon':false
+							},
+							{
+								'name':'音乐审核',
+								'path':'/home/musicCheck',
+								'icon':'',
+								'index':'/home/musicCheck',
+								'isSon':false
+							},
+							{
+								'name':'主题审核',
+								'path':'/home/themeCheck',
+								'icon':'',
+								'index':'/home/themeCheck',
+								'isSon':false
+							},
+							{
+								'name':'审核设置',
+								'path':'/home/setCheck',
+								'icon':'',
+								'index':'/home/setCheck',
+								'isSon':false
+							}
+						]
                     },
-                    {
-                    	'name':'标签管理',
-                    	'path':'LabelManagement',
-                    	'icon':'',
-                    	'index':'/home/LabelManagement',
-                    	'isSon':false
-                    },
-                    {
-                    	'name':'星歌管理',
-                    	'path':'StarSong',
-                    	'icon':'',
-                    	'index':'/home/StarSong',
-                    	'isSon':false
-                    },
-                    {
-                    	'name':'音乐榜单',
-                    	'path':'MusicList',
-                    	'icon':'',
-                    	'index':'/home/MusicList',
-                    	'isSon':false
-                    },
-                    {
-                    	'name':'用户管理',
-                    	'path':'UserAdmin',
-                    	'icon':'',
-                    	'index':'/home/UserAdmin',
-                    	'isSon':false
-                    }
-                    
+					
                 ]
             }
         },

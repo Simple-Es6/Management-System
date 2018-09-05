@@ -23,7 +23,7 @@
 					<div v-if="errorphone" class="h3Title textDanger">手机号输入错误</div>
 				</el-col>
 			</el-row>
-			<el-row  type="flex"  justify="center" :gutter="30">
+			<!-- <el-row  type="flex"  justify="center" :gutter="30">
 				<el-col :span="9">
 					<div class="h1Title textMain">
 						验证码
@@ -42,10 +42,27 @@
 				<el-col :span="9" >
 					<div v-if="errorphone" class="h3Title textDanger">验证码输入错误</div>
 				</el-col>
+			</el-row> -->
+			<el-row  type="flex"  justify="center" :gutter="30">
+				<el-col :span="9">
+					<div class="h1Title textMain">
+						登录密码
+					</div>
+				</el-col>
+			</el-row>
+			<el-row style="margin-top: 10px;" type="flex"  justify="center" :gutter="30">
+				<el-col :span="9">
+					<el-input @focus="phoneFocus" @blur="phoneBlur" type="password" maxlength="11" v-model="password" placeholder="请输入密码"></el-input>
+				</el-col>
+			</el-row>
+			<el-row style="margin-top:0;" :gutter="30" type="flex"  justify="center" v-if="errorpassword">
+				<el-col :span="9" >
+					<div v-if="errorpassword" class="h3Title textDanger">密码输入错误</div>
+				</el-col>
 			</el-row>
 			<el-row style="margin-top: 60px;" type="flex" justify="center" :gutter="30">
 				<el-col  :span="9">
-			  	<el-button :loading="btnLoad" @click="submitClick" style="width: 100%;" type="success">{{isLogin?'登录':'下一步'}}</el-button>
+			  	<el-button :loading="btnLoad" @click="submitClick" style="width: 100%;" type="success">登录</el-button>
 			  </el-col>
 			</el-row>
 		</div>
@@ -61,10 +78,12 @@
 				phone:'',
 				times:'获取验证码',
 				ercode:'',
+				password:'',
 				timenum:60,
 				btnLoad:false,
 				isDian:false,
 				errorphone:false,
+				errorpassword:false,
 				errorcode:false,
 				msg: 'Welcome to Your Vue.js App'
 			}
@@ -119,7 +138,19 @@
 			  		},2000);	
 	    		}else{
 	    			that.errorphone = true;
-	    		};
+				};
+				let params={
+					loginuser:this.phone,
+					password:this.password
+				}
+				let _this = this;
+				_this.$axios1('post', _this.Global.PATH.loginuser, params, res => {
+					if (res.code == 200) {
+						alert('提交成功');
+						
+					
+					}
+				})
 		  	}
 		}
 	}
