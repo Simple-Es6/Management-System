@@ -54,7 +54,9 @@ let list ={
       			}
       	],
       	
-      }
+      },
+      myChart1:'',
+      myChart2:'',
     }
   },
   //组件生成时执行事件
@@ -64,6 +66,9 @@ let list ={
 	//页面渲染完成事件
 	mounted(){
 		console.log(this.$refs);
+		this.myChart1 = this.$echarts.init(this.$refs.AdPieChart1);
+		this.myChart2 = this.$echarts.init(this.$refs.AdPieChart2);
+		
 	},
 	//方法
 	methods:{
