@@ -54,33 +54,19 @@
   			</div>
   		</div>
   	</div>
+  	<div class="aditem">
+  		<div ref="AdPieChart1" class="pitem">
+  			
+  		</div>
+  		<div ref="AdPieChart2" class="pitem">
+  			
+  		</div>
+  	</div>
   </div>
 </template>
 <script>
-export default {
-  name: 'AdminPage',
-  data () {
-    return {
-      
-    }
-  },
-  //组件生成时执行事件
-  created:function(){
-  	
-	},
-	//页面渲染完成事件
-	mounted(){
-		
-	},
-	//方法
-	methods:{
-		
-	},
-	//使用的组件
-  components:{
-		
-	}
-}
+import list from './AdminPage.js';
+export default list;
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
