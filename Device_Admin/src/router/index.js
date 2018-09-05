@@ -86,6 +86,42 @@ export default new Router({
                     meta:{keepAlive:false},
                     component: resolve => require(['../pages/PlanetInformation/PlanetInformation.vue'], resolve)
                 },
+                {
+                    path: '/home/LabelManagement',
+                    name: 'LabelManagement',
+                    meta:{keepAlive:false},
+                    component: resolve => require(['../pages/LabelManagement/LabelManagement.vue'], resolve)
+                },
+                {
+                    path: '/home/Addsheet',
+                    name: 'Addsheet',
+                    meta:{keepAlive:false},
+                    component: resolve => require(['../pages/Addsheet/Addsheet.vue'], resolve)
+                },
+                {
+                    path: '/home/StarSong',
+                    name: 'StarSong',
+                    meta:{keepAlive:false},
+                    component: resolve => require(['../pages/StarSong/StarSong.vue'], resolve)
+                },
+                {
+                    path: '/home/MusicList',
+                    name: 'MusicList',
+                    meta:{keepAlive:false},
+                    component: resolve => require(['../pages/MusicList/MusicList.vue'], resolve)
+                },
+                {
+                    path: '/home/UserAdmin',
+                    name: 'UserAdmin',
+                    meta:{keepAlive:false},
+                    component: resolve => require(['../pages/UserAdmin/UserAdmin.vue'], resolve)
+                },
+                {
+                    path: '/home/AdminPage',
+                    name: 'AdminPage',
+                    meta:{keepAlive:false},
+                    component: resolve => require(['../pages/AdminPage/AdminPage.vue'], resolve)
+                },
             ]
         }
         /*{

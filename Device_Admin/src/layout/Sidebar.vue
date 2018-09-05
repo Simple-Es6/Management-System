@@ -27,7 +27,13 @@
         data() {
             return {
                 items: [
-                	
+                	{
+                    	'name':'管理员首页',
+                    	'path':'AdminPage',
+                    	'icon':'',
+                    	'index':'/home/AdminPage',
+                    	'isSon':false
+                    },
                     {
                     	'name':'艺人首页',
                     	'path':'Artist',
@@ -127,7 +133,36 @@
                     	'icon':'',
                     	'index':'/home/planetinformation',
                     	'isSon':false
+                    },
+                    {
+                    	'name':'标签管理',
+                    	'path':'LabelManagement',
+                    	'icon':'',
+                    	'index':'/home/LabelManagement',
+                    	'isSon':false
+                    },
+                    {
+                    	'name':'星歌管理',
+                    	'path':'StarSong',
+                    	'icon':'',
+                    	'index':'/home/StarSong',
+                    	'isSon':false
+                    },
+                    {
+                    	'name':'音乐榜单',
+                    	'path':'MusicList',
+                    	'icon':'',
+                    	'index':'/home/MusicList',
+                    	'isSon':false
+                    },
+                    {
+                    	'name':'用户管理',
+                    	'path':'UserAdmin',
+                    	'icon':'',
+                    	'index':'/home/UserAdmin',
+                    	'isSon':false
                     }
+                    
                 ]
             }
         },
