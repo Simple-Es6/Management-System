@@ -51,15 +51,19 @@ actions = {
 	loginOut(state){
         this.state.login = 0;
         this.state.user_name='';
+        sessionStorage.removeItem('mwladlogin');
+        sessionStorage.removeItem('mwladname');
 	},
 	changePage(state,obj){
 		console.log(obj);
     	this.state.pagetitle = obj;
     },
-    loginState(state,msg,user_name){
-        alert('store'+msg)
-        this.state.login=msg;
-        this.state.user_name=user_name;
+    loginState(state,msg){
+    	alert('hhaha'+msg.phone);
+        sessionStorage.setItem('mwladlogin',msg.type);
+        sessionStorage.setItem('mwladname',msg.phone);
+        this.state.login=msg.type;
+        this.state.user_name=msg.phone;
     },
 	logIn(state,num){
 		this.state.login = num;

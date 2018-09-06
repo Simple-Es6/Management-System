@@ -30,7 +30,7 @@ export default {
   		let login = this.$store.state.login||sessionStorage.getItem('mwladlogin');
   		if(login){
 				this.login = login;
-				this.$store.dispatch('loginState',login,this.phone);
+				this.phone = this.$store.state.user_name||sessionStorage.getItem('mwladname');
   		}else{
   			this.$router.replace({ name:'Login'});
 			};
@@ -40,15 +40,12 @@ export default {
 				console.log(this.login);
 			},
 			logOut(){
-				alert('jsjjsjsjsjsj')
-				console.log(this.$store);
 				this.$store.dispatch('loginOut');
 				this.$router.push({name:'Login'});
 			}
   	},
   	watch: {
 			getUserIcons: function(li) { //li就是改变后的wifiList值
-				alert('jjjjj'+li)
 				if(li==0){
 					this.$router.replace({ name:'Login'});
 				};

@@ -144,11 +144,14 @@
 					let params={
 						user_name:this.phone,
 						password:this.password
-					}
-					
+					};
 					_this.$axios('post', _this.Global.PATH1.loginuser, params, res => {
 						if (res.code == 200) {
-							_this.$store.dispatch('loginState',res.data.musiciantype,this.phone);
+							let obj ={
+								type:res.data.musiciantype,
+								phone:_this.phone
+							};
+							_this.$store.dispatch('loginState',obj);
 							_this.$router.push({path:'/home/Artist'});
 						}else{
 							alert(res.msg);

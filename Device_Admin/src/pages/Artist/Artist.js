@@ -53,7 +53,6 @@ var list = {
             let _this = this;
             _this.$axios('post', _this.Global.PATH1.querymusicpeople, {}, res => {
                 if (res.code == 200) {
-                    console.log(res.data)
                     _this.nickname = res.data.nickname;
                     _this.planet_name = res.data.planet_name;
                     _this.specialcount = res.data.specialcount;
