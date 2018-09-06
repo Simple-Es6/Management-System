@@ -31,6 +31,10 @@ let upmusic = {
 	},
   	created:function(){
   		this.specialid = this.$route.params.specialid||'';
+  		if(this.specialid==''){
+  			this.$router.replace({name:'UpLoadHome'});
+  			return false;
+  		};
   		this.isNew = this.$route.params.isNew;
   		if(this.isNew==0){
   			this.getData();

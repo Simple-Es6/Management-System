@@ -83,19 +83,11 @@ let list = {
         },
         //点击每行的编辑
         handleEdit(index, row) {
-<<<<<<< HEAD
-            console.log(index, row);
-            this.$router.push({name:'UpLoadHome',params:{
-                    specialid:row.specialid
-                }
-            });
-=======
            	console.log(index, row);
 			this.$router.push({name:'UpLoadHome',params:{
 					specialid:row.specialid
 				}
 			});
->>>>>>> aa8a49648c3dd44c7646b7448dcee4741ff88af5
         },
         //点击每行的取消
         handleDelete(index, row) {
@@ -121,10 +113,7 @@ let list = {
                 });
             });
         },
-        //提交审核
-        handleSubmit(){
-            
-        },
+
 
         handleSizeChange(val) {
             this.everyPageCount = val

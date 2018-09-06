@@ -188,7 +188,23 @@
                     	'icon':'',
                     	'showType':1,
                     	'index':'/home/RecordData',
-                    	'isSon':false
+                    	'isSon':true,
+                    	'list':[
+                    		{
+								'name':'趋势分析',
+								'path':'RecordData',
+								'icon':'',
+								'index':'/home/RecordData',
+								'isSon':false
+							},
+                    		{
+								'name':'用户数据',
+								'path':'UserData',
+								'icon':'',
+								'index':'/home/UserData',
+								'isSon':false
+							}
+                    	]
                     },
                     {
                     	'name':'标签管理',
