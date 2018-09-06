@@ -69,7 +69,7 @@ let upmusic = {
 		musicCanPlay(e){
 			let that = this;
 			let obj = that.musiclist[that.kaiIndex];
-			obj.musicTime = Math.floor(e.target.duration);
+			obj.duration = Math.floor(e.target.duration);
   			that.$set(that.musiclist,that.kaiIndex,obj);
 		},
 		upLoadStart(e){
@@ -89,7 +89,7 @@ let upmusic = {
 				music_path:'',
 				singer_name:'',
 				lyrics:'',
-				musicTime:'',
+				duration:'',
 				state:0
 			};
 			that.musicPath = that.getObjectURL(e.target.files[0]);
@@ -161,8 +161,9 @@ let upmusic = {
 		subMusic(){
 			let that = this;
 			let arr = that.musiclist;
+			console.log(arr);
 			for (let i = 0;i<arr.length;i++) {
-				if(arr[i].music_path==''||arr[i].music_picture){
+				if(arr[i].music_path==''||arr[i].music_picture==''){
 					/*that.$alert('请检查第'+(i)+'项的音乐图片或歌曲文件是否上传', '提示', {
 			          	confirmButtonText: '确定'
 			        });*/
@@ -175,7 +176,7 @@ let upmusic = {
 	  		},res=>{
 	  			if(res.code==200){
 	  				if(that.isNew ==1){
-	  					that.$router.push({name:'UpLoadMusic'});
+	  					that.$router.push({name:'UpLoadHome'});
 	  				}else{
 	  					that.$router.replace({name:'My-music'});
 	  				};

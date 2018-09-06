@@ -1,0 +1,47 @@
+.aditemtab{
+	display: flex;
+	justify-content:space-between;
+	padding:16px 0;
+}
+.aditemtab1{
+	display: flex;
+	justify-content:flex-start;
+}
+.aditemtab1 .list{
+	flex-shrink: 0;
+	width:15%;
+	display: flex;
+	flex-direction: column;
+	justify-content:space-between;
+	height: 60px;
+}
+.axisCon{
+	width: 100%;
+	height: 300px;
+}
+.axisCon1{
+	margin-top:20px;
+	width: 100%;
+	min-height:61px;
+	border-top:1px dotted #B4BCCC;
+}
+.axisCon1 .axisItem{
+	display: flex;
+	justify-content: space-between;
+	color: #606266;
+	font-size: 14px;
+	height: 30px;
+}
+.axisCon1 .axisItem1{
+	height: 40px;
+	color: #606266;
+}
+.axisCon1 .axisItem .list{
+	width: 25%;
+	height: 100%;
+	line-height:30px;
+	text-align:left;
+}
+.axisCon1 .axisItem1 .list{
+	line-height: 40px;
+}

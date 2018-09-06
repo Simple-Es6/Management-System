@@ -2,31 +2,31 @@ let list ={
   name: 'AdminPage',
   data () {
     return {
-    	timeType:1,
-    	axis:{
-    		nameData:['浏览量','独立访客','IP统计'],
-    		timeData:['周一','周二','周三','周四','周五','周六','周日'],
-    		recordData:[
-		        {
-		            name:'浏览量',
-		            type:'line',
-		            stack: '总量',
-		            data:[120, 132, 101, 134, 90, 230, 210]
-		        },
-		        {
-		            name:'独立访客',
-		            type:'line',
-		            stack: '总量',
-		            data:[220, 182, 191, 234, 290, 330, 310]
-		        },
-		        {
-		            name:'IP统计',
-		            type:'line',
-		            stack: '总量',
-		            data:[150, 232, 201, 154, 190, 330, 410]
-		        }
-		    ]
-    	},
+    		timeType:1,
+	    	axis:{
+	    		nameData:['浏览量','独立访客','IP统计'],
+	    		timeData:['周一','周二','周三','周四','周五','周六','周日'],
+	    		recordData:[
+			        {
+			            name:'浏览量',
+			            type:'line',
+			            stack: '总量',
+			            data:[120, 132, 101, 134, 90, 230, 210]
+			        },
+			        {
+			            name:'独立访客',
+			            type:'line',
+			            stack: '总量',
+			            data:[220, 182, 191, 234, 290, 330, 310]
+			        },
+			        {
+			            name:'IP统计',
+			            type:'line',
+			            stack: '总量',
+			            data:[150, 232, 201, 154, 190, 330, 410]
+			        }
+			    ]
+	    	},
       	PieChart1:{
       		legendData:[
       			'0-10分钟',
@@ -96,7 +96,6 @@ let list ={
 		this.myChart1 = this.$echarts.init(this.$refs.AdPieChart1);
 		this.myChart2 = this.$echarts.init(this.$refs.AdPieChart2);
 		this.myChart3 = this.$echarts.init(this.$refs.AdAxis);
-
 		this.myChart1.setOption({
 			title : {
 		        text: 'APP播放时长统计',
@@ -169,7 +168,6 @@ let list ={
 		        }
 		    ]
 		});
-
 		this.myChart3.setOption({
 			title: {
 	        text: '折线图堆叠'
@@ -201,7 +199,6 @@ let list ={
 	    },
 	    series: that.axis.recordData
 		});
-
 	},
 	//方法
 	methods:{

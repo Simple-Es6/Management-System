@@ -34,6 +34,9 @@ let list = {
     },
     //方法
     methods: {
+    	handleSubmit(index,val){
+    		
+    	},
         getData(num) {
             let _this = this;
             if (this.showVisible == 1) {
@@ -78,14 +81,21 @@ let list = {
         musiclist(data) {
 
         },
-
         //点击每行的编辑
         handleEdit(index, row) {
+<<<<<<< HEAD
             console.log(index, row);
             this.$router.push({name:'UpLoadHome',params:{
                     specialid:row.specialid
                 }
             });
+=======
+           	console.log(index, row);
+			this.$router.push({name:'UpLoadHome',params:{
+					specialid:row.specialid
+				}
+			});
+>>>>>>> aa8a49648c3dd44c7646b7448dcee4741ff88af5
         },
         //点击每行的取消
         handleDelete(index, row) {

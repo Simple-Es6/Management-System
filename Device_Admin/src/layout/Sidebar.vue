@@ -183,6 +183,14 @@
                     	'isSon':false
                     },
                     {
+                    	'name':'数据分析',
+                    	'path':'RecordData',
+                    	'icon':'',
+                    	'showType':1,
+                    	'index':'/home/RecordData',
+                    	'isSon':false
+                    },
+                    {
                     	'name':'标签管理',
                     	'path':'LabelManagement',
                     	'icon':'',
