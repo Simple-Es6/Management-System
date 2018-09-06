@@ -50,10 +50,10 @@
   </div>
 </template>
 <script>
-import list from "./RecordData.js";
+import list from "./UserData.js";
 export default list;
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	@import url("./RecordData.css");
+	@import url("./UserData.css");
 </style>

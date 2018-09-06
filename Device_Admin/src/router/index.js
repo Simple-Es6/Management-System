@@ -122,6 +122,12 @@ export default new Router({
                     meta:{keepAlive:false},
                     component: resolve => require(['../pages/RecordData/RecordData.vue'], resolve)
                 },
+                {
+                    path: '/home/UserData',
+                    name: 'UserData',
+                    meta:{keepAlive:false},
+                    component: resolve => require(['../pages/UserData/UserData.vue'], resolve)
+                },
                 //Sun
                 {
                     path: '/home/fans',
