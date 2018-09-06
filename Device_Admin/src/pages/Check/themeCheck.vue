@@ -34,14 +34,17 @@
             <!-- <el-table-column prop="singer_name" label="发布人" ></el-table-column> -->
             <el-table-column label="详情" >
                <template slot-scope="scope">
-                  <el-button label="3" @click="dialogVisible=true" >详情</el-button>
+                  <el-button label="3" @click="dialogVisibles(scope.$index,scope.row)" >详情</el-button>
                </template>  
             </el-table-column>
             <el-table-column prop="shenhe" label="状态" ></el-table-column>
-            <el-table-column prop="operate" label="操作" width="260" >
+            <el-table-column prop="operate" label="操作" width="260">
                 <template slot-scope="scope" v-if="scope.row.is_examine==0">
+                    
                     <el-button size="mini"  @click="check(scope.row,scope.$index,1)">审核成功</el-button>
                     <el-button size="mini"  @click="check(scope.row,scope.$index,2)">审核失败</el-button>
+                    
+                    
                   
                 </template>
             </el-table-column>
@@ -53,17 +56,27 @@
         </el-pagination>
     </el-col>
     <!-- 详情页面 -->
-    <el-dialog  title="详情" :visible.sync="dialogVisible">
-      <el-form class="demo-form-inline">
-        <el-form-item label="标题"></el-form-item>
-        <el-form-item label="图片"></el-form-item>
-        <el-form-item label="描述"></el-form-item>
-        <el-form-item label="音乐列表"></el-form-item>
-        <el-form-ittem label="发布人"></el-form-ittem>
-        <el-form-item label="发布时间"></el-form-item>
-        <el-form-item>
-          <el-button  @click="">审核成功</el-button>
-          <el-button  @click="">审核失败</el-button>
+    <el-dialog  title="详情" :visible.sync="dialogVisible"> 
+      <el-form class="demo-form-inline" :model="form" >
+        <el-form-item label="标题:" >{{form.special_title}}</el-form-item>
+        <el-form-item label="图片:" class="pic">
+            <img :src="form.special_picture" alt="" >
+            </el-form-item>
+        <el-form-item label="描述:" >{{form.special_describe}}</el-form-item>
+        <el-form-item label="音乐列表:">
+            <div v-for="item in form.listmusic">
+                
+                    <p>音乐名字:{{item.music_name}}</p>
+                    <p>歌手名字:{{item.singer_name}}</p>
+                    <p class="pic"><img :src="item.music_picture" alt=""></p>
+                    <p><audio :src="item.music_path" controls="controls"  ref="audiodom"></audio></p>
+            </div>
+        </el-form-item>
+        <el-form-item label="专题标题:">{{form.special_title}}</el-form-item>
+        <el-form-item label="发布时间:">{{form.create_times}}</el-form-item>
+        <el-form-item v-if="hide">
+          <el-button  @click="detailCheck(form,1)">审核成功</el-button>
+          <el-button  @click="detailCheck(form,2)">审核失败</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -79,5 +92,17 @@ export default list;
 <style scoped>
 .tcheck .btn{
     line-height:40px;
+}
+.tcheck .pic{
+    width:100px;
+    height:100px;
+}
+.tcheck .pic img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.tcheck li{
+    list-style: none;
 }
 </style>

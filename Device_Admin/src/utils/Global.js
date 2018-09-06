@@ -1,6 +1,6 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true;
-const tou = 'http://172.16.66.38:8081/';
+const tou = 'http://172.16.66.38:8081/';//'http://172.16.64.228:8081/'
 const prefix1 = 'http://172.16.66.38:8081/';
 const PATH = {
 	addfuspecial:tou+'specials/addfuspecial',//添加专题
@@ -21,7 +21,9 @@ PATH1 = {
     updatemusicexamine: prefix1 + '/specials/updatemusicexamine', //音乐审核提交
     queryspecialexamine: prefix1 + '/specials/queryspecialexamine', //主题审核
     updatespecialexamine:prefix1 + '/specials/updatespecialexamine', //主题审核提交
-    loginuser:prefix1+'/user/loginuser'//登录
+	queryspleByid:prefix1+'/specials/queryspleByid',//主题审核详情
+	loginuser:prefix1+'/user/loginuser',//登录
+	queryExamine:prefix1+'/specials/queryExamine'//审核设置
 },
 ajaxs = function(type,urls,dataObj,callback){
 	let params = new URLSearchParams();

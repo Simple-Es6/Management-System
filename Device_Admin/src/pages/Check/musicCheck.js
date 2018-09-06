@@ -62,7 +62,7 @@ let list = {
             let params = {
                 is_examine: is_examine,
                 list: arr
-            };
+            }; 
 
             this.commonFun(params, -1, is_examine);
 
@@ -114,7 +114,7 @@ let list = {
         },
         handleCurrentChange(val) {
             this.getData(val);
-        },
+        }
     },
     //使用的组件
     components: {

@@ -12,6 +12,9 @@ let list = {
             selectInput: '',
             multipleSelection: [],
             dialogVisible: false,
+            specilIndex:0,
+            form:{},
+            hide:true
         }
     },
     //组件生成时执行事件
@@ -63,6 +66,16 @@ let list = {
             };
             this.commonFun(params,-1,is_examine);
         },
+        detailCheck(form,is_examine){
+            let arr=[];
+            arr.push(form.specialid);
+            let params={
+                list:arr,
+                is_examine: is_examine
+            };
+            this.commonFun(params,this.specilIndex,is_examine);
+            this.dialogVisible  = false;
+        },
         commonFun(params,index, is_examine) {
             let _this = this;
             _this.$axios1('post', _this.Global.PATH1.updatespecialexamine, params, res => {
@@ -75,7 +88,8 @@ let list = {
                         obj.is_examine = is_examine;
                        
                         obj.shenhe = is_examine == 1 ? '审核成功' : '审核失败';
-                         _this.$set(_this.tableData, "index", obj);
+                         _this.$set(_this.tableData,'index', obj);
+                         
                     }
                     //  _this.getData(_this.currentPage);
                 }
@@ -102,11 +116,30 @@ let list = {
 
         handleSizeChange(val) {
             this.everyPageCount = val;
-            console.log('val', val)
+        
         },
         handleCurrentChange(val) {
             this.getData(val);
         },
+        dialogVisibles(index,val){
+            let _this = this;
+            val.is_examine==1? _this.hide=false:_this.hide=true;
+                let params={
+                    specialid:val.specialid
+                }
+                _this.$axios('post', _this.Global.PATH1.queryspleByid, params, res => {
+                    if (res.code == 200) {
+                    _this.dialogVisible = true;
+                    _this.specilIndex = index;
+                    _this.form=res.data;
+                   
+                      // _this.$set(form, "index", obj);
+                    }
+                })
+        
+            
+            
+        }
     },
     //使用的组件
     components: {

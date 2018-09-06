@@ -82,7 +82,10 @@ let list = {
         //点击每行的编辑
         handleEdit(index, row) {
             console.log(index, row);
-
+            this.$router.push({name:'UpLoadHome',params:{
+                    specialid:row.specialid
+                }
+            });
         },
         //点击每行的取消
         handleDelete(index, row) {
@@ -108,7 +111,10 @@ let list = {
                 });
             });
         },
-
+        //提交审核
+        handleSubmit(){
+            
+        },
 
         handleSizeChange(val) {
             this.everyPageCount = val
