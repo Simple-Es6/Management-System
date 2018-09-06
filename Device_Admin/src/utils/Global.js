@@ -1,6 +1,6 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true;
-const tou = 'http://172.16.64.228:8081/';
+const tou = 'http://172.16.66.38:8081/';
 const prefix1 = 'http://172.16.66.38:8081/';
 const PATH = {
 	addfuspecial:tou+'specials/addfuspecial',//添加专题

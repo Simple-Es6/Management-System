@@ -5,18 +5,20 @@
 		    text-color="#fff"
 		    active-text-color="#ffd04b"
        	>
-            <template v-for="item in items" >
-                <template v-if="item.isSon" v-show="item.showType==showType">
-                    <el-submenu :index="item.index">
-                        <template slot="title"><i :class="item.icon"></i>{{item.name}}</template>
-                        <el-menu-item v-for="(subItem,i) in item.list"  :key="i" :index="subItem.index" @click="handleOpen(item,subItem)">{{subItem.name}}
-                        </el-menu-item>
-                    </el-submenu>
-                </template>
-                <template v-else v-show="item.showType==showType">
-                    <el-menu-item :index="item.index" @click="handleOpen1(item)">
-                        <i :class="item.icon"></i>{{item.name}}
-                    </el-menu-item>
+            <template v-for="item in items">
+            	<template v-if="item.showType==showType" >
+	                <template v-if="item.isSon" >
+	                    <el-submenu :index="item.index">
+	                        <template slot="title"><i :class="item.icon"></i>{{item.name}}</template>
+	                        <el-menu-item v-for="(subItem,i) in item.list"  :key="i" :index="subItem.index" @click="handleOpen(item,subItem)">{{subItem.name}}
+	                        </el-menu-item>
+	                    </el-submenu>
+	                </template>
+	                <template v-else>
+	                    <el-menu-item :index="item.index" @click="handleOpen1(item)">
+	                        <i :class="item.icon"></i>{{item.name}}
+	                    </el-menu-item>
+	                </template>
                 </template>
             </template>
         </el-menu>
