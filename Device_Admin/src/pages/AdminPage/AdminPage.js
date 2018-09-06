@@ -66,9 +66,81 @@ let list ={
 	//页面渲染完成事件
 	mounted(){
 		console.log(this.$refs);
+		let that = this;
 		this.myChart1 = this.$echarts.init(this.$refs.AdPieChart1);
 		this.myChart2 = this.$echarts.init(this.$refs.AdPieChart2);
-		
+		this.myChart1.setOption({
+			title : {
+		        text: 'APP播放时长统计',
+		        subtext: '总播放此时'+18888,
+		        x:'center'
+		    },
+		    tooltip : {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b} : {c} ({d}%)"
+		    },
+		    legend: {
+		        type: 'scroll',
+		        orient: 'vertical',
+		        left: 0,
+		        top: 40,
+		        bottom: 20,
+		        data: that.PieChart1.legendData,
+		        selected: that.PieChart1.legendData
+		    },
+		    series : [
+		        {
+		            name: '播放次数',
+		            type: 'pie',
+		            radius : '55%',
+		            center: ['55%', '60%'],
+		            data: that.PieChart1.seriesData,
+		            itemStyle: {
+		                emphasis: {
+		                    shadowBlur: 10,
+		                    shadowOffsetX: 0,
+		                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+		                }
+		            }
+		        }
+		    ]
+		});
+		this.myChart2.setOption({
+			title : {
+		        text: '音箱播放时长统计',
+		        subtext: '总播放此时'+18888,
+		        x:'center'
+		    },
+		    tooltip : {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b} : {c} ({d}%)"
+		    },
+		    legend: {
+		        type: 'scroll',
+		        orient: 'vertical',
+		        right: 0,
+		        top: 40,
+		        bottom: 20,
+		        data: that.PieChart2.legendData,
+		        selected: that.PieChart2.legendData
+		    },
+		    series : [
+		        {
+		            name: '播放次数',
+		            type: 'pie',
+		            radius : '55%',
+		            center: ['45%', '60%'],
+		            data: that.PieChart2.seriesData,
+		            itemStyle: {
+		                emphasis: {
+		                    shadowBlur: 10,
+		                    shadowOffsetX: 0,
+		                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+		                }
+		            }
+		        }
+		    ]
+		});
 	},
 	//方法
 	methods:{

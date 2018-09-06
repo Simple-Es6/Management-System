@@ -3,7 +3,7 @@
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	height:100px;
+	min-height:100px;
 }
 .aditem .list{
 	padding:0 20px;
@@ -17,4 +17,10 @@
 .aditem .list .listBot{
 	display: flex;
 	justify-content: space-between;
+}
+.pitem{
+	padding-top: 40px;
+	width:50%;
+	height:300px;
+	
 }

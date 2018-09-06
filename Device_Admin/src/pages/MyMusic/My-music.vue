@@ -2,8 +2,8 @@
   <div>
       <el-row>
           <el-col :span="8" :offset="16">
-            <el-input placeholder="输入歌曲名称或音乐人名称" v-model="selectInput"  class="input-with-select" @keyup.enter.native="search">
-                <el-select  slot="prepend" placeholder="请选择" v-model="select">
+            <el-input placeholder="输入歌曲名称或音乐人名称" v-model="selectInput"  class="input-with-select">
+                <el-select  slot="prepend" placeholder="请选择" v-model="select" >
                     <el-option label="专辑" value="1"></el-option>
                     <el-option label="单曲" value="2"></el-option>
                 </el-select>
@@ -20,14 +20,13 @@
             </el-radio-group>
         </el-col>
         <el-col :span="4" :offset="4">
-            <el-radio-group v-model="showVisible"  @change="elechange">
+            <el-radio-group v-model="showVisible" @change="elechange">
                 <el-radio :label="1">专辑</el-radio>
                 <el-radio :label="0">单曲</el-radio>
             </el-radio-group>
         </el-col>
     </el-row>
-    <!-- 专辑表格 -->
-   
+    <!-- 专辑表格 -->   
     <el-table :data="tableData" stripe style="width: 100%"  v-show="showVisible">
             <el-table-column prop="special_picture" label="" width="80">
                  <template slot-scope="scope">
