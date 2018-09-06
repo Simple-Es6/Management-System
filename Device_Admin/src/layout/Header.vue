@@ -6,35 +6,54 @@
 		</div>
 		<div class="loginBox" v-if="login">
 			<!--<div class="myOrder">订单信息</div>-->
-			<div class="myPhone">{{login}}</div>
+			<div class="myPhone">{{phone}}</div>                             
 			<div @click="logOut" class="loginOut">退出</div>
 		</div>
 	</div>
 </template>
 <script>
 export default {
-  name: 'Header',
-  data () {
+  	name: 'Header',
+  	data () {
     return {
-    	isLogin:true,
-    	login:'',
-    	phone:15600786662
-    }
-  },
-  created:function(){
-  	this.login = this.$store.state.login;
-  	console.log(this.login)
-  },
-  methods:{
-  	header(){
-  		console.log(this.login);
+    		isLogin:true,
+    		login:0,
+				phone:15600786662
+    	}
   	},
-  	logOut(){
-  		console.log(this.$store);
-  		this.$store.dispatch('loginOut');
-  		this.$router.push({ path:'./login'});
-  	}
-  }
+  	computed: {
+			getUserIcons() {
+				return this.$store.state.login;
+			}  
+  	},
+  	created:function(){
+  		let login = this.$store.state.login||sessionStorage.getItem('mwladlogin');
+  		if(login){
+				this.login = login;
+				this.$store.dispatch('loginState',login,this.phone);
+  		}else{
+  			this.$router.replace({ name:'Login'});
+			};
+  	},
+  	methods:{
+			header(){
+				console.log(this.login);
+			},
+			logOut(){
+				alert('jsjjsjsjsjsj')
+				console.log(this.$store);
+				this.$store.dispatch('loginOut');
+				this.$router.push({name:'Login'});
+			}
+  	},
+  	watch: {
+			getUserIcons: function(li) { //li就是改变后的wifiList值
+				alert('jjjjj'+li)
+				if(li==0){
+					this.$router.replace({ name:'Login'});
+				};
+		}
+	}
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

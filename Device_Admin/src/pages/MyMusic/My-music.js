@@ -78,14 +78,11 @@ let list = {
         musiclist(data) {
 
         },
+
         //点击每行的编辑
         handleEdit(index, row) {
             console.log(index, row);
-            this.$router.push({name:'UpLoadHome',params:{
-					specialid:row.specialid,
-					isNew:0
-				}
-			});
+
         },
         //点击每行的取消
         handleDelete(index, row) {
@@ -111,29 +108,7 @@ let list = {
                 });
             });
         },
-        // 获取数据列表
-        getMusicDataList() {
-            let _this = this
-            let url =
 
-                // let para = {
-                //     'name': this.formInline.user,
-                //     'page': this.page - 1, // 当前页数
-                //     'size': this.everyPageCount // 每页显示条数
-                // }
-                // if (this.formInline.region !== '') {
-                //     para.companyCategoryId = this.formInline.region
-                // }
-                // http.http('get', url, para, getCompanyCategorySucc)
-
-
-
-                function getCompanyCategorySucc(data) {
-                    _this.total = data.totalElements;
-                    _this.tableData = data.content;
-
-                }
-        },
 
         handleSizeChange(val) {
             this.everyPageCount = val

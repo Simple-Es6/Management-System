@@ -23,10 +23,6 @@ export default {
     	return this.$store.state.pagetitle;
   	}
   },
-  //组件生成时执行事件
-  created:function(){
-  	console.log(123)
-	},
 	//方法
 	methods:{
 		route(str){

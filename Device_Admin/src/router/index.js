@@ -45,12 +45,6 @@ export default new Router({
                     component: resolve => require(['../pages/Income/Income.vue'], resolve)
                 },
                 {
-                    path: '/home/fans',
-                    name: 'Fans',
-                    meta:{keepAlive:false},
-                    component: resolve => require(['../pages/Fans/Fans.vue'], resolve)
-                },
-                {
                     path: '/home/voicebox',
                     name: 'VoiceBox',
                     meta:{keepAlive:false},
@@ -122,7 +116,56 @@ export default new Router({
                     meta:{keepAlive:false},
                     component: resolve => require(['../pages/AdminPage/AdminPage.vue'], resolve)
                 },
+                //Sun
+                {
+                    path: '/home/fans',
+                    name: 'Fans',
+                    meta: { keepAlive: false },
+                    component: resolve => require(['../pages/Fans/Fans.vue'], resolve)
+                },
+                {
+                    path: '/home/artistCheck',
+                    name: 'ArtistCheck',
+                    meta: { keepAlive: false },
+                    component: resolve => require(['../pages/Check/artistCheck.vue'], resolve),
+                },
+                {
+                    path: '/home/musicCheck',
+                    name: 'MusicCheck',
+                    meta: { keepAlive: false },
+                    component: resolve => require(['../pages/Check/musicCheck.vue'], resolve),
+                },
+                {
+                    path: '/home/setCheck',
+                    name: 'SetCheck',
+                    meta: { keepAlive: false },
+                    component: resolve => require(['../pages/Check/setCheck.vue'], resolve),
+                },
+                {
+                    path: '/home/themeCheck',
+                    name: 'ThemeCheck',
+                    meta: { keepAlive: false },
+                    component: resolve => require(['../pages/Check/themeCheck.vue'], resolve),
+                }
             ]
+        },
+        {
+            path: '/HomePage',
+            name: 'HomePage',
+            meta: { keepAlive: false },
+            component: resolve => require(['../pages/HomePage/HomePage.vue'], resolve),
+        },
+        {
+            path: '/SignIn',
+            name: 'SignIn',
+            meta: { keepAlive: false },
+            component: resolve => require(['../pages/SignIn/SignIn.vue'], resolve),
+        },
+        {
+            path: '/signDetail',
+            name: 'signDetail',
+            meta: { keepAlive: false },
+            component: resolve => require(['../pages/SignIn/signDetail.vue'], resolve),
         }
         /*{
 	    path: '/login',
