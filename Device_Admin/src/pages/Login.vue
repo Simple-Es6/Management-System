@@ -23,7 +23,7 @@
 					<div v-if="errorphone" class="h3Title textDanger">手机号输入错误</div>
 				</el-col>
 			</el-row>
-			<el-row  type="flex"  justify="center" :gutter="30">
+			<!-- <el-row  type="flex"  justify="center" :gutter="30">
 				<el-col :span="9">
 					<div class="h1Title textMain">
 						验证码
@@ -42,10 +42,27 @@
 				<el-col :span="9" >
 					<div v-if="errorphone" class="h3Title textDanger">验证码输入错误</div>
 				</el-col>
+			</el-row> -->
+			<el-row  type="flex"  justify="center" :gutter="30">
+				<el-col :span="9">
+					<div class="h1Title textMain">
+						登录密码
+					</div>
+				</el-col>
+			</el-row>
+			<el-row style="margin-top: 10px;" type="flex"  justify="center" :gutter="30">
+				<el-col :span="9">
+					<el-input @focus="phoneFocus" @blur="phoneBlur" type="password" maxlength="11" v-model="password" placeholder="请输入密码"></el-input>
+				</el-col>
+			</el-row>
+			<el-row style="margin-top:0;" :gutter="30" type="flex"  justify="center" v-if="errorpassword">
+				<el-col :span="9" >
+					<div v-if="errorpassword" class="h3Title textDanger">密码输入错误</div>
+				</el-col>
 			</el-row>
 			<el-row style="margin-top: 60px;" type="flex" justify="center" :gutter="30">
 				<el-col  :span="9">
-			  	<el-button :loading="btnLoad" @click="submitClick" style="width: 100%;" type="success">{{isLogin?'登录':'下一步'}}</el-button>
+			  	<el-button :loading="btnLoad" @click="submitClick" style="width: 100%;" type="success">登录</el-button>
 			  </el-col>
 			</el-row>
 		</div>
@@ -61,10 +78,12 @@
 				phone:'',
 				times:'获取验证码',
 				ercode:'',
+				password:'',
 				timenum:60,
 				btnLoad:false,
 				isDian:false,
 				errorphone:false,
+				errorpassword:false,
 				errorcode:false,
 				msg: 'Welcome to Your Vue.js App'
 			}
@@ -105,21 +124,40 @@
 		  		}
 		  	},
 		  	submitClick(){
-		  		let that = this;
-		  		if(that.reg.test(that.phone)){
-					that.btnLoad = true;
-			  		setTimeout(function(){
-			  			that.btnLoad = false;
-			  			if(that.isLogin){
-			  				that.$store.dispatch('logIn',that.phone);
-			  				that.$router.push({name:'Home'});
-			  			}else{
-			  				that.$router.push({name:'Invoice'});
-			  			};
-			  		},2000);	
-	    		}else{
-	    			that.errorphone = true;
-	    		};
+		  		//let that = this;
+		  		// if(that.reg.test(that.phone)){
+				// 	that.btnLoad = true;
+			  	// 	setTimeout(function(){
+			  	// 		that.btnLoad = false;
+			  	// 		if(that.isLogin){
+			  	// 			that.$store.dispatch('logIn',that.phone);
+			  	// 			that.$router.push({name:'Home'});
+			  	// 		}else{
+			  	// 			that.$router.push({name:'Invoice'});
+			  	// 		};
+			  	// 	},2000);	
+	    		// }else{
+	    		// 	that.errorphone = true;
+				// };
+				let _this = this;
+				if(_this.reg.test(_this.phone)){
+					let params={
+						user_name:this.phone,
+						password:this.password
+					}
+					
+					_this.$axios('post', _this.Global.PATH1.loginuser, params, res => {
+						if (res.code == 200) {
+							_this.$store.dispatch('loginState',res.data.musiciantype,this.phone);
+							_this.$router.push({path:'/home/Artist'});
+						}else{
+							alert(res.msg);
+						};
+					});
+				}else{
+					_this.errorphone;
+				}
+				
 		  	}
 		}
 	}

@@ -5,15 +5,15 @@
 		    text-color="#fff"
 		    active-text-color="#ffd04b"
        	>
-            <template v-for="item in items">
-                <template v-if="item.isSon">
+            <template v-for="item in items" >
+                <template v-if="item.isSon" v-show="item.showType==showType">
                     <el-submenu :index="item.index">
                         <template slot="title"><i :class="item.icon"></i>{{item.name}}</template>
-                        <el-menu-item v-for="(subItem,i) in item.list" :key="i" :index="subItem.index" @click="handleOpen(item,subItem)">{{subItem.name}}
+                        <el-menu-item v-for="(subItem,i) in item.list"  :key="i" :index="subItem.index" @click="handleOpen(item,subItem)">{{subItem.name}}
                         </el-menu-item>
                     </el-submenu>
                 </template>
-                <template v-else>
+                <template v-else v-show="item.showType==showType">
                     <el-menu-item :index="item.index" @click="handleOpen1(item)">
                         <i :class="item.icon"></i>{{item.name}}
                     </el-menu-item>
@@ -26,11 +26,13 @@
     export default {
         data() {
             return {
+            	showType:1,
                 items: [
                 	{
                     	'name':'管理员首页',
                     	'path':'AdminPage',
                     	'icon':'',
+                    	'showType':1,
                     	'index':'/home/AdminPage',
                     	'isSon':false
                     },
@@ -38,6 +40,7 @@
                     	'name':'艺人首页',
                     	'path':'Artist',
                     	'icon':'',
+                    	'showType':2,
                     	'index':'Artist',
                     	'isSon':false
                     },
@@ -45,6 +48,7 @@
                     	'name':'设备',
                     	'path':'MyMusic',
                     	'isSon':true,
+                    	'showType':1,
                     	'index':'/home/voicebox',
                     	'icon':'',
                     	'list':[
@@ -84,6 +88,7 @@
                     	'name':'音乐管理',
                     	'path':'MyMusic',
                     	'isSon':true,
+                    	'showType':99,
                     	'index':'/home/MyMusic',
                     	'icon':'',
                     	'list':[
@@ -117,6 +122,7 @@
                     	'name':'收入管理',
                     	'path':'MyMusic',
                     	'icon':'',
+                    	'showType':99,
                     	'index':'/home/income',
                     	'isSon':false
                     },
@@ -124,13 +130,53 @@
                     	'name':'粉丝管理',
                     	'path':'MyMusic',
                     	'icon':'',
+                    	'showType':99,
                     	'index':'/home/fans',
                     	'isSon':false
+                    },
+                    {
+                    	'name':'审核',
+                    	'path':'Check',
+                    	'icon':'',
+                    	'showType':1,
+                    	'index':'/home/Check',
+						'isSon':true,
+						'list':[
+							{
+								'name':'艺人审核',
+								'path':'/home/artistCheck',
+								'icon':'',
+								'index':'/home/artistCheck',
+								'isSon':false
+							},
+							{
+								'name':'音乐审核',
+								'path':'/home/musicCheck',
+								'icon':'',
+								'index':'/home/musicCheck',
+								'isSon':false
+							},
+							{
+								'name':'主题审核',
+								'path':'/home/themeCheck',
+								'icon':'',
+								'index':'/home/themeCheck',
+								'isSon':false
+							},
+							{
+								'name':'审核设置',
+								'path':'/home/setCheck',
+								'icon':'',
+								'index':'/home/setCheck',
+								'isSon':false
+							}
+						]
                     },
                     {
                     	'name':'星球信息',
                     	'path':'PlanetInformation',
                     	'icon':'',
+                    	'showType':1,
                     	'index':'/home/planetinformation',
                     	'isSon':false
                     },
@@ -138,6 +184,7 @@
                     	'name':'标签管理',
                     	'path':'LabelManagement',
                     	'icon':'',
+                    	'showType':1,
                     	'index':'/home/LabelManagement',
                     	'isSon':false
                     },
@@ -145,6 +192,7 @@
                     	'name':'星歌管理',
                     	'path':'StarSong',
                     	'icon':'',
+                    	'showType':1,
                     	'index':'/home/StarSong',
                     	'isSon':false
                     },
@@ -152,6 +200,7 @@
                     	'name':'音乐榜单',
                     	'path':'MusicList',
                     	'icon':'',
+                    	'showType':1,
                     	'index':'/home/MusicList',
                     	'isSon':false
                     },
@@ -159,6 +208,7 @@
                     	'name':'用户管理',
                     	'path':'UserAdmin',
                     	'icon':'',
+                    	'showType':1,
                     	'index':'/home/UserAdmin',
                     	'isSon':false
                     }
@@ -166,6 +216,9 @@
                 ]
             }
         },
+        created:function(){
+  			this.showType = 1; 
+		},
         computed:{
             onRoutes(){
                 return this.$route.path.replace('/','');

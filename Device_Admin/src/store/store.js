@@ -6,11 +6,17 @@ Vue.use(Vuex)
 let state={
     is_show: true, //默认显示，点击的时候再隐藏
     text1:'测试111',
-    login:'',
-    pagetitle:[]
+    login:0,
+    user_name:'',
+    pagetitle:[],
+    loginState:0
 },
 //管理方法函数
 mutations = {
+    loginState(state,msg,user_name){
+        state.login=msg;
+        state.user_name=user_name;
+    },
 	changeUser(state, msg){
         state.phone = msg;
         if(msg){
@@ -18,7 +24,7 @@ mutations = {
 			state.phone = msg;
 			state.login = msg.replace(reg,"$1****$2"); 
         }else{
-        	state.login = '';        	
+        	state.login = 0;        	
         };
     },
     changePage(obj){
@@ -33,8 +39,8 @@ mutations = {
 },
 //这个相当于是 state的计算属性 的意思  跟computed差不多  获取状态值
 getters = {
-    id1:function(state,getters){
-        return state.text1;
+    loginupdata:state=>{
+        return state.login;
     },
     pageupdate:state=>{
     	return state.pagetitle;
@@ -43,22 +49,26 @@ getters = {
 // 异步的mutations ，Action 通过 store.dispatch 方法触发  store.dispatch('increment')
 actions = {
 	loginOut(state){
-		this.state.login = {};
+        this.state.login = 0;
+        this.state.user_name='';
 	},
 	changePage(state,obj){
 		console.log(obj);
     	this.state.pagetitle = obj;
+    },
+    loginState(state,msg,user_name){
+        alert('store'+msg)
+        this.state.login=msg;
+        this.state.user_name=user_name;
     },
 	logIn(state,num){
 		this.state.login = num;
 	}
 
 };
-const store = new Vuex.Store({
-    state:state,
-    mutations:mutations,
-    getters:getters,
-    actions:actions
-})
-
-export default store
+export default new Vuex.Store({
+  state,
+  getters,
+  mutations,
+  actions
+});
