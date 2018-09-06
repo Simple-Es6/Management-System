@@ -16,7 +16,7 @@
   						<span class="sort">{{index+1}}</span>
   						<span class="fliename">{{val.music_name}}</span>
   						<span>{{val.singer_name}}</span>
-  						<span>{{sec_to_time1(val.musicTime)}}</span>
+  						<span>{{sec_to_time1(val.duration)}}</span>
   						<span v-if="val.state==0">正在上传</span>
   						<span class="textSuccess" v-else-if="val.state==1">上传成功</span>
   						<span class="textDanger" v-else>上传失败</span>
@@ -126,7 +126,7 @@
   	</div>
   	<div class="subclick">
   		<el-button v-if="isNew==1" size="small" @click="subMusic" type="primary">提交发布</el-button>
-  		<el-button v-else size="small" @click="subMusic" type="primary">保存修改</el-button>
+  		<el-button  size="small" @click="subMusic" type="primary" v-else>保存修改</el-button>
   	</div>
   </div>
 </template>

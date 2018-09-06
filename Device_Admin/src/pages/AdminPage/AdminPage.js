@@ -2,31 +2,31 @@ let list ={
   name: 'AdminPage',
   data () {
     return {
-    	timeType:1,
-    	axis:{
-    		nameData:['浏览量','独立访客','IP统计'],
-    		timeData:['周一','周二','周三','周四','周五','周六','周日'],
-    		recordData:[
-		        {
-		            name:'浏览量',
-		            type:'line',
-		            stack: '总量',
-		            data:[120, 132, 101, 134, 90, 230, 210]
-		        },
-		        {
-		            name:'独立访客',
-		            type:'line',
-		            stack: '总量',
-		            data:[220, 182, 191, 234, 290, 330, 310]
-		        },
-		        {
-		            name:'IP统计',
-		            type:'line',
-		            stack: '总量',
-		            data:[150, 232, 201, 154, 190, 330, 410]
-		        }
-		    ]
-    	},
+    		timeType:1,
+	    	axis:{
+	    		nameData:['浏览量','独立访客','IP统计'],
+	    		timeData:['周一','周二','周三','周四','周五','周六','周日'],
+	    		recordData:[
+			        {
+			            name:'浏览量',
+			            type:'line',
+			            stack: '总量',
+			            data:[120, 132, 101, 134, 90, 230, 210]
+			        },
+			        {
+			            name:'独立访客',
+			            type:'line',
+			            stack: '总量',
+			            data:[220, 182, 191, 234, 290, 330, 310]
+			        },
+			        {
+			            name:'IP统计',
+			            type:'line',
+			            stack: '总量',
+			            data:[150, 232, 201, 154, 190, 330, 410]
+			        }
+			    ]
+	    	},
       	PieChart1:{
       		legendData:[
       			'0-10分钟',

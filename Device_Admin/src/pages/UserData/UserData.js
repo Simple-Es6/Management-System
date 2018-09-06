@@ -1,5 +1,5 @@
 let list = {
-  	name: 'RecordData',
+  	name: 'UserData',
   	data () {
     	return {
     		timesdata:'',

@@ -6,7 +6,7 @@
 		    active-text-color="#ffd04b"
        	>
             <template v-for="item in items">
-            	<template v-if="item.showType==showType" >
+            	<template v-if="item.showType==showType||item.showType==99" >
 	                <template v-if="item.isSon" >
 	                    <el-submenu :index="item.index">
 	                        <template slot="title"><i :class="item.icon"></i>{{item.name}}</template>
@@ -180,6 +180,14 @@
                     	'icon':'',
                     	'showType':1,
                     	'index':'/home/planetinformation',
+                    	'isSon':false
+                    },
+                    {
+                    	'name':'数据分析',
+                    	'path':'RecordData',
+                    	'icon':'',
+                    	'showType':1,
+                    	'index':'/home/RecordData',
                     	'isSon':false
                     },
                     {
