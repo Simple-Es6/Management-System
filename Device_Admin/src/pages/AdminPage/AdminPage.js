@@ -96,6 +96,7 @@ let list ={
 		this.myChart1 = this.$echarts.init(this.$refs.AdPieChart1);
 		this.myChart2 = this.$echarts.init(this.$refs.AdPieChart2);
 		this.myChart3 = this.$echarts.init(this.$refs.AdAxis);
+
 		this.myChart1.setOption({
 			title : {
 		        text: 'APP播放时长统计',
@@ -168,6 +169,7 @@ let list ={
 		        }
 		    ]
 		});
+
 		this.myChart3.setOption({
 			title: {
 	        text: '折线图堆叠'
@@ -199,6 +201,7 @@ let list ={
 	    },
 	    series: that.axis.recordData
 		});
+
 	},
 	//方法
 	methods:{
