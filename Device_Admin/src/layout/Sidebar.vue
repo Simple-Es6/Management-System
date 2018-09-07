@@ -159,6 +159,13 @@
 								'isSon':false
 							},
 							{
+                                'name':'评论审核',
+                                'path':'/home/commentCheck',
+                                'icon':'',
+                                'index':'/home/commentCheck',
+                                'isSon':false
+                            },
+							{
 								'name':'主题审核',
 								'path':'/home/themeCheck',
 								'icon':'',

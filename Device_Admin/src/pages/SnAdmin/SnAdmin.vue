@@ -2,7 +2,7 @@
   <div>
   	<div class="VoiceBox">
 			<div class="textMain h0Title">
-				音箱列表
+				SN管理
 			</div>
 			<div class="voicetime">
 				<el-date-picker
@@ -11,24 +11,25 @@
 					@change="timeStartEnd"
 		      v-model="timeStart"
 		      type="daterange"
-		      value-format="timestamp"
+		     	value-format="yyyy-MM-dd"
 		      range-separator="-"
 		      start-placeholder="开始日期"
 		      end-placeholder="结束日期">
 		    </el-date-picker>
 			</div>
 			<div class="searchDiv">
-				<el-input placeholder="请输入内容" size="small" v-model="searchStr" class="input-with-select">
+				<el-input placeholder="请输入内容" size="small" @keyup.enter.native="searchbtn"  v-model="searchStr" class="input-with-select">
 			    <el-select v-model="select" slot="prepend" placeholder="请选择">
 			      <el-option label="手机号码" value="1"></el-option>
 			      <el-option label="SN机器码" value="2"></el-option>
 			    </el-select>
-			    <el-button slot="append" icon="el-icon-search">查询</el-button>
+			    <el-button slot="append" icon="el-icon-search" @click="searchbtn">查询</el-button>
 			  </el-input>
 			</div>
 		</div>
 		<div class="dataDiv">
 			<el-table
+				ref="multipleTable"
 		    :data="tableData"
 		    @filter-change="handleFilterChange"
 		    @selection-change="handleSelectionChange"
@@ -38,57 +39,43 @@
 	      	width="55">
 		    </el-table-column>
 		    <el-table-column
-		      prop="date"
-		      label="时间"
+		      label="播放时间"
 		    >
+		    	<template slot-scope="scope">{{Global.oTime(scope.row.createTime)}}</template>
 		    </el-table-column>
 		    <el-table-column
-		      prop="date"
+		      prop="deviceName"
 		      label="设备名称"
 		    >
 		    </el-table-column>
 		    <el-table-column
-		      prop="date"
-		      label="SN机器码"
+		      prop="snCode"
+		      label="sn机器码"
 		    >
 		    </el-table-column>
 		    <el-table-column
-		      prop="date"
-		      label="MAC地址"
+		      prop="mac"
+		      label="Mac地址"
 		    >
 		    </el-table-column>
 		    <el-table-column
-		      prop="date"
-		      label="黑珍珠数量"
-		    >
-		    </el-table-column>
-		    <el-table-column
-		      prop="date"
+		      prop="bindingPhone"
 		      label="绑定手机号"
 		    >
 		    </el-table-column>
 		    <el-table-column
-		      prop="date"
-		      label="节点存储"
+		      label="绑定时间"
 		    >
+		    	<template slot-scope="scope">{{scope.row.bindingTime?Global.oTime(scope.row.bindingTime):''}}</template>
 		    </el-table-column>
 		    <el-table-column
-		      prop="date"
-		      label="上网IP"
-		    >
-		    </el-table-column>
-		    <el-table-column
-		      prop="name"
-		      label="所有状态"
-		    >
-		    </el-table-column>
-		    <el-table-column
-		      prop="address"
-		      label="操作"
+		      prop="bindingState"
+		      label="绑定状态"
 		      column-key="order"
 		      :filter-multiple="false"
-		      :filters="[{text:'所有状态', value:0}, { text:'播放中', value:1},{ text:'联网中',value:2},{ text:'暂停中',value:3},{ text:'不在线',value:4},{ text:'已听完',value:5},{ text:'未听完',value:6}]"
+		      :filters="[{text:'已绑定',value:1},{text:'未绑定',value:0}]"
 					:filter-method="filterTag">
+					<template slot-scope="scope">{{scope.row.bindingState==0?'未绑定':'已绑定'}}</template>
 		    </el-table-column>
 		 	</el-table>
 		</div>

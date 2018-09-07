@@ -52,7 +52,7 @@
 			</el-row>
 			<el-row style="margin-top: 10px;" type="flex"  justify="center" :gutter="30">
 				<el-col :span="9">
-					<el-input @focus="phoneFocus" @blur="phoneBlur" type="password" maxlength="11" v-model="password" placeholder="请输入密码"></el-input>
+					<el-input @focus="phoneFocus" @keyup.enter.native="submitClick"  @blur="phoneBlur" type="password" maxlength="11" v-model="password" placeholder="请输入密码"></el-input>
 				</el-col>
 			</el-row>
 			<el-row style="margin-top:0;" :gutter="30" type="flex"  justify="center" v-if="errorpassword">
