@@ -27,7 +27,10 @@ PATH1 = {
     queryspecialexamine: prefix1 + '/specials/queryspecialexamine', //主题审核
     updatespecialexamine:prefix1 + '/specials/updatespecialexamine', //主题审核提交
     loginuser:prefix1+'/user/loginuser',//登录
-    queryExamine:prefix1+'/specials/queryExamine'//审核设置
+	queryExamine:prefix1+'/specials/queryExamine',//审核设置
+	addExamine:prefix1+'/specials/addExamine',//审核设置原因增加
+	updateExamine:prefix1+'/specials/updateExamine',//审核修改
+	deleteExamine:prefix1+'/specials/deleteExamine',//审核删除
 },
 ajaxs = function(type,urls,dataObj,callback){
 	let params = new URLSearchParams();
