@@ -3,10 +3,10 @@
   	<el-row>
           <el-col :span="8">
             <el-radio-group v-model="radio3" @change="tabData">
-                <el-radio-button label="-1">全部{{radio3==-1?total:''}}</el-radio-button>
-                <el-radio-button label="0">待处理{{radio3==0?total:''}}</el-radio-button>
-                <el-radio-button label="1">已通过{{radio3==1?total:''}}</el-radio-button>
-                <el-radio-button label="2">已拒绝{{radio3==2?total:''}}</el-radio-button>
+                <el-radio-button label="-1">全部</el-radio-button>
+                <el-radio-button label="0">待处理</el-radio-button>
+                <el-radio-button label="1">已通过</el-radio-button>
+                <el-radio-button label="2">已拒绝</el-radio-button>
             </el-radio-group>
             </el-col>
             <el-col :span="8" class="btn">

@@ -173,6 +173,13 @@
 								'isSon':false
 							},
 							{
+								'name':'评论审核',
+								'path':'/home/commentCheck',
+								'icon':'',
+								'index':'/home/commentCheck',
+								'isSon':false
+							},
+							{
 								'name':'审核设置',
 								'path':'/home/setCheck',
 								'icon':'',
