@@ -154,19 +154,11 @@ export default new Router({
                     component: resolve => require(['../pages/Check/setCheck.vue'], resolve),
                 },
                 {
-<<<<<<< HEAD
 					path: '/home/commentCheck',
 					name: 'commentCheck',
 					meta: { keepAlive: false },
 					component: resolve => require(['../pages/Check/commentCheck.vue'], resolve),
 				},
-=======
-                    path: '/home/commentCheck',
-                    name: 'ThemeCheck',
-                    meta: { keepAlive: false },
-                    component: resolve => require(['../pages/Check/commentCheck.vue'], resolve),
-                },
->>>>>>> 5b7e8a08dd01cff82b21af2a9706e1d11a97e190
                 {
                     path: '/home/themeCheck',
                     name: 'ThemeCheck',
