@@ -59,7 +59,6 @@ actions = {
     	this.state.pagetitle = obj;
     },
     loginState(state,msg){
-    	alert('hhaha'+msg.phone);
         sessionStorage.setItem('mwladlogin',msg.type);
         sessionStorage.setItem('mwladname',msg.phone);
         this.state.login=msg.type;
