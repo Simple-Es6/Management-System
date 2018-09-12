@@ -42,7 +42,7 @@
                     	'name':'艺人首页',
                     	'path':'Artist',
                     	'icon':'',
-                    	'showType':1,
+                    	'showType':2,
                     	'index':'Artist',
                     	'isSon':false
                     },
