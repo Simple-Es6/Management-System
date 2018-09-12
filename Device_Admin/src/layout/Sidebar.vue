@@ -42,7 +42,7 @@
                     	'name':'艺人首页',
                     	'path':'Artist',
                     	'icon':'',
-                    	'showType':2,
+                    	'showType':1,
                     	'index':'Artist',
                     	'isSon':false
                     },
@@ -158,6 +158,8 @@
 								'index':'/home/musicCheck',
 								'isSon':false
 							},
+						
+                           
 							{
 								'name':'主题审核',
 								'path':'/home/themeCheck',
@@ -188,7 +190,39 @@
                     	'showType':1,
                     	'index':'/home/planetinformation',
                     	'isSon':false
-                    },
+					},
+					{
+                    	'name':'机构管理',
+                    	'path':'OrganizationManage',
+                    	'icon':'',
+                    	'showType':1,
+                    	'index':'/home/OrganizationManage',
+						'isSon':false
+					},
+					{
+						'name':'艺人管理',
+                    	'path':'ArtistManage',
+                    	'icon':'',
+                    	'showType':1,
+                    	'index':'/home/ArtistManage',
+                    	'isSon':false
+					},
+					{
+                    	'name':'收入管理',
+                    	'path':'Income',
+                    	'icon':'',
+                    	'showType':99,
+                    	'index':'/home/income',
+                    	'isSon':false
+					},
+					{
+						'name':'居民管理',
+						'path':'PeopleManage',
+                    	'icon':'',
+                    	'showType':1,
+                    	'index':'/home/PeopleManage',
+                    	'isSon':false
+					},
                     {
                     	'name':'数据分析',
                     	'path':'RecordData',
@@ -209,6 +243,27 @@
 								'path':'UserData',
 								'icon':'',
 								'index':'/home/UserData',
+								'isSon':false
+							},
+							{
+								'name':'播放数据',
+								'path':'PlayData',
+								'icon':'',
+								'index':'/home/PlayData',
+								'isSon':false
+							},
+							{
+								'name':'访问量统计',
+								'path':'AccessData',
+								'icon':'',
+								'index':'/home/AccessData',
+								'isSon':false
+							},
+							{
+								'name':'完播率数据',
+								'path':'BroadcastData',
+								'icon':'',
+								'index':'/home/BroadcastData',
 								'isSon':false
 							}
                     	]
@@ -244,7 +299,7 @@
                     	'showType':1,
                     	'index':'/home/UserAdmin',
                     	'isSon':false
-                    }
+					}
                     
                 ]
             }
@@ -304,6 +359,7 @@
         z-index: 998;
         width: 200px;
         background: #2E363F;
+		overflow: auto;
     }
     .sidebar > ul {
         height:100%;

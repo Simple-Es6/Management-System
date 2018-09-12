@@ -80,7 +80,7 @@ let list = {
             let _this = this;
             _this.$axios1('post', _this.Global.PATH1.updatespecialexamine, params, res => {
                 if (res.code == 200) {
-                    alert('提交成功');
+                    _this.$message('提交成功');
                     if(index==-1){
                         _this.getData(_this.currentPage);
                     }else{

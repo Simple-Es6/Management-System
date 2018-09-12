@@ -1,14 +1,25 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true;
-const tou = 'http://172.16.66.38:8081/';
+
 const tou1 = 'http://120.79.183.36:8081/futuremelody-admin/';
-const prefix1 = 'http://172.16.66.38:8081/';
+const tou = 'http://120.79.183.36:8081/futuremelody-admin/';
+const prefix1 = 'http://120.79.183.36:8081/futuremelody-admin/';
 const PATH = {
 	getRule:tou1+'bpRule/getRule',//获取规则
-	getRule:tou1+'bpRule/update',//修改规则
+	bpRule:tou1+'bpRule/update',//修改规则
 	prlist: tou1+'pr/list',//获取小未听歌记录
 	snlist: tou1+'xw/list',//sn管理列表
+	xwlist: tou1+'xw/xwlist',//音箱列表
+	updateUntied: tou1+'xw/updateUntied',//解绑音箱
+	getBpDr: tou1+'bp/getBpDr',//获取黑珍珠分配明细
+	getBpByUserName: tou1+'bp/getBpByUserName',//根据用户手机号获取黑珍珠分配记录明细
+	getSameDayBpDr: tou1+'bp/getSameDayBpDr',//获取当天黑珍珠明细
+	getXwLeaderboard:tou1+'bp/getXwLeaderboard',//获取音响排行榜
+	getBpByMac:tou1+'bp/getBpByMac',//根据mac地址获取黑珍珠分配记录明细
 	addfuspecial:tou+'specials/addfuspecial',//添加专题
+	querystartMusiclist:tou+'querystartMusiclist',//获取星歌列表
+	addStarMusic:tou1+'starMusic/addStarMusic',//添加星歌
+	getSystemMusicPageInfo:tou1+'starMusic/getSystemMusicPageInfo',//添加星歌
 	upload:tou+'upload',//上传图片
 	uploadmusic:tou+'uploadmusic',//上传音乐
 	uploadlrc:tou+'uploadlrc',//上传歌词
@@ -22,15 +33,18 @@ PATH1 = {
     querysplelist: tou + 'querysplelist', //音乐管理（专题列表)
     querysingle: tou + 'querysingle', //音乐管理（单曲）
     querymusicpeople: tou + 'querymusicpeople', //音乐人首页
-    querymusicexamine: prefix1 + '/specials/querymusicexamine', //音乐审核
-    updatemusicexamine: prefix1 + '/specials/updatemusicexamine', //音乐审核提交
-    queryspecialexamine: prefix1 + '/specials/queryspecialexamine', //主题审核
-    updatespecialexamine:prefix1 + '/specials/updatespecialexamine', //主题审核提交
-    loginuser:prefix1+'/user/loginuser',//登录
-	queryExamine:prefix1+'/specials/queryExamine',//审核设置
-	addExamine:prefix1+'/specials/addExamine',//审核设置原因增加
-	updateExamine:prefix1+'/specials/updateExamine',//审核修改
-	deleteExamine:prefix1+'/specials/deleteExamine',//审核删除
+    querymusicexamine: tou1 + '/specials/querymusicexamine', //音乐审核
+    updatemusicexamine: tou1 + '/specials/updatemusicexamine', //音乐审核提交
+    queryspecialexamine: tou1 + '/specials/queryspecialexamine', //主题审核
+    updatespecialexamine:tou1 + '/specials/updatespecialexamine', //主题审核提交
+    loginuser:tou1+'/user/loginuser',//登录
+	queryExamine:tou1+'/specials/queryExamine',//审核设置
+	addExamine:tou1+'/specials/addExamine',//审核设置原因增加
+	updateExamine:tou1+'/specials/updateExamine',//审核修改
+	deleteExamine:tou1+'/specials/deleteExamine',//审核删除
+	queryComment:prefix1+'/specials/queryComment',//评论审核列表
+	updateCommentexamine:tou1+'/specials/updateCommentexamine',//审核
+
 },
 ajaxs = function(type,urls,dataObj,callback){
 	let params = new URLSearchParams();

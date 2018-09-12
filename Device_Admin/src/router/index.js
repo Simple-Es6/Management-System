@@ -123,10 +123,34 @@ export default new Router({
                     component: resolve => require(['../pages/RecordData/RecordData.vue'], resolve)
                 },
                 {
+                    path: '/home/PlayData',
+                    name: 'PlayData',
+                    meta:{keepAlive:false},
+                    component: resolve => require(['../pages/PlayData/PlayData.vue'], resolve)
+                },
+                {
+                    path: '/home/AccessData',
+                    name: 'AccessData',
+                    meta:{keepAlive:false},
+                    component: resolve => require(['../pages/AccessData/AccessData.vue'], resolve)
+                },
+                {
+                    path: '/home/BroadcastData',
+                    name: 'BroadcastData',
+                    meta:{keepAlive:false},
+                    component: resolve => require(['../pages/BroadcastData/BroadcastData.vue'], resolve)
+                },
+                {
                     path: '/home/UserData',
                     name: 'UserData',
                     meta:{keepAlive:false},
                     component: resolve => require(['../pages/UserData/UserData.vue'], resolve)
+                },
+                {
+                    path: '/home/DetailsDay',
+                    name: 'DetailsDay',
+                    meta:{keepAlive:false},
+                    component: resolve => require(['../pages/DetailsDay/DetailsDay.vue'], resolve)
                 },
                 //Sun
                 {
@@ -155,16 +179,28 @@ export default new Router({
                 },
                 {
                     path: '/home/commentCheck',
-                    name: 'ThemeCheck',
+                    name: 'commentCheck',
                     meta: { keepAlive: false },
                     component: resolve => require(['../pages/Check/commentCheck.vue'], resolve),
                 },
                 {
-                    path: '/home/themeCheck',
-                    name: 'ThemeCheck',
+                    path: '/home/OrganizationManage',
+                    name: 'CheckOrganizationManage',
                     meta: { keepAlive: false },
-                    component: resolve => require(['../pages/Check/themeCheck.vue'], resolve),
-                }
+                    component: resolve => require(['../pages/OrganizationManage/OrganizationManage.vue'], resolve),
+                },
+                {
+                    path: '/home/ArtistManage',
+                    name: 'ArtistManage',
+                    meta: { keepAlive: false },
+                    component: resolve => require(['../pages/ArtistManage/ArtistManage.vue'], resolve),
+                },
+                {
+                    path: '/home/PeopleManage',
+                    name: 'PeopleManage',
+                    meta: { keepAlive: false },
+                    component: resolve => require(['../pages/PeopleManage/PeopleManage.vue'], resolve),
+                },
             ]
         },
         {

@@ -32,17 +32,17 @@
     }
 </script>
 <style>
-.title{
+.signIn .title{
     text-align:center;
     margin:30px auto;
     font-size:30px;
     font-weight:bold;
 }
-.content{
+.signIn .content{
     background:red;
     height:300px;
 }
-.signIn .text{
+.signIn .text{ 
     text-align:center;
     width:100%;
     margin-top:20px;
