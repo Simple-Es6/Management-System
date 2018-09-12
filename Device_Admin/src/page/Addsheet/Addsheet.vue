@@ -156,7 +156,7 @@ export default {
 	name:'Addsheet',
     data(){
         return{
-        	sheetNum:'003',
+        	sheetNum:0,
         	time1:'',
         	radio3:1,
         	msyBox:false,
@@ -172,6 +172,7 @@ export default {
     },
     created:function(){
     	let that = this;
+    	that.sheetNum = this.$route.params.sheet; 
 		that.$axios('post',that.Global.PATH.getSystemMusicPageInfo,{
 	    	pageNum:1,
 	    	pageSize:10,
@@ -217,18 +218,15 @@ export default {
     		let that = this,
     			arr = this.musicData,
     			arr1 = [];
+    		console.log(arr);
     		arr.forEach(function(val,index){
     			let obj = {};
-    			obj.id = '';
-    			obj.periods = that.sheetNum;
     			obj.isMust = val.isMust;
-    			obj.musicId = val.musicId;
-    			obj.showTime = that.time1;
-    			obj.createTime = val.createTime;
-    			obj.userId = val.userId;
+    			obj.musicId = val.musicid;
+    			obj.userId = val.userid;
     			arr1.push(obj);
     		});
-    		console.log(arr1)
+    		console.log(arr1);
 			that.$axios1('post',that.Global.PATH.addStarMusic,{
 		    	periods:that.sheetNum,
 		    	starMusicList:arr1,
@@ -249,7 +247,6 @@ export default {
     		return {padding:'5px 0'};
     	},
     	handleCurrentChange(val){
-    		console.log(val);
     		let that = this;
 			that.$axios('post',that.Global.PATH.getSystemMusicPageInfo,{
 		    	pageNum:val,

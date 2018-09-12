@@ -43,7 +43,7 @@
                     	'path':'Artist',
                     	'icon':'',
                     	'showType':1,
-                    	'index':'Artist',
+                    	'index':'/home/Artist',
                     	'isSon':false
                     },
                     {
@@ -305,6 +305,7 @@
             }
         },
         created:function(){
+  			//this.showType = this.$store.state.login; 
   			this.showType = 1; 
 		},
         computed:{

@@ -1,7 +1,7 @@
 <template>
   <div>
   	<div class="el-breadcrumb">
-  			<span @click="route1('/home/Artist')">首页</span>
+  			<span @click="route1()">首页</span>
   			<span v-if="page.length>0">/</span>
   			<span @click="route(page[0].path)"  v-if="page.length>0">{{page[0].name}}</span>
   			<span v-if="page.length>1">/</span>
@@ -14,7 +14,8 @@ export default {
   name: 'PageTitle',
   data () {
     return {
-      page:[]
+      page:[],
+      showType:''
     }
   },
   //计算属性
@@ -23,6 +24,9 @@ export default {
     	return this.$store.state.pagetitle;
   	}
   },
+  created:function(){
+		this.showType = this.$store.state.login; 
+	},
 	//方法
 	methods:{
 		route(str){
@@ -35,9 +39,16 @@ export default {
 			this.$store.dispatch('changePage',arr);
 			this.$router.replace({path:str});
 		},
-		route1(str){
+		route1(){
+			switch (this.showType){
+				case 1:
+					this.$router.replace({path:'/home/AdminPage'});
+					break;
+				case 2:
+					this.$router.replace({path:'/home/Artist'});
+			}
 			this.$store.dispatch('changePage',[]);
-			this.$router.replace({path:str});
+			
 		}
 	},
 	watch: {

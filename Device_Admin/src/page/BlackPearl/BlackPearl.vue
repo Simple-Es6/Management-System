@@ -47,8 +47,6 @@
 		<div class="dataDiv" v-show="radioType==1">
 				<el-table
 			    :data="tableData"
-			    @filter-change="handleFilterChange"
-			    @selection-change="handleSelectionChange"
 			    style="width: 100%">
 			    <el-table-column
 		      	type="selection"

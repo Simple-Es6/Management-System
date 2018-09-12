@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<!--<v-pageTitle vtitle="星歌管理"></v-pageTitle>-->
 		<el-row>
 		  	<el-col :span="8">
                 <el-date-picker
@@ -108,7 +107,7 @@
     	name:'StarSong',
     	data(){
     		return{
-    			timeStart:[],
+    			timeStart:'',
     			totals:0,
     			pageSize:10,
     			currentPage:1,
@@ -120,16 +119,13 @@
     	},
         methods:{
         	timeStartEnd(){
-        		this.currentPage = 1;
-        		this.getData();
+        		
         	},
         	getData(){
         		let that = this;
 	    		that.$axios('post',that.Global.PATH.querystartMusiclist,{
 	    			startRecord:that.currentPage,
-	    			pageSize:that.pageSize,
-	    			startshow_time:that.timeStart[0]||'',
-  					endshow_time:that.timeStart[1]||'',
+	    			pageSize:that.pageSize
 	    		},function(res){
 			  		if(res.code==200){
 			  			that.totals = res.count;
@@ -138,10 +134,7 @@
 		  		});
         	},
             func (){
-                this.$router.push({name:'Addsheet',params:{
-						sheet:this.totals+1
-					}		
-                });
+                this.$router.push({name:'Addsheet'});
             },
             //页面数变更
 		  	handleSizeChange(val) {
