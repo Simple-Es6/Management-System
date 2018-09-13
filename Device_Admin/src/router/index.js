@@ -179,6 +179,12 @@ export default new Router({
                     component: resolve => require(['../pages/Check/musicCheck.vue'], resolve),
                 },
                 {
+                    path: '/home/themeCheck',
+                    name: 'ThemeCheck',
+                    meta: { keepAlive: false },
+                    component: resolve => require(['../pages/Check/themeCheck.vue'], resolve),
+                },
+                {
                     path: '/home/setCheck',
                     name: 'SetCheck',
                     meta: { keepAlive: false },

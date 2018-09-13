@@ -42,7 +42,7 @@ PATH1 = {
 	addExamine:tou1+'/specials/addExamine',//审核设置原因增加
 	updateExamine:tou1+'/specials/updateExamine',//审核修改
 	deleteExamine:tou1+'/specials/deleteExamine',//审核删除
-	queryComment:prefix1+'/specials/queryComment',//评论审核列表
+	queryComment:tou1+'/specials/queryComment',//评论审核列表
 	updateCommentexamine:tou1+'/specials/updateCommentexamine',//审核
 
 },
