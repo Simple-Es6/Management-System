@@ -169,7 +169,7 @@ export default new Router({
                 {
                     path: '/home/musicCheck',
                     name: 'MusicCheck',
-                    meta: { keepAlive: false },
+                    meta: { keepAlive: true },
                     component: resolve => require(['../pages/Check/musicCheck.vue'], resolve),
                 },
                 {
