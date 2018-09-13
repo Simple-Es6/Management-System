@@ -158,6 +158,8 @@
 								'index':'/home/musicCheck',
 								'isSon':false
 							},
+						
+                           
 							{
 								'name':'主题审核',
 								'path':'/home/themeCheck',

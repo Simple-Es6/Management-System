@@ -90,16 +90,6 @@ let list = {
                 }
             })
         },
-        goDetails(val){
-        	this.$router.push({name:'PlayMusic',params:{
-					music:val.music_path,
-					lrc:val.lyrics,
-					type:1,
-					musicname:val.music_name,
-					singername:val.singer_name
-				}
-			});
-        },
         toggleSelection(rows) {
             if (rows) {
                 rows.forEach(row => {

@@ -43,6 +43,7 @@
 	      	<el-radio-button label="3">本月</el-radio-button>
 	      	<el-radio-button label="4">今年</el-radio-button>
 			</el-radio-group>
+			
 		</div>
 		<div ref="recordAxis" class="axisCon"></div>
 		<div class="textInfo h3Title textCenter">
@@ -51,10 +52,6 @@
 		<div class="axisCon3">
 			<div ref="regionAxis" class="axisCon2"></div>
 			<div ref="playbackAxis" class="axisConitem"></div>
-		</div>
-		<div class="axisCon3">
-			<div ref="ModelDistribution" class="axisCon2"></div>
-			<div ref="ModelList" class="axisConitem"></div>
 		</div>
   </div>
 </template>

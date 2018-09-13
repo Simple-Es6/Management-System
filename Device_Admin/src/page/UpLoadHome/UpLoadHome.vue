@@ -162,6 +162,17 @@ export default {
   data () {
     return {
       mode:1,
+     	/*themeObj:{
+     		themetype:'1',
+     		special_picture:'',
+     		special_title:'',
+     		themetime:'',
+     		themeversion:'1',
+     		themelang:'1',
+     		themestyle:'',
+     		themetag:'',
+     		special_describe:''
+     	},*/
      	themeObj:{
      		special_picture:'',
      		special_title:'',
