@@ -8,7 +8,7 @@ let list={
             everyPageCount: 10,
             currentPage:1,
             page: 1,
-            radio:'1'
+            radio:''
         }
     },
     //组件生成时执行事件
