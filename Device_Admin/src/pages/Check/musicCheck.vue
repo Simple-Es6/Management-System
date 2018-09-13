@@ -15,7 +15,7 @@
             </el-col>
             <el-col :span="8">
                     音乐名称
-                    <el-input placeholder="单行输入"  class="input-with-select" style="width:200px;" v-model="selectInput" @keyup.enter.native="search">
+                    <el-input placeholder="请输入音乐名称"  class="input-with-select" style="width:200px;" v-model="selectInput" @keyup.enter.native="search">
                         <el-button slot="append" icon="el-icon-search"  @click="search"></el-button>
                     </el-input>
             </el-col>
@@ -34,7 +34,7 @@
             <el-table-column prop="singer_name" label="艺人名字" ></el-table-column>
             <el-table-column label="" >
                 <template slot-scope="scope">
-                    <el-popover placement="bottom" title='音乐' width="400" trigger="click">
+                    <!--<el-popover placement="bottom" title='音乐' width="400" trigger="click">
                        <span style="width:200px; display:inline-block;">
                             <img :src="scope.row.music_picture" alt="" style="width:100%">
                        </span>
@@ -44,9 +44,9 @@
                             {{scope.row.lyrics}}
                         </span>
                         <audio :src="scope.row.music_path" controls="controls"  ref="audiodom"></audio>
-                    <el-button slot="reference">试听</el-button>
-                    </el-popover>
                     
+                    </el-popover>-->
+                    <el-button slot="reference" @click="goDetails(scope.row)">试听</el-button>
                 </template>
             </el-table-column>
             <el-table-column prop="shenhe" label="状态" ></el-table-column>
