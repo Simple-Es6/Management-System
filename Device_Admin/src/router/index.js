@@ -57,6 +57,12 @@ export default new Router({
                     component: resolve => require(['../page/PlayRecord/PlayRecord.vue'], resolve)
                 },
                 {
+                    path: '/home/PlayMusic',
+                    name: 'PlayMusic',
+                    meta:{keepAlive:false},
+                    component: resolve => require(['../components/PlayMusic.vue'], resolve)
+                },
+                {
                     path: '/home/snadmin',
                     name: 'SnAdmin',
                     meta:{keepAlive:false},
