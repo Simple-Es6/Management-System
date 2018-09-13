@@ -42,13 +42,8 @@
                     	'name':'艺人首页',
                     	'path':'Artist',
                     	'icon':'',
-<<<<<<< HEAD
                     	'showType':1,
                     	'index':'/home/Artist',
-=======
-                    	'showType':2,
-                    	'index':'Artist',
->>>>>>> 475ca6aa99413b29b67b5a0d10806fbb0dae3a44
                     	'isSon':false
                     },
                     {
