@@ -19,6 +19,7 @@ const PATH = {
 	addfuspecial:tou+'specials/addfuspecial',//添加专题
 	querystartMusiclist:tou+'querystartMusiclist',//获取星歌列表
 	addStarMusic:tou1+'starMusic/addStarMusic',//添加星歌
+	querystartMusicdetail:tou+'querystartMusicdetail',//星歌详情
 	getSystemMusicPageInfo:tou1+'starMusic/getSystemMusicPageInfo',//添加星歌
 	upload:tou+'upload',//上传图片
 	uploadmusic:tou+'uploadmusic',//上传音乐

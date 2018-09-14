@@ -30,7 +30,7 @@
 			</el-row>
 			<el-row type="flex" style="height: auto;"  justify="center" :gutter="30">
 				<el-col :span="24">
-					<el-table  :data="musicData" style="width: 100%" :cell-style="thheight">
+					<el-table  :data="musicData" style="width: 100%" :cell-style="thheight" size="mini">
 				      	<el-table-column  label="排序">
 				      		<template slot-scope="scope">
 					      		<el-button @click="upClick(scope.$index)" size="mini" v-if="scope.$index>0" type="text"><i class="el-icon-sort-up h2Title"></i></el-button>

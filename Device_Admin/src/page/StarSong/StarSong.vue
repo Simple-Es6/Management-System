@@ -25,8 +25,8 @@
 		<el-row>
 		  	<el-col :span="24">
 		        <el-table
+		        	size="mini"
 			      	:data="tableData"
-			      	:default-sort = "{prop: 'time', order: 'descending'}"
 			      	style="width: 100%">
 			      	<el-table-column
 			        	prop="xinxi"
@@ -80,7 +80,7 @@
 			      	<el-table-column
 			        	label="操作">
 			         	<template slot-scope="scope">
-				        	<el-button type="text" size="small">查看</el-button>
+				        	<el-button type="text" size="small" @click="opponMsy(scope.row)">查看</el-button>
 				        	<el-button type="text" size="small">删除</el-button>
 				        	<el-button type="text" size="small">撤销</el-button>    	
 				      	</template>	
@@ -101,6 +101,47 @@
 			    </el-pagination>
 		  	</el-col>
 		</el-row>
+		<el-dialog title="星歌详情" :visible.sync="dialogTableVisible">
+			<el-table
+				size="mini"
+		      	:data="tableData1"
+		      	style="width: 100%">
+		      	<el-table-column
+		        	label="排序">
+		        	<template slot-scope="scope">{{scope.$index+1}}</template>
+		      	</el-table-column>
+		      	<el-table-column
+		        	prop="music_name"
+		        	label="歌曲名称">
+		      	</el-table-column>
+		      	<el-table-column
+		        	prop="singer_name"
+		        	label="歌手">
+		      	</el-table-column>
+		      	<el-table-column
+		        	prop="planet_name"
+		        	label="来自星球">
+		      	</el-table-column>
+		      	<el-table-column
+		        	prop="nickname"
+		        	label="上传用户">
+		      	</el-table-column>、
+		      	<el-table-column
+		        	prop="startRecord"
+		        	label="app播放人数">
+		      	</el-table-column>
+		      	<el-table-column
+		        	prop="musiccount"
+		        	label="音箱播放人数">
+		      	</el-table-column>
+		      	<el-table-column
+		      		label="操作">
+			      	<template slot-scope="scope">        
+                    	<el-button size="mini" slot="reference" @click="goDetails(scope.row)">详情</el-button>
+                	</template>
+            	</el-table-column>
+		   	</el-table>
+		</el-dialog>
 	</div>
 </template>
 <script>
@@ -112,13 +153,31 @@
     			totals:0,
     			pageSize:10,
     			currentPage:1,
-    			tableData:[]
+    			tableData:[],
+    			dialogTableVisible:false,
+    			tableData1:[]
     		}
     	},
     	created:function(){
     		this.getData();
     	},
         methods:{
+        	opponMsy(val){
+        		this.periods = val.periods;
+        		this.dialogTableVisible = true;
+        		this.getData1();
+        	},
+        	goDetails(val){
+        		console.log(val)
+	        	this.$router.push({name:'PlayMusic',params:{
+						music:val.music_path,
+						lrc:val.lyrics,
+						type:1,
+						musicname:val.music_name,
+						singername:val.singer_name
+					}
+				});
+	        },
         	timeStartEnd(){
         		this.currentPage = 1;
         		this.getData();
@@ -134,6 +193,16 @@
 			  		if(res.code==200){
 			  			that.totals = res.count;
 			  			that.tableData = res.data;
+			  		};
+		  		});
+        	},
+        	getData1(){
+        		let that = this;
+	    		that.$axios('post',that.Global.PATH.querystartMusicdetail,{
+	    			periods:that.periods
+	    		},function(res){
+			  		if(res.code==200){
+			  			that.tableData1 = res.data;
 			  		};
 		  		});
         	},

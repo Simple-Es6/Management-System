@@ -89,7 +89,7 @@ export default new Router({
                 {
                     path: '/home/StarSong',
                     name: 'StarSong',
-                    meta:{keepAlive:false},
+                    meta:{keepAlive:true},
                     component: resolve => require(['../page/StarSong/StarSong.vue'], resolve)
                 },
                 {
@@ -177,6 +177,12 @@ export default new Router({
                     name: 'MusicCheck',
                     meta: { keepAlive: true },
                     component: resolve => require(['../pages/Check/musicCheck.vue'], resolve),
+                },
+                {
+                    path: '/home/themeCheck',
+                    name: 'ThemeCheck',
+                    meta: { keepAlive: false },
+                    component: resolve => require(['../pages/Check/themeCheck.vue'], resolve),
                 },
                 {
                     path: '/home/setCheck',
