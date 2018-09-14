@@ -4,6 +4,7 @@
   		粉丝列表
   	</div>
   	<el-table
+  		size="mini"
       :data="tableData"
       style="width: 100%">
       <el-table-column

@@ -10,8 +10,8 @@
             </el-radio-group>
             </el-col>
             <el-col :span="8" class="btn">
-                <el-button label="1" @click="allCheck(1)" :disabled="isdisabled">全部通过</el-button>
-                <el-button  label="2" @click="allCheck(2)" :disabled="isdisabled">全部拒绝</el-button>
+                <el-button label="1" @click="allCheck(1)">全部通过</el-button>
+                <el-button  label="2" @click="allCheck(2)">全部拒绝</el-button>
             </el-col>
             <el-col :span="8">
                     音乐名称
@@ -20,8 +20,8 @@
                     </el-input>
             </el-col>
       </el-row>
-      <el-table :data="tableData" stripe style="width: 100%" @select="selectCheck"  @selection-change="handleSelectionChange" ref="multipleTable">
-          <el-table-column type="selection" width="55" ></el-table-column>
+      <el-table :data="tableData" stripe style="width: 100%"  @selection-change="handleSelectionChange">
+          <el-table-column type="selection" width="55"></el-table-column>
             <el-table-column prop="special_picture" label="封面" width="80">
                  <template slot-scope="scope">
                     <img :src="scope.row.music_picture" alt="" style="width: 50px;height: 50px;">

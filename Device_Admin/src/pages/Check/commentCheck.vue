@@ -24,7 +24,7 @@
                     </el-input>
             </el-col>
       </el-row>
-      <el-table :data="tableData" stripe style="width: 100%"  @selection-change="handleSelectionChange" ref="multipleTable" @select="selectCheck" >
+      <el-table :data="tableData" stripe style="width: 100%"  @selection-change="handleSelectionChange">
           <el-table-column type="selection" width="55"></el-table-column>
             <el-table-column prop="create_times" label="发布时间" width="180"></el-table-column>
             

@@ -10,8 +10,7 @@ let list = {
             currentPage: 1,
             tableData: [],
             selectInput: '',
-            multipleSelection: [],
-            isdisabled:false
+            multipleSelection: []
         }
     },
     //组件生成时执行事件
@@ -55,13 +54,10 @@ let list = {
 
         },
         allCheck(is_examine) {
-            let _this=this;
             if (this.multipleSelection.length == 0) { return false };
-            
             let arr = [];
             this.multipleSelection.forEach(function(val) {
                 arr.push(val.musicid);
-               
             });
             let params = {
                 is_examine: is_examine,
@@ -108,23 +104,14 @@ let list = {
             if (rows) {
                 rows.forEach(row => {
                     this.$refs.multipleTable.toggleRowSelection(row);
-                    console.log(rows)
                 });
             } else {
                 this.$refs.multipleTable.clearSelection();
             }
         },
         handleSelectionChange(val) {
-        
             this.multipleSelection = val;
-           
-        },
-        selectCheck(val,row){
-            
-            if(row.shenhe=='审核通过'||row.shenhe=='审核失败'){
-                this.$refs.multipleTable.toggleRowSelection(row);
-                return false;
-            }
+
         },
         search() {
             if (this.selectInput == '') { return false };

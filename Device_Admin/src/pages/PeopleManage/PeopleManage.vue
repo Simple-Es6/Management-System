@@ -4,7 +4,7 @@
             <el-col :span="8" class="left">
                 <el-row>
                     <el-col :span="4" class="head">
-                        <img  alt="" class="pic">
+                        <img src="https://img01.sogoucdn.com/net/a/04/link?appid=100520145&url=http%3A%2F%2Fimg04.sogoucdn.com%2Fapp%2Fa%2F100520021%2F64c93f47e43483e906f999255808eca0" alt="" class="pic">
                     </el-col>
                     <el-col :span="16" class="describe">
                         <span>
@@ -26,14 +26,22 @@
                 </el-row>
             </el-col>
         </el-row>
-        <div style="display:flex; justify-content: space-between;">
+        <div>
             <span style="text-align:left;">星球居民变化趋势</span>
-            <div style="width:30%;">
+            <!-- <template>
                 <el-radio v-model="radio" label="1">近7天</el-radio>
                 <el-radio v-model="radio" label="2">近30天</el-radio>
-            </div>
+            </template> -->
         </div>
-        <div class="dataEchars" ref="dataEchars"></div>        
+        <!-- <el-row>
+            <el-col :span="1">星球居民变化趋势</el-col>
+            <el-col :span="8">
+                <el-radio v-model="radio" label="1">近7天</el-radio>
+                <el-radio v-model="radio" label="2">近30天</el-radio>
+            </el-col>
+        </el-row> -->
+        <div class="dataEchars" ref="dataEchars"></div>
+        
         <el-table :data="tableData" stripe style="width: 100%" >
             <el-table-column  prop=" " label="头像" ></el-table-column>
             <el-table-column  prop=" " label="昵称" ></el-table-column>
@@ -54,10 +62,9 @@
 <style scoped>
 .peoplemanage .top{
     width:100%;
+    height:100px;
     border:1px solid #000;
     border-radius:8px;
-    margin-bottom:30px;
-    
 }
 
 .peoplemanage .left .head{
@@ -83,9 +90,6 @@
 .peoplemanage .dataEchars{
     height:300px;
     width:100%;
-}
-.peoplemanage .el-radio__inner{
-    display:none!important;
 }
 </style>
  

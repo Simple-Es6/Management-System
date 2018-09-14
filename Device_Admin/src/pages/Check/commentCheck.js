@@ -93,13 +93,6 @@ let list={
                 this.$refs.multipleTable.clearSelection();
             }
         },
-        selectCheck(val,row){
-            
-            if(row.shenhe=='审核通过'||row.shenhe=='审核失败'){
-                this.$refs.multipleTable.toggleRowSelection(row);
-                return false;
-            }
-        },
         handleSelectionChange(val) {
             this.multipleSelection = val;
 
