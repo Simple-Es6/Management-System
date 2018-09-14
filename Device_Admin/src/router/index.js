@@ -89,7 +89,7 @@ export default new Router({
                 {
                     path: '/home/StarSong',
                     name: 'StarSong',
-                    meta:{keepAlive:false},
+                    meta:{keepAlive:true},
                     component: resolve => require(['../page/StarSong/StarSong.vue'], resolve)
                 },
                 {
