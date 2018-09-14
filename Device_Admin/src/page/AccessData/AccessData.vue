@@ -56,10 +56,6 @@
 			<div ref="ModelDistribution" class="axisCon2"></div>
 			<div ref="ModelList" class="axisConitem"></div>
 		</div>
-		<div class="axisCon3">
-			<div ref="sexAxis" class="axisCon2"></div>
-			<div ref="newAxis" class="axisConitem"></div>
-		</div>
   </div>
 </template>
 <script>

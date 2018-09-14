@@ -34,7 +34,6 @@
 		</div>
 		<div class="dataDiv">
 			<el-table
-				size="mini"
 				ref="multipleTable"
 		    :data="tableData"
 		    @filter-change="handleFilterChange"

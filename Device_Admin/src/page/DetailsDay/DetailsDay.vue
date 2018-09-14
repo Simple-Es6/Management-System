@@ -27,7 +27,6 @@
 		</div>
 		<div class="dataDiv" v-if="showType==1">
 			<el-table
-				size="mini"
 		    :data="tableData"
 		    style="width: 100%">
 		    <el-table-column
@@ -69,7 +68,6 @@
 		</div>
 		<div class="dataDiv" v-else-if="showType==3">
 			<el-table
-				size="mini"
 		    :data="tableData3"
 		    style="width: 100%">
 		    <el-table-column

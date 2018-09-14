@@ -46,7 +46,6 @@
 		</div>
 		<div class="dataDiv" v-show="radioType==1">
 				<el-table
-					size="mini"
 			    :data="tableData"
 			    style="width: 100%">
 			    <el-table-column
@@ -90,7 +89,6 @@
 		</div>
 		<div class="dataDiv" v-show="radioType==2">
 			 	<el-table
-			 		size="mini"
 			    :data="tableData2"
 			    style="width: 100%">
 			    <el-table-column
@@ -135,7 +133,6 @@
 		 	</div>
 		 	<div class="dataDiv" v-show="radioType==3">
 			 	<el-table
-			 		size="mini"
 			    :data="tableData3"
 			    style="width: 100%">
 			    <el-table-column

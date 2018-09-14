@@ -18,7 +18,6 @@
 		<el-row type="flex"  justify="center" :gutter="30">
  			<el-col  :span="22">
  				<el-table
- 					size="mini"
 			    :data="tableData"
 			    style="width: 100%">
 			    <el-table-column

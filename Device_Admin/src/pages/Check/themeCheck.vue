@@ -20,7 +20,7 @@
                     </el-input>
             </el-col>
       </el-row>
-      <el-table :data="tableData" stripe style="width: 100%"  @selection-change="handleSelectionChange">
+      <el-table :data="tableData" stripe style="width: 100%"  @selection-change="handleSelectionChange" @select="selectCheck" ref="multipleTable">
           <el-table-column type="selection" width="55"></el-table-column>
             <el-table-column prop="special_picture" label="封面" width="80">
                  <template slot-scope="scope">
