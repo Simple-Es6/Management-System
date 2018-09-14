@@ -1,0 +1,24 @@
+.VoiceBox{
+	display: flex;
+	align-items: center;
+	justify-content:space-between;
+	width:100%;
+	height:80px;
+}
+.el-select .el-input {
+    width: 110px;
+}
+.input-with-select .el-input-group__prepend {
+    background-color: #fff;
+}
+.el-input-group__append{
+	background-color: #FFFFFF;
+}
+.botAdmin{
+	padding-top:30px;
+	display: flex;
+	align-items:center;
+	justify-content:flex-end;
+	width: 100%;
+	height: 50px;
+}

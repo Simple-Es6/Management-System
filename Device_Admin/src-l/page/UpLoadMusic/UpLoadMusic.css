@@ -1,0 +1,165 @@
+.upitem{
+	padding-left: 40px;
+	display: flex;
+	width: 100%;
+	height: auto;
+}
+.upitem .upitemLeft{
+	flex-shrink: 0;
+	width: 100px;
+	height: auto;
+}
+.upitem .upitemRight{
+	flex-grow: 1;
+	padding-left: 30px;
+	height: auto;
+}
+.upitem .upitemRight .mlist{
+	margin-bottom: 10px;
+	padding-right: 20px;
+	display: flex;
+	width: 100%;
+	min-height:40px;
+	border:1px solid #F0F0F0;
+	/*border-bottom:1px solid #F0F0F0;*/
+}
+.upitem .upitemRight .mlist .mlistleft{
+	cursor: pointer;
+	flex-shrink: 0;
+	width: 40px;
+	height: 40px;
+	font-size: 20px;
+	text-align: center;
+	line-height: 40px;
+	transition: all 0.3s;
+}
+.upitem .upitemRight .mlist .mlistright{
+	flex-grow: 1;
+	height:auto;
+}
+.upitem .upitemRight .mlist .mlistright .mlistrighttop{
+	width: 100%;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;	
+}
+.upitem .upitemRight .mlist .mlistright .mlistrighttop span{
+	display: block;
+	height: 40px;
+	line-height: 40px;	
+}
+.upitem .upitemRight .mlist .mlistright .mlistrighttop span:nth-of-type(1){
+	width:10%;
+}
+.upitem .upitemRight .mlist .mlistright .mlistrighttop span:nth-of-type(2){
+	width:50%;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.upitem .upitemRight .mlist .mlistright .mlistrighttop span:nth-of-type(3){
+	width:20%;
+}
+.upitem .upitemRight .mlist .mlistright .mlistrighttop span:nth-of-type(4){
+	width:10%;
+}
+.upitem .upitemRight .mlist .mlistright .mlistrightbot{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 100%;
+	height: auto;
+}
+.upitem .upitemRight .mlist .mlistright .mlistrightbot .mitem{
+	padding:10px 10px 10px 100px;
+	width:50%;
+	min-height: 40px;
+	display: flex;
+	align-items:flex-start;
+	justify-content: space-between;
+}
+.upitem .upitemRight .mlist .mlistright .mlistrightbot .mitem .miteml{
+	flex-shrink:0;
+	width:100px;
+	height:32px;
+	line-height:32px;
+	text-align:left;
+}
+.upitem .upitemRight .mlist .mlistright .mlistrightbot .mitem .mitemr{
+	flex-grow: 1;
+}
+.upitem .upitemRight .labelinput{
+	cursor: pointer;
+	border-radius: 5px;
+	font-size: 14px;
+	display: block;
+	width: 120px;
+	height: 32px;
+	color:#c0c4cc;
+	line-height: 30px;
+	text-align: center;
+	border:1px solid #dcdfe6;
+}
+.upitem .upitemRight .mlist .mlistleftact{
+	transform: rotate(90deg);
+}
+.xiala .el-select .el-input {
+    width:60px;
+}
+.xiala .danxuan{
+	padding-top:6px;
+}
+.input-with-select .el-input-group__prepend {
+    background-color: #fff;
+}
+input{
+	display: none;
+}
+.musictips{
+	padding-top: 30px;
+	padding-left: 170px;
+	width: 100%;
+}
+.musictips p{
+	height:24px;
+	line-height:24px;
+	color:#C0C4CC;
+	font-size: 14px;
+}
+.subclick{
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.avatar-uploader{
+	width:150px;
+	height:150px;
+	border: 1px dashed #d9d9d9;
+	border-radius: 6px;
+}
+.avatar-uploader:hover{
+	border: 1px dashed #409EFF;
+}
+.avatar-uploader:hover i{
+	color: #409EFF;
+}
+.avatar-uploader label{
+	display: block;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+.avatar-uploader-icon {
+	font-size: 28px;
+	color: #8c939d;
+	width:100%;
+	height:100%;
+	line-height:150px;
+	text-align: center;
+}
+.avatar {
+  width:100%;
+  height:100%;
+  display: block;
+}
