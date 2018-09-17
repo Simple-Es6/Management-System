@@ -137,25 +137,20 @@
 								phone:_this.phone
 							};
 							_this.$store.dispatch('loginState',obj);
-							alert(obj.type)
 							switch(obj.type){
 								case 2:
 								_this.$router.replace({path:'/home/Artist'});
 								break;
 								case 3:
-								
-								alert()
 								_this.$router.replace({path:'/home/artistCheck'});
 								break;
-								case '4':
+								case 4:
 								_this.$router.replace({path:'/home/planetinformation'});
 								break;
 								default:
 								_this.$router.replace({path:'/home/AdminPage'});
 								break;	
 							}
-							
-
 						}else{
 							alert(res.msg);
 						};

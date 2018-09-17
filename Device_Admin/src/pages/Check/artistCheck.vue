@@ -87,8 +87,12 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .acheck .btn{
     line-height:40px;
+}
+.el-radio-button:focus:not(.is-focus):not(:active){
+    box-shadow: -1px 0 0 0 #fff!important;
+    -webkit-box-shadow: -1px 0 0 0 #fff!important;
 }
 </style>

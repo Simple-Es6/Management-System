@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="artist">
   	<el-row>
           <el-col :span="12">
               <el-row>
