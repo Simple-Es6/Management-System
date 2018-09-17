@@ -12,7 +12,7 @@
  			</el-col>
  			<el-col  :span="4"></el-col>
  			<el-col  :span="2">
- 				<el-button type="success" @click="showBox">添加标签</el-button>
+ 				<el-button type="primary" @click="showBox">添加标签</el-button>
  			</el-col>
 		</el-row>
 		<el-row type="flex"  justify="center" :gutter="30">

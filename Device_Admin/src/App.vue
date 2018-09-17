@@ -9,7 +9,17 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  watch: {
+		$route(to, from) {
+			let power = this.$store.state.login;
+			if(to.meta.power!=power&&power!=99){
+				this.$store.dispatch('loginOut');
+				this.$router.replace({name:'Login'});
+			};
+		}
+	}
+
 }
 </script>
 
@@ -31,15 +41,11 @@ body{
   user-select: none; 
 }
 #app {
-	position: fixed;
-	top: 0;
-	left: 0;
 	width: 100%;
-	height: 100%;
+	min-height: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: scroll;
 }
 .avatar-uploader .el-upload {
 	width: 100%;

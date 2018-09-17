@@ -124,21 +124,6 @@
 		  		}
 		  	},
 		  	submitClick(){
-		  		//let that = this;
-		  		// if(that.reg.test(that.phone)){
-				// 	that.btnLoad = true;
-			  	// 	setTimeout(function(){
-			  	// 		that.btnLoad = false;
-			  	// 		if(that.isLogin){
-			  	// 			that.$store.dispatch('logIn',that.phone);
-			  	// 			that.$router.push({name:'Home'});
-			  	// 		}else{
-			  	// 			that.$router.push({name:'Invoice'});
-			  	// 		};
-			  	// 	},2000);	
-	    		// }else{
-	    		// 	that.errorphone = true;
-				// };
 				let _this = this;
 				if(_this.reg.test(_this.phone)){
 					let params={
@@ -152,7 +137,25 @@
 								phone:_this.phone
 							};
 							_this.$store.dispatch('loginState',obj);
-							_this.$router.push({path:'/home/Artist'});
+							alert(obj.type)
+							switch(obj.type){
+								case 2:
+								_this.$router.replace({path:'/home/Artist'});
+								break;
+								case 3:
+								
+								alert()
+								_this.$router.replace({path:'/home/artistCheck'});
+								break;
+								case '4':
+								_this.$router.replace({path:'/home/planetinformation'});
+								break;
+								default:
+								_this.$router.replace({path:'/home/AdminPage'});
+								break;	
+							}
+							
+
 						}else{
 							alert(res.msg);
 						};

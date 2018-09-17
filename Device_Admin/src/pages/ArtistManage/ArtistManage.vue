@@ -29,7 +29,7 @@
         </el-table>
         <!-- 分页 -->
         <el-col :span="24" class="toolbar">
-            <el-pagination layout="total, prev, pager, next, jumper" @size-change="handleSizeChange"@current-change="handleCurrentChange" :page-size="everyPageCount" :total="total" style="float:right;" :current-page.sync="currentPage">
+            <el-pagination layout="total, prev, pager, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="everyPageCount" :total="total" style="float:right;" :current-page.sync="currentPage">
             </el-pagination>
         </el-col>
     </div>
@@ -60,6 +60,12 @@
         methods:{
             search(){
 
+            },
+            handleSizeChange(){
+            	
+            },
+            handleCurrentChange(){
+            	
             }
         }
     }
