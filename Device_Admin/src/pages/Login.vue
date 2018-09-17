@@ -147,12 +147,29 @@
 					};
 					_this.$axios('post', _this.Global.PATH1.loginuser, params, res => {
 						if (res.code == 200) {
+
 							let obj ={
 								type:res.data.musiciantype,
 								phone:_this.phone
 							};
 							_this.$store.dispatch('loginState',obj);
-							_this.$router.push({path:'/home/Artist'});
+						
+							switch(obj.type){
+								case 2:
+								_this.$router.replace({path:'/home/Artist'});
+								break;
+								case 3:
+								_this.$router.replace({path:'/home/artistCheck'});
+								break;
+								case 4:
+								_this.$router.replace({path:'/home/planetinformation'});
+								break;
+								default:
+								_this.$router.replace({path:'/home/AdminPage'});
+								break;	
+							}
+							
+
 						}else{
 							alert(res.msg);
 						};

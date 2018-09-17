@@ -34,7 +34,7 @@
                     	'name':'管理员首页',
                     	'path':'AdminPage',
                     	'icon':'',
-                    	'showType':1,
+                    	'showType':5,
                     	'index':'/home/AdminPage',
                     	'isSon':false
                     },
@@ -42,7 +42,7 @@
                     	'name':'艺人首页',
                     	'path':'Artist',
                     	'icon':'',
-                    	'showType':1,
+                    	'showType':2,
                     	'index':'/home/Artist',
                     	'isSon':false
                     },
@@ -50,7 +50,7 @@
                     	'name':'设备',
                     	'path':'MyMusic',
                     	'isSon':true,
-                    	'showType':1,
+                    	'showType':5,
                     	'index':'/home/voicebox',
                     	'icon':'',
                     	'list':[
@@ -140,7 +140,7 @@
                     	'name':'审核',
                     	'path':'Check',
                     	'icon':'',
-                    	'showType':1,
+                    	'showType':3,
                     	'index':'/home/Check',
 						'isSon':true,
 						'list':[
@@ -185,7 +185,7 @@
                     	'name':'星球信息',
                     	'path':'PlanetInformation',
                     	'icon':'',
-                    	'showType':1,
+                    	'showType':4,
                     	'index':'/home/planetinformation',
                     	'isSon':false
 					},
@@ -193,7 +193,7 @@
                     	'name':'机构管理',
                     	'path':'OrganizationManage',
                     	'icon':'',
-                    	'showType':1,
+                    	'showType':4,
                     	'index':'/home/OrganizationManage',
 						'isSon':false
 					},
@@ -201,7 +201,7 @@
 						'name':'艺人管理',
                     	'path':'ArtistManage',
                     	'icon':'',
-                    	'showType':1,
+                    	'showType':4,
                     	'index':'/home/ArtistManage',
                     	'isSon':false
 					},
@@ -217,15 +217,31 @@
 						'name':'居民管理',
 						'path':'PeopleManage',
                     	'icon':'',
-                    	'showType':1,
+                    	'showType':4,
                     	'index':'/home/PeopleManage',
+                    	'isSon':false
+					},
+					{
+						'name':'账号管理',
+						'path':'AccountManage',
+                    	'icon':'',
+                    	'showType':5,
+                    	'index':'/home/AccountManage',
+                    	'isSon':false
+					},
+					{
+						'name':'活动设置',
+						'path':'ActivitiesSet',
+                    	'icon':'',
+                    	'showType':5,
+                    	'index':'/home/ActivitiesSet',
                     	'isSon':false
 					},
                     {
                     	'name':'数据分析',
                     	'path':'RecordData',
                     	'icon':'',
-                    	'showType':1,
+                    	'showType':5,
                     	'index':'/home/RecordData',
                     	'isSon':true,
                     	'list':[
@@ -270,7 +286,7 @@
                     	'name':'标签管理',
                     	'path':'LabelManagement',
                     	'icon':'',
-                    	'showType':1,
+                    	'showType':5,
                     	'index':'/home/LabelManagement',
                     	'isSon':false
                     },
@@ -278,7 +294,7 @@
                     	'name':'星歌管理',
                     	'path':'StarSong',
                     	'icon':'',
-                    	'showType':1,
+                    	'showType':5,
                     	'index':'/home/StarSong',
                     	'isSon':false
                     },
@@ -286,7 +302,7 @@
                     	'name':'音乐榜单',
                     	'path':'MusicList',
                     	'icon':'',
-                    	'showType':1,
+                    	'showType':5,
                     	'index':'/home/MusicList',
                     	'isSon':false
                     },
@@ -294,8 +310,16 @@
                     	'name':'用户管理',
                     	'path':'UserAdmin',
                     	'icon':'',
-                    	'showType':1,
+                    	'showType':5,
                     	'index':'/home/UserAdmin',
+                    	'isSon':false
+					},
+					{
+						'name':'设置',
+						'path':'AdminSetting',
+                    	'icon':'',
+                    	'showType':5,
+                    	'index':'/home/AdminSetting',
                     	'isSon':false
 					}
                     
@@ -303,8 +327,8 @@
             }
         },
         created:function(){
-  			//this.showType = this.$store.state.login; 
-  			this.showType = 1; 
+  			this.showType = this.$store.state.login; 
+  			// this.showType = 2; 
 		},
         computed:{
             onRoutes(){

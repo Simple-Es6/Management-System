@@ -21,3 +21,7 @@
 	width: 100%;
 	height: 50px;
 }
+.el-radio-button:focus:not(.is-focus):not(:active){
+    box-shadow: -1px 0 0 0 #fff!important;
+    -webkit-box-shadow: -1px 0 0 0 #fff!important;
+}

@@ -31,15 +31,15 @@ body{
   user-select: none; 
 }
 #app {
-	position: fixed;
+	/* position: fixed;
 	top: 0;
-	left: 0;
+	left: 0; */
 	width: 100%;
 	height: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 .avatar-uploader .el-upload {
 	width: 100%;

@@ -30,7 +30,7 @@
             <el-button type="primary" @click="confirm">确 定</el-button>
         </span>
     </el-dialog>
-    <el-dialog title="修改" :visible.sync="dialogVisibleAmend">
+    <el-dialog title="修改" :visible.sync="dialogVisibleAmend" >
         <span>
             <el-input type="textarea" :rows="2" placeholder="请输入内容" v-model="textareaA" class="textarea"></el-input>
             <el-button @click="dialogVisibleAmend = false">取 消</el-button>

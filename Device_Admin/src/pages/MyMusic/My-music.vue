@@ -15,8 +15,8 @@
         <el-col :span="16">
             <el-radio-group v-model="radio3" @change="musiclist">
                 <el-radio-button label="0">全部{{total>0?'('+total+')':''}}</el-radio-button>
-                <!-- <el-radio-button label="1">已发布</el-radio-button>
-                <el-radio-button label="2">未发布</el-radio-button> -->
+                <el-radio-button label="1">已发布</el-radio-button>
+                <el-radio-button label="2">未发布</el-radio-button>
             </el-radio-group>
         </el-col>
         <el-col :span="4" :offset="4">
@@ -37,7 +37,7 @@
             <el-table-column prop="special_title" label="标题" width="180"></el-table-column>
             <el-table-column prop="music_count" label="歌曲数" width="120"></el-table-column>
             <el-table-column prop="create_times" label="发行日期"></el-table-column>
-            <!-- <el-table-column prop="status" label="状态" ></el-table-column> -->
+            <el-table-column prop="status" label="状态" ></el-table-column>
             <el-table-column prop="operate" label="操作" width="260" >
                 <template slot-scope="scope">
                     <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
@@ -83,5 +83,9 @@ export default list;
 }
 .el-select .el-input {
     width: 80px !important;
-  }
+}
+.el-radio-button:focus:not(.is-focus):not(:active){
+    box-shadow: -1px 0 0 0 #fff!important;
+    -webkit-box-shadow: -1px 0 0 0 #fff!important;
+}
 </style>
