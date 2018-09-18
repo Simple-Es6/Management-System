@@ -1,7 +1,28 @@
 <template>
   <div>
-  	<div class="textMain h1Title">
-  		我的收益:{{integral}}分贝
+  	<div class="incomeitem">
+  		<span class="h1Title textMain">我的收益</span>
+  		<span class="textInfo h3Title">总收益折合:600 CNY</span>
+  	</div>
+  	<div class="incomeitem">
+  		<div class="list">
+				<p class="textMain h2Title">黑珍珠</p>
+				<p class="textMain h1Title">300000</p>
+				<el-button size="mini">提    现</el-button>
+  		</div>
+  		<div class="list">
+				<p class="textMain h2Title">分贝</p>
+				<p class="textMain h1Title">300000</p>
+				<el-button size="mini">兑    换</el-button>
+  		</div>
+  	</div>
+  	<div class="incomeitem">
+  		<span class="textMain h1Title">我的收益</span>
+  		<el-radio-group v-model="radioType" size="mini">
+	      <el-radio-button label="0">全部</el-radio-button>
+	      <el-radio-button label="1">黑珍珠</el-radio-button>
+	      <el-radio-button label="2">分贝</el-radio-button>
+	    </el-radio-group>
   	</div>
   	<el-table
       :data="tableData"
@@ -39,6 +60,7 @@ export default {
   name: 'Income',
   data () {
     return {
+    	radioType:0,
       tableData:[],
       currentPage:1,
       total:0,

@@ -2,13 +2,13 @@
 	margin-bottom: 30px;
 	width:100%;
 	height:auto;
-	border: 1px solid #BBBBBB;
+	/*border: 1px solid #BBBBBB;*/
 	border-radius: 10px;
 }
 .boxset .boxitem{
 	display: flex;
 	align-items: center;
-	justify-content:center;
+	justify-content:flex-start;
 	width: 100%;
 	height: 40px;	
 }
@@ -16,15 +16,16 @@
 	padding-left: 30px;
 	line-height: 40px;
 }
+.boxset .boxitem .boxitemcen{
+	padding:0 20px;
+}
 .boxset .boxitem .boxitemleft{
 	flex-shrink:0;
 	width:240px;
-	padding-right:30px;
 }
 .boxset .boxitem .boxitemright{
 	flex-shrink:0;
 	width: 360px;
-	padding-left: 30px;
 }
 .boxset .boxitem .boxitemleft p{
 	text-align: right;

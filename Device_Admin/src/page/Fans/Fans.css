@@ -1,5 +1,41 @@
-.headimg{
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
+.peoplemanage .top{
+    width:100%;
+    border:1px solid #000;
+    border-radius:8px;
+    margin-bottom:30px;
+    
+}
+.peoplemanage .left .head{
+    width:80px;
+    height:80px;
+    margin:10px;
+}
+.peoplemanage .left .pic{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+.peoplemanage .left .describe{
+    line-height: 100px;
+}
+.peoplemanage .right{
+    margin-top:20px;
+    text-align: center;
+}
+.peoplemanage .right .el-col:nth-child(1){
+    border-right:1px solid #000;
+}
+.peoplemanage .dataEchars{
+    height:300px;
+    width:100%;
+}
+.peoplemanage .el-radio__inner{
+    display:none!important;
+}
+.tableClass{
+	display: flex;
+	justify-content: flex-end;
+	padding:20px 0;
+	width: 100%;
+	height: auto;
 }

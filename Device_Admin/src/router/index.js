@@ -77,7 +77,7 @@ export default new Router({
                 {
                     path: '/home/LabelManagement',
                     name: 'LabelManagement',
-                    meta:{keepAlive:false,power:4},
+                    meta:{keepAlive:false,power:5},
                     component: resolve => require(['../page/LabelManagement/LabelManagement.vue'], resolve)
                 },
                 {
@@ -145,6 +145,24 @@ export default new Router({
                     name: 'Fans',
                     meta: {keepAlive: false,power:5},
                     component: resolve => require(['../page/Fans/Fans.vue'], resolve)
+                },
+                {
+                    path: '/home/fanslist',
+                    name: 'FansList',
+                    meta: {keepAlive: false,power:5},
+                    component: resolve => require(['../page/Fans/FansList.vue'], resolve)
+                },
+                {
+                    path: '/home/FansReward',
+                    name: 'FansReward',
+                    meta: {keepAlive: false,power:5},
+                    component: resolve => require(['../page/Fans/FansReward.vue'], resolve)
+                },
+                {
+                    path: '/home/FansInteract',
+                    name: 'FansInteract',
+                    meta: {keepAlive: false,power:5},
+                    component: resolve => require(['../page/Fans/FansInteract.vue'], resolve)
                 },
                 {
                     path: '/home/DetailsDay',

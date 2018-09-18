@@ -106,27 +106,7 @@
                     			'index':'/home/MyMusic',
                     			'isSon':false
                     		}
-                    		/*{
-                    			'name':'星球管理',
-                    			'path':'StarAdmin',
-                    			'isSon':true,
-                    			'index':'star',
-                    			'list':[
-                    				{
-                    					'name':'添加星歌',
-                    					'path':'AddStar',
-                    				}
-                    			]
-                    		}*/
                     	]
-                    },
-                    {
-                    	'name':'收入管理',
-                    	'path':'MyMusic',
-                    	'icon':'',
-                    	'showType':99,
-                    	'index':'/home/income',
-                    	'isSon':false
                     },
                     {
                     	'name':'粉丝管理',
@@ -134,7 +114,37 @@
                     	'icon':'',
                     	'showType':99,
                     	'index':'/home/fans',
-                    	'isSon':false
+                    	'isSon':true,
+                    	'list':[
+                    		{
+								'name':'粉丝趋势',
+								'path':'/home/fans',
+								'icon':'',
+								'index':'/home/fans',
+								'isSon':false
+							},
+							{
+								'name':'粉丝列表',
+								'path':'/home/fanslist',
+								'icon':'',
+								'index':'/home/fanslist',
+								'isSon':false
+							},
+							{
+								'name':'打赏记录',
+								'path':'/home/FansReward',
+								'icon':'',
+								'index':'/home/FansReward',
+								'isSon':false
+							},
+							{
+								'name':'粉丝互动',
+								'path':'/home/FansInteract',
+								'icon':'',
+								'index':'/home/FansInteract',
+								'isSon':false
+							}
+						]
                     },
                     {
                     	'name':'审核',
@@ -320,15 +330,24 @@
                     	'icon':'',
                     	'showType':5,
                     	'index':'/home/AdminSetting',
-                    	'isSon':false
+                    	'isSon':true,
+                    	'list':[
+                    		{
+								'name':'奖励设置',
+								'path':'AdminSetting',
+								'icon':'',
+								'index':'/home/AdminSetting',
+								'isSon':false
+							}
+                    	]
 					}
                     
                 ]
             }
         },
         created:function(){
-  			this.showType = this.$store.state.login; 
-  			// this.showType = 2; 
+  			//this.showType = this.$store.state.login; 
+  			this.showType = 5; 
 		},
         computed:{
             onRoutes(){

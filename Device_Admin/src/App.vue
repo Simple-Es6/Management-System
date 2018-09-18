@@ -10,10 +10,19 @@
 <script>
 export default {
   name: 'App',
+  created:function(){
+		let login = this.$store.state.login||sessionStorage.getItem('mwladlogin');
+		if(login){
+				this.login = login;
+				this.phone = this.$store.state.user_name||sessionStorage.getItem('mwladname');
+		}else{
+			this.$router.replace({ name:'Login'});
+			};
+	},
   watch: {
 		$route(to, from) {
-			let power = this.$store.state.login;
-			if(to.meta.power!=power&&power!=99){
+			let power = this.$store.state.login||sessionStorage.getItem('mwladlogin');
+			if(to.meta.power!=power&&to.meta.power!=99){
 				this.$store.dispatch('loginOut');
 				this.$router.replace({name:'Login'});
 			};
@@ -137,5 +146,13 @@ h1,h2,h3,h4,h5,h6{
 }
 .el-table .cell{
 	text-align: center;
+}
+.el-radio-button:focus:not(.is-focus):not(:active){
+	box-shadow: -1px 0 0 0 #fff!important;
+	-webkit-box-shadow: -1px 0 0 0 #fff!important;
+}
+.el-radio:focus:not(.is-focus):not(:active):not(.is-disabled) .el-radio__inner {
+    -webkit-box-shadow: 0 0 2px 2px #fff!important;
+    box-shadow: 0 0 2px 2px #fff!important;
 }
 </style>
