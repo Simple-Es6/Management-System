@@ -77,7 +77,7 @@ export default new Router({
                 {
                     path: '/home/LabelManagement',
                     name: 'LabelManagement',
-                    meta:{keepAlive:false,power:4},
+                    meta:{keepAlive:false,power:5},
                     component: resolve => require(['../page/LabelManagement/LabelManagement.vue'], resolve)
                 },
                 {
@@ -231,6 +231,12 @@ export default new Router({
                     name: 'ActivitiesSet',
                     meta: { keepAlive: false ,power:5},
                     component: resolve => require(['../pages/ActivitiesSet/ActivitiesSet.vue'], resolve),
+                },
+                {
+                    path: '/home/detail',
+                    name: 'detail',
+                    meta: { keepAlive: false ,power:5},
+                    component: resolve => require(['../pages/ActivitiesSet/detail.vue'], resolve),
                 },
             ]
         },

@@ -71,27 +71,95 @@
         </div>
       </el-col>
     </el-row>
-    <el-dialog title="提示" :visible.sync="dialogVisible" width="80%" :before-close="handleClose">
-        <el-row :gutter="20">
+    <el-dialog title="神秘歌手猜猜猜" :visible.sync="dialogVisible" width="80%" :before-close="handleClose">
+        <el-row :gutter="20" class="contain">
           <el-col :span="14">
-            <div class="mysterious"></div>
+            <div class="mysterious">
+              <h1>活动列表</h1>
+              <template>
+                <el-table :data="tableData" stripe style="width: 100%">
+                  <el-table-column prop="beginTime" label="开始时间"></el-table-column>
+                  <el-table-column prop="endTime" label="结束时间"></el-table-column>
+                  <el-table-column prop="num" label="参与人数"></el-table-column>
+                  <el-table-column prop="put" label="投入"></el-table-column>
+                  <el-table-column prop="earnings" label="收益"></el-table-column>
+                  <el-table-column  label="状态">
+                    <template slot-scope="scope">
+                      <el-button @click="go" type="text" size="small">详情</el-button>
+                      <el-button type="text" size="small">已结束</el-button>
+                    </template>
+                   
+                  </el-table-column>
+                </el-table>
+                <!-- 分页 -->
+                <el-col :span="24" class="toolbar">
+                    <el-pagination layout="total, prev, pager, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="everyPageCount" :total="total"  :current-page.sync="currentPage" style="float:right;">
+                    </el-pagination>
+                </el-col>
+              </template>
+            </div>
           </el-col>
-          <el-col :span="10" class="mysterious">
-            
+          <el-col :span="10">
+            <div class="mysterious">
+              <h1>添加活动</h1>
+                <div class="line">
+                  起止时间：
+                  
+                    <el-date-picker v-model="value6" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期">
+                    </el-date-picker>
+                </div>
+                <div class="line">
+                   音乐人数：
+                    <el-input v-model="input" placeholder="10~20人之间" style="width:300px;"></el-input>
+                </div>
+                <div class="line">
+                    投票方式：
+                  <el-radio v-model="radio" label="1"></el-radio>
+                  <el-radio v-model="radio" label="2"></el-radio>
+                </div>
+                <div class="line">
+                   每次金额：
+                  <el-input v-model="input1" placeholder="最低100" style="width:300px;"></el-input>
+                </div>
+                <div class="bottom">
+                  晋级模式：两人一组进行PK，获胜者进入下一轮PK，最近决出第一名，如最后由三位选手选出冠军
+                </div>
+            </div>
           </el-col>
         </el-row>
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-      
+        <div class="btn">
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        </div>
+
     </el-dialog>
+
   </div>
 </template>
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'ActivitiesSet',
   data () {
     return {
-      dialogVisible: false
+      dialogVisible: false,
+      tableData:[
+        {
+          'beginTime':"ss",
+          'endTime':"ss",
+          'num':"3",
+          'put':"ss",
+          'earnings':"ee",
+          
+        }
+      ],
+      value6:'',
+      input:'',
+      radio:'',
+      input1:'',
+      total: 0,
+      page: 1,
+      everyPageCount: 5,
+      currentPage: 1,
     }
   },
   //组件生成时执行事件
@@ -110,6 +178,16 @@ export default {
             done();
           })
           .catch(_ => {});
+      },
+      handleSizeChange(val) {
+          this.everyPageCount = val;
+          console.log('val', val)
+      },
+      handleCurrentChange(val) {
+          this.getData(val);
+      },
+      go(){
+        this.$router.push('./detail');
       }
 	},
 	//使用的组件
@@ -160,6 +238,20 @@ export default {
 .activitiesSet .mysterious{
   border:1px solid #000;
   border-radius:7px;
+  padding:20px 20px 40px;
 
+}
+.activitiesSet .contain{
+  margin-bottom:20px;
+}
+.activitiesSet .line{
+  margin-bottom:20px;
+}
+.activitiesSet .bottom{
+  margin:40px 0 20px;
+}
+.activitiesSet .btn{
+  display:flex;
+  justify-content: flex-end;
 }
 </style>

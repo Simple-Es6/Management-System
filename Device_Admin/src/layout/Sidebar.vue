@@ -205,14 +205,14 @@
                     	'index':'/home/ArtistManage',
                     	'isSon':false
 					},
-					{
-                    	'name':'收入管理',
-                    	'path':'Income',
-                    	'icon':'',
-                    	'showType':99,
-                    	'index':'/home/income',
-                    	'isSon':false
-					},
+					// {
+                    // 	'name':'收入管理',
+                    // 	'path':'Income',
+                    // 	'icon':'',
+                    // 	'showType':99,
+                    // 	'index':'/home/income',
+                    // 	'isSon':false
+					// },
 					{
 						'name':'居民管理',
 						'path':'PeopleManage',
@@ -327,8 +327,8 @@
             }
         },
         created:function(){
-  			this.showType = this.$store.state.login; 
-  			// this.showType = 2; 
+  			// this.showType = this.$store.state.login; 
+  		 	this.showType = 5; 
 		},
         computed:{
             onRoutes(){
