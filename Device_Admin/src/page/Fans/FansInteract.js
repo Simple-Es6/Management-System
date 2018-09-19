@@ -3,7 +3,7 @@ let list =  {
   data () {
     return {
     		radioDialog:1,
-    		dialogNum:1,
+    		dialogNum:0,
     		dialogType:1,
 				dialogTableVisible:true,    		
       	timeStart:[],
@@ -27,6 +27,47 @@ let list =  {
 	},
 	//方法
 	methods:{
+		//打赏
+		pullReward(){
+			let str = this.dialogType==1?'分贝':'黑珍珠',
+					num = 0,
+					that = this;
+			if(this.dialogNum==0){
+				switch (this.radioDialog){
+					case 1:
+						num = 100;
+						break;
+					case 2:
+						num = 200;
+						break;
+					case 3:
+						num = 500;
+						break;
+				}
+			}else{
+				num = this.dialogNum;
+			};
+			if(num == 0){
+				this.$message.error('请输入打赏分贝/黑珍珠数量');
+				return false;
+			};
+			this.$confirm(`确定要打赏${num}${str}?`, '提示', {
+	      confirmButtonText: '确定',
+	      cancelButtonText: '取消',
+	      type: 'warning'
+	    }).then(() => {
+	      that.$message({
+	        type: 'success',
+	        message: '打赏成功!'
+	      });
+	    }).catch(() => {
+	      that.$message({
+	        type: 'info',
+	        message: '取消打赏'
+	      });          
+	    });
+		},
+		//
 		onReward(val,index){
 			this.dialogTableVisible = true;
 		},
