@@ -26,6 +26,15 @@ export default {
 				return this.$store.state.login;
 			}  
   	},
+  	created:function(){
+  		let login = this.$store.state.login||sessionStorage.getItem('mwladlogin');
+  		if(login){
+				this.login = login;
+				this.phone = this.$store.state.user_name||sessionStorage.getItem('mwladname');
+  		}else{
+  			this.$router.replace({ name:'Login'});
+			};
+  	},
   	methods:{
 			header(){
 				console.log(this.login);
