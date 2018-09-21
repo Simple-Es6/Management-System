@@ -1,6 +1,6 @@
 <template>
     <div class="sidebar">
-        <el-menu :default-active="onRoutes"   class="el-menu-vertical-demo"  unique-opened 
+        <el-menu :default-active="onRoutes"  class="el-menu-vertical-demo"  unique-opened 
        		background-color="#545c64"
 		    text-color="#fff"
 		    active-text-color="#ffd04b"
@@ -99,13 +99,20 @@
                     			'path':'UpLoadHome',
                     			'index':'/home/uploadhome',
                     			'isSon':false
+							},
+							{
+                    			'name':'上传推荐',
+                    			'path':'UpLoadTheme',
+                    			'index':'/home/UpLoadTheme',
+                    			'isSon':false
                             },
                             {
                     			'name':'我的音乐',
                     			'path':'MyMusic',
                     			'index':'/home/MyMusic',
                     			'isSon':false
-                    		}
+							}
+							
                     	]
                     },
                     {

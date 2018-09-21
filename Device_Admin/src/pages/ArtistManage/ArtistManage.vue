@@ -24,7 +24,7 @@
             <el-table-column  prop="specialcount" label="主题" ></el-table-column>
             <el-table-column label="操作" >
                 <template slot-scope="scope" width="30">
-                    <el-button size="mini">查看</el-button>
+                    <el-button size="mini" @click="openPage(scope.row)">查看</el-button>
                     <!-- <el-button size="mini">禁用</el-button>
                     <el-button size="mini">删除</el-button> -->
                 </template>
@@ -52,7 +52,7 @@
                 nickname:'',
                 specialcount:'',
                 musiccount:'',
-
+                userid:'',
             }
         },
         //组件生成时执行事件
@@ -76,6 +76,7 @@
                     if (res.code == 200) {
                          _this.tableData = res.data;
                           _this.total = res.count;
+                         
                     }
                 });
             },
@@ -90,6 +91,13 @@
             },
             handleCurrentChange(val) {
                 this.getData(val);
+            },
+            openPage(val){
+                this.$router.push({name:'artistDetail',query:{
+                    userid:val.userid,
+                   
+                }});
+           
             }
         }
     }

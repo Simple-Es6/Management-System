@@ -233,19 +233,19 @@ export default {
 			let that = this;
 			that.$axios('post',that.Global.PATH.updatesple,obj,function(res){
 				console.log(res);
-  			if(res.code==200){
-  				if(type==1){
-  					that.$router.replace({name:'My-music'});
-  				}else{
-  					that.$router.push({name:'UpLoadMusic',params:{
-								specialid:that.specialid,
-								isNew:0
-							}
-						});
-  				};
+				if(res.code==200){
+					if(type==1){
+						that.$router.replace({name:'My-music'});
+					}else{
+						that.$router.push({name:'UpLoadMusic',params:{
+									specialid:that.specialid,
+									isNew:0
+								}
+							});
+					};
 
-  			};
-  		});
+				};
+  			});
 		},
 		//上传图片
 		upLoadStart1(e){

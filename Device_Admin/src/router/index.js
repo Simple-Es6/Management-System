@@ -184,6 +184,12 @@ export default new Router({
                     component: resolve => require(['../pages/MyMusic/My-music.vue'], resolve)
                 },
                 {
+            		path: '/home/UpLoadTheme',
+                    name: 'UpLoadTheme',
+                    meta:{keepAlive:false,power:99},
+                    component: resolve => require(['../page/UpLoadTheme/UpLoadTheme.vue'], resolve)
+            	},
+                {
                     path: '/home/Artist',
                     name: 'Artist',
                     meta:{keepAlive:false,power:2},
@@ -231,6 +237,12 @@ export default new Router({
                     name: 'ArtistManage',
                     meta: { keepAlive: false ,power:4},
                     component: resolve => require(['../pages/ArtistManage/ArtistManage.vue'], resolve),
+                },
+                {
+                    path: '/home/artistDetail',
+                    name: 'artistDetail',
+                    meta: { keepAlive: false ,power:4},
+                    component: resolve => require(['../pages/ArtistManage/artistDetail.vue'], resolve),
                 },
                 {
                     path: '/home/PeopleManage',

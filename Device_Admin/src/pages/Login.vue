@@ -3,7 +3,7 @@
 		<div class="loginCon">
 			<el-row type="flex"  justify="center">
 				<el-col :span="9">
-					<h1 style="text-align: center;">{{isLogin==0?'注册':'登录'}}</h1>
+					<h1 style="text-align: center;">登录</h1>
 				</el-col>
 			</el-row>
 			<el-row  type="flex"  justify="center" :gutter="30">

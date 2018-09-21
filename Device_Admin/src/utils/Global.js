@@ -54,6 +54,7 @@ PATH1 = {
 	queryplantbyid:tou1+'/starmastuser/queryplantbyid',//星球详情
 	updateplantbyid:prefix1+'/starmastuser/updateplantbyid',//修改星球详情
 	querymusicuserlist:tou1+'/starmastuser/querymusicuserlist',//艺人管理列表
+	querymusicuserbyid:tou1+'/starmastuser/querymusicuserbyid',//查询音乐人信息
 },
 ajaxs = function(type,urls,dataObj,callback){
 	let params = new URLSearchParams();
