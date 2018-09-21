@@ -3,7 +3,10 @@ axios.defaults.withCredentials = true;
 
 const tou1 = 'http://120.79.183.36:8081/futuremelody-admin/';
 const tou = 'http://120.79.183.36:8081/futuremelody-admin/';
-const prefix1 = 'http://120.79.183.36:8081/futuremelody-admin/';
+const prefix1 = 'http://172.16.66.38:8080/';
+/*const tou1 = 'http://47.105.38.148:8081/futuremelody-admin/';
+const tou = 'http://47.105.38.148:8081/futuremelody-admin/';
+const prefix1 = 'http://47.105.38.148:8081/futuremelody-admin/';*/
 const PATH = {
 	getRule:tou1+'bpRule/getRule',//获取规则
 	bpRule:tou1+'bpRule/update',//修改规则
@@ -45,7 +48,12 @@ PATH1 = {
 	deleteExamine:tou1+'/specials/deleteExamine',//审核删除
 	queryComment:prefix1+'/specials/queryComment',//评论审核列表
 	updateCommentexamine:tou1+'/specials/updateCommentexamine',//审核
-
+	querystarmastuser:tou1+'/starmastuser/querystarmastuser',//星球主首页
+	querystarmastuserbyid:tou1+'/starmastuser /querystarmastuserbyid',//查看用户资料
+	updatemastuserbyid:tou1+'/starmastuser/updatemastuserbyid',//修改用户资料
+	queryplantbyid:tou1+'/starmastuser/queryplantbyid',//星球详情
+	updateplantbyid:prefix1+'/starmastuser/updateplantbyid',//修改星球详情
+	querymusicuserlist:tou1+'/starmastuser/querymusicuserlist',//艺人管理列表
 },
 ajaxs = function(type,urls,dataObj,callback){
 	let params = new URLSearchParams();

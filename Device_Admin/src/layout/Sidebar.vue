@@ -48,7 +48,7 @@
                     },
                     {
                     	'name':'设备',
-                    	'path':'MyMusic',
+                    	'path':'voicebox',
                     	'isSon':true,
                     	'showType':5,
                     	'index':'/home/voicebox',
@@ -95,7 +95,7 @@
                     	'icon':'',
                     	'list':[
                     		{
-                    			'name':'上传音乐',
+                    			'name':'上传专题',
                     			'path':'UpLoadHome',
                     			'index':'/home/uploadhome',
                     			'isSon':false
@@ -110,7 +110,7 @@
                     },
                     {
                     	'name':'粉丝管理',
-                    	'path':'MyMusic',
+                    	'path':'fans',
                     	'icon':'',
                     	'showType':99,
                     	'index':'/home/fans',
@@ -346,8 +346,8 @@
             }
         },
         created:function(){
-  			//this.showType = this.$store.state.login; 
-  			this.showType = 5; 
+  			this.showType = this.$store.state.login||sessionStorage.getItem('mwladlogin'); 
+  			//this.showType = 5; 
 		},
         computed:{
             onRoutes(){

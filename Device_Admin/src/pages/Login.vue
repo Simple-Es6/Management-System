@@ -85,13 +85,14 @@
 				errorphone:false,
 				errorpassword:false,
 				errorcode:false,
-				msg: 'Welcome to Your Vue.js App'
 			}
 		},
 		created:function(){
-			let login = this.$route.params.type;
-			console.log(login);
-			this.isLogin = login;
+			let login = this.$store.state.login||sessionStorage.getItem('mwladlogin');
+	  		if(login){
+				this.login = login;
+				this.phone = this.$store.state.user_name||sessionStorage.getItem('mwladname');
+	  		};
 		},
 		methods: {
 			phoneBlur() {
@@ -136,7 +137,7 @@
 								type:res.data.musiciantype,
 								phone:_this.phone
 							};
-							obj.type = 5;
+							obj.type = 4;
 							_this.$store.dispatch('loginState',obj);
 							switch(obj.type){
 								case 2:

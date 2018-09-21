@@ -250,13 +250,13 @@ export default {
 		//上传图片
 		upLoadStart1(e){
 			let that = this;
-  		that.$axios2('post',that.Global.PATH.upload,{
-  			'mufile':e.target.files[0]
-  		},function(res){
-  			if(res.code==200){
-  				that.themeObj.special_picture = res.url;
-  			};
-  		});
+			that.$axios2('post',that.Global.PATH.upload,{
+				'mufile':e.target.files[0]
+			},function(res){
+				if(res.code==200){
+					that.themeObj.special_picture = res.url;
+				};
+			});
 		},
 		handleClose(tag) {
 	    this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);

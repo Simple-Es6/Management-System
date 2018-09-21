@@ -71,7 +71,7 @@
         </div>
       </el-col>
     </el-row>
-    <el-dialog title="神秘歌手猜猜猜" :visible.sync="dialogVisible" width="80%" :before-close="handleClose">
+    <el-dialog title="神秘歌手猜猜猜" :visible.sync="dialogVisible" width="75%" :before-close="handleClose">
         <el-row :gutter="20" class="contain">
           <el-col :span="14">
             <div class="mysterious">
@@ -104,34 +104,35 @@
               <h1>添加活动</h1>
                 <div class="line">
                   起止时间：
-                  
-                    <el-date-picker v-model="value6" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期">
-                    </el-date-picker>
+                  <el-date-picker placeholder="起始时间" type="date" value-format="yyyy-MM-dd" v-model="startTime" size="mini" style="width:150px;" :picker-options="pickerOptions0"></el-date-picker>
+                  <el-date-picker placeholder="结束时间" type="date" value-format="yyyy-MM-dd" v-model="endTime" size="mini" style="width:150px;" :picker-options="pickerOptions0"></el-date-picker>
                 </div>
                 <div class="line">
                    音乐人数：
-                    <el-input v-model="input" placeholder="10~20人之间" style="width:300px;"></el-input>
+                    <el-input v-model="input" placeholder="10~20人之间" style="width:300px;" size="mini"  type="number"></el-input>
                 </div>
                 <div class="line">
                     投票方式：
-                  <el-radio v-model="radio" label="1"></el-radio>
-                  <el-radio v-model="radio" label="2"></el-radio>
+                  <el-radio v-model="radio" label="黑珍珠"></el-radio>
+                  <el-radio v-model="radio" label="分贝"></el-radio>
                 </div>
                 <div class="line">
                    每次金额：
-                  <el-input v-model="input1" placeholder="最低100" style="width:300px;"></el-input>
+                  <el-input v-model="input1" placeholder="最低100" style="width:300px;" size="mini" type="number"></el-input>
                 </div>
                 <div class="bottom">
                   晋级模式：两人一组进行PK，获胜者进入下一轮PK，最近决出第一名，如最后由三位选手选出冠军
                 </div>
+                <div class="btn">
+                  <!-- <el-button @click="cancel">取 消</el-button> -->
+                  <el-button type="primary" @click="confirm">确 定</el-button>
+                </div>
             </div>
+            
+
           </el-col>
         </el-row>
-        <div class="btn">
-          <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-        </div>
-
+        
     </el-dialog>
 
   </div>
@@ -144,22 +145,28 @@ export default {
       dialogVisible: false,
       tableData:[
         {
-          'beginTime':"ss",
-          'endTime':"ss",
-          'num':"3",
-          'put':"ss",
-          'earnings':"ee",
+          beginTime:"2018-09-19 11:19",
+          endTime:"ss",
+          num:"3",
+          put:"ss",
+          earnings:"ee",
           
         }
       ],
-      value6:'',
+      startTime:'',
+      endTime:'',
       input:'',
       radio:'',
       input1:'',
-      total: 0,
+      total: 1,
       page: 1,
       everyPageCount: 5,
       currentPage: 1,
+      pickerOptions0: {
+          disabledDate(time) {
+            return time.getTime() < Date.now() - 8.64e7;
+          }
+        }, 
     }
   },
   //组件生成时执行事件
@@ -180,14 +187,47 @@ export default {
           .catch(_ => {});
       },
       handleSizeChange(val) {
-          this.everyPageCount = val;
-          console.log('val', val)
+          // this.everyPageCount = val;
+          // console.log('val', val)
       },
       handleCurrentChange(val) {
-          this.getData(val);
+          //this.getData(val);
       },
       go(){
         this.$router.push('./detail');
+      },
+      cancel(){
+        this.startTime='';
+        this.endTime='';
+        this.input='';
+        this.radio='';
+        this.input1='';
+        this.dialogVisible = false;
+      },
+      confirm(){
+        if( this.startTime=='') {this.$message('起始时间为空'); return false;}
+        if( this.endTime=='') {this.$message('结束时间为空'); return false;}
+        if( this.input<10||this.input>20) {this.$message('音乐人数为空'); return false;}
+        if( this.radio=='') {this.$message('请选择投票方式'); return false;}
+        if( this.input1<100) {this.$message('金额为空'); return false;}
+              this.tableData.unshift({
+                beginTime:this.startTime,
+                endTime:this.endTime,
+                num:this.input,
+                put:this.radio,
+                earnings:this.input1
+              });
+              
+              this.total++;
+              this.startTime='';
+              this.endTime='';
+              this.input='';
+              this.radio='';
+              this.input1='';
+            //  this.dialogVisible = false;
+            
+        // }
+        
       }
 	},
 	//使用的组件

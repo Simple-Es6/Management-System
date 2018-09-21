@@ -143,7 +143,7 @@ export default new Router({
                 {
                     path: '/home/fans',
                     name: 'Fans',
-                    meta: {keepAlive: false,power:5},
+                    meta: {keepAlive: false,power:99},
                     component: resolve => require(['../page/Fans/Fans.vue'], resolve)
                 },
                 {
@@ -180,7 +180,7 @@ export default new Router({
                 {
                     path: '/home/MyMusic',
                     name: 'My-music',
-                    meta:{keepAlive:false,power:2},
+                    meta:{keepAlive:false,power:99},
                     component: resolve => require(['../pages/MyMusic/My-music.vue'], resolve)
                 },
                 {
@@ -223,19 +223,19 @@ export default new Router({
                 {
                     path: '/home/OrganizationManage',
                     name: 'CheckOrganizationManage',
-                    meta: { keepAlive: false ,power:3},
+                    meta: { keepAlive: false ,power:4},
                     component: resolve => require(['../pages/OrganizationManage/OrganizationManage.vue'], resolve),
                 },
                 {
                     path: '/home/ArtistManage',
                     name: 'ArtistManage',
-                    meta: { keepAlive: false ,power:5},
+                    meta: { keepAlive: false ,power:4},
                     component: resolve => require(['../pages/ArtistManage/ArtistManage.vue'], resolve),
                 },
                 {
                     path: '/home/PeopleManage',
                     name: 'PeopleManage',
-                    meta: { keepAlive: false ,power:5},
+                    meta: { keepAlive: false ,power:4},
                     component: resolve => require(['../pages/PeopleManage/PeopleManage.vue'], resolve),
                 },
                 {
