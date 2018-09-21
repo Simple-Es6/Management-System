@@ -24,6 +24,7 @@
 	background-size:100% auto;
 	background-position: center center;
 }
+
 .plantitem .item .info{
 	flex-grow: 8;
 	padding:10px 20px;
@@ -88,7 +89,7 @@
 	width:400px;
 	height:auto;
 	min-height:370px;
-	max-height:600px;
+	max-height:650px;
 	background: #FFFFFF;
 	border-radius: 8px;
 }
