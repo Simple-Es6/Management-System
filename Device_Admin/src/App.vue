@@ -49,7 +49,7 @@ body{
   -ms-user-select: none;
   user-select: none; 
 }
-#app {
+#app{
 	width: 100%;
 	min-height: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

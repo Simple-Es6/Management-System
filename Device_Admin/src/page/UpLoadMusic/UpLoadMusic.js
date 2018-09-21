@@ -180,6 +180,7 @@ let upmusic = {
 	  		},res=>{
 	  			if(res.code==200){
 	  				if(that.isNew ==1){
+	  					
 	  					that.$router.push({name:'UpLoadHome'});
 	  				}else{
 	  					that.$router.replace({name:'My-music'});

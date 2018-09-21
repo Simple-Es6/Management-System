@@ -85,7 +85,7 @@
 		  			其他金额:
 		  		</div>
 		  		<div class="ritem">
-				  	<el-input-number size="mini" v-model="dialogNum" :min="1" :max="100000" label="描述文字"></el-input-number>
+				  	<el-input-number size="mini" v-model="dialogNum" :min="0" :max="100000" label="描述文字"></el-input-number>
 				  </div>
 		  	</div>
 		  	<div class="dialogitem">

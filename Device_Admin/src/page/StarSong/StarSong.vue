@@ -168,7 +168,6 @@
         		this.getData1();
         	},
         	goDetails(val){
-        		console.log(val)
 	        	this.$router.push({name:'PlayMusic',params:{
 						music:val.music_path,
 						lrc:val.lyrics,

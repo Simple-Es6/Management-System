@@ -1,23 +1,15 @@
 <template>
   <div>
+		<input @change="upLoadStart1($event)" id="avatar2" accept="image/jpeg,image/png" class="avatar-img" type="file"  />
   	<div class="uphome" v-show="mode==1">
 	  	<div class="title textMain">
 	  		请选择上传类型
 	  	</div>
 	  	<div class="upcon">
 	  		<div class="upitem" @click="creatTheme">
-	  			<h2 class="textMain h2Title">创建普通专辑</h2>
+	  			<h2 class="textMain h2Title">创建推荐专题</h2>
 	  			<p class="textInfo h4Title">粉丝可以免费收听你的专辑</p>
 	  		</div>
-	  		<div class="upitem">
-	  			<h2 class="textMain h2Title">创建数字专辑</h2>
-	  			<p class="textInfo h4Title">粉丝需要付费收听你的专辑</p>
-	  			<p class="textInfo h4Title">创建要求音乐人指数达到400</p>
-	  		</div>
-	  	</div>
-	  	<div class="upbtn">
-	  		<span class="el-icon-plus"></span>
-	  		上传作品至已发布专辑
 	  	</div>
   	</div>
   	<div class="upform" v-show="mode==2">
@@ -141,13 +133,26 @@
   		</div>
   		<div class="upformright">
   			<div class="avatar-uploader">
+  				<p>横图</p>
 				 	<label for="avatar2">
 				 		<i v-if="!themeObj.special_picture" class="el-icon-plus avatar-uploader-icon"></i>
 				 		<img v-if="themeObj.special_picture" :src="themeObj.special_picture" class="avatar">
-				 	</label>	
-					<input @change="upLoadStart1($event)" id="avatar2" accept="image/jpeg,image/png" class="avatar-img" type="file"  />
+				 	</label>
 				</div>
-  			<!--<croper></croper>-->	
+				<div class="avatar-uploader">
+					<p>长图</p>
+				 	<label for="avatar2">
+				 		<i v-if="!themeObj.special_picture" class="el-icon-plus avatar-uploader-icon"></i>
+				 		<img v-if="themeObj.special_picture" :src="themeObj.special_picture" class="avatar">
+				 	</label>
+				</div>
+				<div class="avatar-uploader">
+					<p>小图</p>
+				 	<label for="avatar2">
+				 		<i v-if="!themeObj.special_picture" class="el-icon-plus avatar-uploader-icon"></i>
+				 		<img v-if="themeObj.special_picture" :src="themeObj.special_picture" class="avatar">
+				 	</label>
+				</div>
   		</div>
   	</div>
   	<el-button v-if="specialid==''&&mode==2" type="primary" @click="subClick">确认提交</el-button>
@@ -158,7 +163,7 @@
 <script>
 //import croper from '../../components/croper.vue';
 export default {
-  name: 'UpLoadHome',
+  name: 'UpLoadTheme',
   data () {
     return {
       mode:1,
@@ -191,6 +196,7 @@ export default {
 	methods:{
 		//创建专题
 		creatTheme(){
+			
 			this.mode = 2;
 		},
 		//请求数据
@@ -284,5 +290,5 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-	@import url("./UpLoadHome.css");
+	@import url("./UpLoadTheme.css");
 </style>
