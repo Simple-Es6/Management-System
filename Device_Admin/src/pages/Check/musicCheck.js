@@ -100,7 +100,9 @@ let list = {
 					lrc:val.lyrics,
 					type:1,
 					musicname:val.music_name,
-					singername:val.singer_name
+                    singername:val.singer_name,
+                    music_picture:val.music_picture,
+                    music_id:val.musicid
 				}
 			});
         },

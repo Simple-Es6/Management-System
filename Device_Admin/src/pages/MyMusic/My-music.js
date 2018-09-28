@@ -21,6 +21,11 @@ let list = {
             total: 0,
             page: 1,
             everyPageCount: 10,
+            total1: 0,
+            page1: 1,
+            everyPageCount1: 10,
+            show:true,
+            showTab:true,
         }
     },
     //组件生成时执行事件
@@ -43,7 +48,8 @@ let list = {
                 let special = {
                     startRecord: num,
                     pageSize: _this.everyPageCount,
-                    special_title: _this.selectInput
+                    special_title: _this.selectInput,
+                    is_examine: _this.radio3 == 0 ? '' : _this.radio3
                 };
                 _this.commonFun('post', _this.Global.PATH1.querysplelist, special, res => {
                     _this.tableData = res.data;
@@ -52,17 +58,20 @@ let list = {
             } else {
                 let singer = {
                     startRecord: num,
-                    pageSize: _this.everyPageCount,
+                    pageSize: _this.everyPageCount1,
                     music_name: _this.selectInput,
+                    is_examine: _this.radio3 == 0 ? '' : _this.radio3
                 };
                 _this.commonFun('post', _this.Global.PATH1.querysingle, singer, res => {
                     _this.tableDataSingle = res.data;
-                    _this.total = res.count;
+                    _this.total1 = res.count;
                 });
             }
         },
         elechange() {
             this.selectInput = '';
+            this.show=!this.show;
+            this.showTab=!this.showTab;
             this.getData(1);
         },
         search() {
@@ -78,8 +87,9 @@ let list = {
                 }
             });
         },
-        musiclist(data) {
-
+        musiclist() {
+            
+            this.getData(1);
         },
         //点击每行的编辑
         handleEdit(index, row) {
@@ -121,13 +131,16 @@ let list = {
                 });
             });
         },
-
-
         handleSizeChange(val) {
             this.everyPageCount = val
-
         },
         handleCurrentChange(val) {
+            this.getData(val);
+        },
+        handleSizeChange1(val) {
+            this.everyPageCount1 = val
+        },
+        handleCurrentChange1(val) {
             this.getData(val);
         },
         changeListItemPosition(itemIdex) {

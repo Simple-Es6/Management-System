@@ -20,7 +20,7 @@
           <div>
             <img src="" alt="">
           </div>
-          <div>
+          <div @click="attend">
             <p>每日签到</p>
             <p>每日签到，提升人气获得奖励</p>
           </div>
@@ -228,6 +228,9 @@ export default {
             
         // }
         
+      },
+      attend(){
+        this.$router.push('./attend');
       }
 	},
 	//使用的组件

@@ -18,15 +18,15 @@
                  </template>
             </el-table-column>
             <el-table-column  prop="nickname" label="音乐人" ></el-table-column>
-            <!-- <el-table-column  prop=" " label="风格" ></el-table-column>
-            <el-table-column  prop=" " label="简介" width="200"></el-table-column> -->
+            <el-table-column  prop=" " label="风格" ></el-table-column>
+            <el-table-column  prop=" " label="简介" width="200"></el-table-column>
             <el-table-column  prop="musiccount" label="歌曲" ></el-table-column>
             <el-table-column  prop="specialcount" label="主题" ></el-table-column>
-            <el-table-column label="操作" >
-                <template slot-scope="scope" width="30">
+            <el-table-column label="操作" width="300">
+                <template slot-scope="scope">
                     <el-button size="mini" @click="openPage(scope.row)">查看</el-button>
-                    <!-- <el-button size="mini">禁用</el-button>
-                    <el-button size="mini">删除</el-button> -->
+                    <el-button size="mini">禁用</el-button>
+                    
                 </template>
             </el-table-column>
         </el-table>
@@ -93,13 +93,14 @@
                 this.getData(val);
             },
             openPage(val){
-                this.$router.push({name:'artistDetail',query:{
+                console.log(val.userid)
+                this.$router.push({name:'artistDetail',params:{
                     userid:val.userid,
-                   
                 }});
            
             }
-        }
+        },
+        
     }
 </script>
 <style scoped>

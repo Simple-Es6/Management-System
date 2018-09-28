@@ -13,14 +13,20 @@
       </el-row>
       <el-row>
         <el-col :span="16">
-            <el-radio-group v-model="radio3" @change="musiclist">
-                <el-radio-button label="0">全部{{total>0?'('+total+')':''}}</el-radio-button>
-                <el-radio-button label="1">已发布</el-radio-button>
-                <el-radio-button label="2">未发布</el-radio-button>
+            <el-radio-group v-model="radio3" @change="musiclist" v-show="showTab">
+                <el-radio-button label="0">全部{{radio3==0?total:''}}</el-radio-button>
+                <el-radio-button label="1">已发布{{radio3==1?total:''}}</el-radio-button>
+                <el-radio-button label="2">未发布{{radio3==2?total:''}}</el-radio-button>
+            </el-radio-group>
+            <el-radio-group v-model="radio3" @change="musiclist" v-show="!showTab">
+                <el-radio-button label="0">全部{{radio3==0?total1:''}}</el-radio-button>
+                <el-radio-button label="1">已发布{{radio3==1?total1:''}}</el-radio-button>
+                <el-radio-button label="2">未发布{{radio3==2?total1:''}}</el-radio-button>
             </el-radio-group>
         </el-col>
+
         <el-col :span="4" :offset="4">
-            <el-radio-group v-model="showVisible"  @change="elechange">
+            <el-radio-group v-model="showVisible"  @change="elechange" style="margin:20px 0">
                 <el-radio :label="1">专辑</el-radio>
                 <el-radio :label="0">单曲</el-radio>
             </el-radio-group>
@@ -37,7 +43,7 @@
             <el-table-column prop="special_title" label="标题" width="180"></el-table-column>
             <el-table-column prop="music_count" label="歌曲数" width="120"></el-table-column>
             <el-table-column prop="create_times" label="发行日期"></el-table-column>
-            <el-table-column prop="status" label="状态" ></el-table-column>
+            <el-table-column prop="shenhe" label="状态" ></el-table-column>
             <el-table-column prop="operate" label="操作" width="260" >
                 <template slot-scope="scope">
                     <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
@@ -55,7 +61,7 @@
         <el-table-column prop="singer_name" label="歌手"></el-table-column>
         <el-table-column prop="special_title" label="专辑" ></el-table-column>
         <!-- <el-table-column prop="album_type" label="专辑类型" ></el-table-column> -->
-        <!-- <el-table-column prop="is_examine" label="状态" ></el-table-column> -->
+        <el-table-column prop="shenhe" label="状态" ></el-table-column>
         <el-table-column prop="operate" label="操作" >
             <template slot-scope="scope">
                 <el-button size="mini" @click="goDetails(scope.row)">编辑</el-button>
@@ -64,11 +70,14 @@
         </el-table-column>
     </el-table>
     <!-- 分页 -->
-    <el-col :span="24" class="toolbar">
+    <el-col :span="24" class="toolbar" style="margin-top:20px;" v-show="show">
         <el-pagination layout="total, prev, pager, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="everyPageCount" :total="total" style="float:right;">
         </el-pagination>
     </el-col>
-    
+    <el-col :span="24" class="toolbar" style="margin-top:20px;" v-show="!show">
+        <el-pagination layout="total, prev, pager, next, jumper" @size-change="handleSizeChange1" @current-change="handleCurrentChange1" :page-size="everyPageCount1" :total="total1" style="float:right;">
+        </el-pagination>
+    </el-col>
   </div>
 </template>
 <script>

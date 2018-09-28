@@ -22,7 +22,7 @@
       <el-table-column  prop="special_title" label="专题描述" ></el-table-column>
       <el-table-column label="操作" >
           <template slot-scope="scope" width="30">
-              <el-button size="mini" @click="dialogVisible = true">查看</el-button>
+              <el-button size="mini" @click="examine(scope.row.listmusic)">查看</el-button>
           </template>
       </el-table-column>
     </el-table>
@@ -33,7 +33,9 @@
   </el-col>
  <!-- 音乐list -->
   <el-dialog title="音乐列表" :visible.sync="dialogVisible" width="50%" :before-close="handleClose">
-    
+    <ul class="list">
+      <li v-for="name in listmusic">{{name.music_name}}<span @click="goDetails(name)">查看</span></li>
+    </ul>
   </el-dialog>
   </div>
 </template>
@@ -53,13 +55,19 @@ export default {
       specialcount:'',
       musiccount:'',
       fensicount:'',
-
+      listmusic:'',
+      userid:''
     }
   },
+  computed:{
+    getParams(){
+       return this.$route.params.userid;
+    }
+	},
   //组件生成时执行事件
   created:function(){
+    this.userid = this.$route.params.userid;
     this.getData(1);
-   
 	},
 	//页面渲染完成事件
 	mounted(){
@@ -69,13 +77,13 @@ export default {
 	methods:{
 		getData(num){
       let _this=this;
-      let params={
-        userid:this.$route.query.userid,
+      let param={
+        userid:this.userid,
         startRecord:num,
         pageSize:this.everyPageCount,
       };
       
-      _this.$axios('post', _this.Global.PATH1.querymusicuserbyid, params, res => {
+      _this.$axios('post', _this.Global.PATH1.querymusicuserbyid, param, res => {
           if (res.code == 200) {
             _this.head_portrait=res.head_portrait;
             _this.nickname=res.nickname;
@@ -88,7 +96,7 @@ export default {
     },
     handleSizeChange(val) {
         this.everyPageCount = val;
-        console.log('val', val)
+        
     },
     handleCurrentChange(val) {
         this.getData(val);
@@ -102,12 +110,35 @@ export default {
           done();
         })
         .catch(_ => {});
+    },
+    examine(val){
+      this.dialogVisible=true;
+      this.listmusic=val; 
+    },
+    goDetails(val){
+      console.log(val)
+       this.$router.push({name:'PlayMusic',params:{
+            music:val.music_path,
+            lrc:val.lyrics,
+            type:1,
+            musicname:val.music_name,
+            singername:val.singer_name,
+            music_picture:val.music_picture,
+            music_id:val.musicid
+          }
+        });
+    },
+  },
+  watch:{
+    getParams:function(userid){
+      if(userid){
+        this.userid=userid;
+        this.getData(1);
+      };
+      
     }
-	},
-	//使用的组件
-  components:{
-		
-	}
+
+  }
 }
 </script>
 
@@ -133,5 +164,11 @@ export default {
   width:100%;
   height:100%;
   object-fit: cover;
+}
+
+.artistDetail .list li{
+  list-style: none;
+  display:flex;
+  justify-content: space-between;
 }
 </style>
