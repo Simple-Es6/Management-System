@@ -84,7 +84,7 @@ export default new Router({
                     path: '/home/planetinformation',
                     name: 'PlanetInformation',
                     meta:{keepAlive:false,power:4},
-                    component: resolve => require(['../page/PlanetInformation/PlanetInformation.vue'], resolve)
+                    component: resolve => require(['../pages/PlanetInformation/PlanetInformation.vue'], resolve)
                 },
                 {
                     path: '/home/LabelManagement',
@@ -285,6 +285,12 @@ export default new Router({
 					name: 'detail',
 					meta: { keepAlive: false ,power:5},
 					component: resolve => require(['../pages/ActivitiesSet/detail.vue'], resolve),
+                },
+                {
+					path: '/home/attend',
+					name: 'attend',
+					meta: { keepAlive: false ,power:5},
+					component: resolve => require(['../pages/ActivitiesSet/attend.vue'], resolve),
 				}
             ]
         },

@@ -33,20 +33,6 @@
 						</el-input>
 					</el-col>
 				</el-row>
-				<el-row type="flex"  justify="start" :gutter="30" v-show="showType==2">	
-					<el-col :span="4">
-						<span class="textMain h2Title">歌曲封面:</span>
-					</el-col>
-				  <el-col :span="16">
-				  	<div class="avatar-uploader">
-						 	<label for="avatar2">
-						 		<i v-if="!music_picture" class="el-icon-plus avatar-uploader-icon"></i>
-						 		<img v-if="music_picture" :src="music_picture" class="avatar">
-						 	</label>	
-							<input @change="upLoadStart1($event)" id="avatar2" accept="image/jpeg,image/png" class="avatar-img" type="file"  />
-						</div>
-					</el-col>
-				</el-row>
 				<el-row type="flex"  justify="start" :gutter="30">
 					<el-col :span="20">
 						<audio id="musicplay" 
@@ -66,19 +52,19 @@
 				</el-row>
 				<el-row type="flex"  justify="start" :gutter="30">
 					<el-col :span="20">
-						<!--<el-select :disabled="showType==1" v-model="selectOption" clearable placeholder="请选择标签">
+						<el-select :disabled="showType==1" v-model="selectOption" clearable placeholder="请选择标签">
 					    <el-option
 					      v-for="item in valoptions"
 					      :key="item.value"
 					      :label="item.label"
 					      :value="item.value">
 					    </el-option>
-					  </el-select>-->
-					  <p style="margin-top: 10px;" v-show="showType==2">歌词文件</p>
-					  <label v-show="showType==2" class="lrcbtn" for="lrcinput" >{{lrc_name==''?'选择文件':lrc_name}}</label>
-					  <input type="file" id="lrcinput" @change="musiclrcupload" />
+					  </el-select>
+					  <p style="margin-top: 10px;">歌词文件</p>
+					  <label :disabled="showType==1" class="lrcbtn" for="lrcinput">选择文件</label>
+					  <input type="file" id="lrcinput" />
 					  <el-button style="width:120px;" @click="pageBack">返回</el-button>
-		  			<el-button v-show="showType==2" style="width:120px;" type="primary" @click="subChange">确定</el-button>
+		  			<el-button style="width:120px;" type="primary" @click="pageBack">确定</el-button>
 					</el-col>
 				</el-row>	
 			</el-col>
@@ -101,9 +87,6 @@ export default {
     return {
     	showType:0,
       musicname:'',
-      lrc_name:'',
-      lrc_url:'',
-      music_picture:'',
       lastLyric:'',
       curtime:'',
       singername:'',
@@ -129,52 +112,16 @@ export default {
     }
   },
   created:function(){
+  	console.log(this.$route.params);
   	this.showType = this.$route.params.type||0;
-  	this.music_id = this.$route.params.music_id||'';
   	this.musicname = this.$route.params.musicname||'';
   	this.singername = this.$route.params.singername||'';
   	this.musicsrc = this.$route.params.music||'';
-  	this.music_picture = this.$route.params.music_picture||'';
   	//let lrc = this.$route.params.lrc||'';
   	let lrc = this.$route.params.lrc||'';
   	this.loadLrc(lrc);
 	},
 	methods:{
-		//保存修改
-		subChange(){
-			if(this.music_picture==''){
-				this.$message.error('请上传音乐封面');
-				return false;
-			};
-			if(this.musicname==''){
-				this.$message.error('请认真填写音乐名称');
-				return false;
-			};
-			if(this.singername==''){
-				this.$message.error('请认真填写歌手名称');
-				return false;
-			};
-			let that = this;
-  		that.$axios('post',that.Global.PATH.updatemusicdetail,{
-  			music_id:that.music_id,
-  			music_name:that. musicname,
-  			singer_name:that.singername,
-  			lyrics:that.lrc_url, 
-  			music_picture:that.music_picture
-  		},function(res){
-  			if(res.code==200){
-  				that.$message({
-	          message: '修改成功',
-	          type: 'success'
-	        });
-  			}else{
-  				that.$message.error(res.msg);
-  			};
-  		});
-			
-			
-			
-		},
 		pageBack(){
 			this.$router.go(-1);
 		},
@@ -194,48 +141,6 @@ export default {
 		//结束
 		ended(){
 			
-		},
-		//上传图片
-		upLoadStart1(e){
-			let that = this;
-  		that.$axios2('post',that.Global.PATH.upload,{
-  			'mufile':e.target.files[0]
-  		},function(res){
-  			if(res.code==200){
-  				that.music_picture = res.url;
-  			};
-  		});
-		},
-		musiclrcupload(e){
-			let name = e.target.files[0].name;
-			let houzhui = name.substring(name.lastIndexOf(".")+1);
-			let names = this.getFileName(e.target.files[0].name);
-			console.log(houzhui);
-			if(houzhui=='lrc'){
-				let that = this;
-				that.upLrc(names,e.target.files[0]);
-			}else{
-				this.$alert('请上传正确的歌词文件', '提示', {
-		          	confirmButtonText: '确定'
-		        });
-			};
-		},
-		//获取文件名
-		getFileName(path){ 
-			return path.substring(0, path.lastIndexOf("."));
-		},
-		//上传歌词
-		upLrc(name,files){
-			let that = this;
-			that.$axios2('post',that.Global.PATH.uploadlrc,{
-	  			'mufile':files
-	  	},res=>{
-	  			if(res.code==200){
-	  				that.lrc_name = name;
-	  				that.lrc_url = res.url;
-	  				that.loadLrc(res.url);
-	  			};
-			});
 		},
 		//滚动歌词
 		scrolllrc(time){
@@ -294,7 +199,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 	.el-row{
 		margin-bottom: 20px;
 	}
@@ -307,7 +212,7 @@ export default {
 	.lrcwrap{
 		display: block;
 		width: 100%;
-		height: 600px;
+		height: 400px;
 		padding: 30px 0;
 		background: #000000;
 		overflow-y:scroll;
@@ -336,36 +241,5 @@ export default {
 	input{
 		display: none;
 	}
-	.avatar-uploader{
-		width:300px;
-		height:300px;
-		border: 1px dashed #d9d9d9;
-		border-radius: 6px;
-	}
-	.avatar-uploader:hover{
-		border: 1px dashed #409EFF;
-	}
-	.avatar-uploader:hover i{
-		color: #409EFF;
-	}
-	.avatar-uploader label{
-		display: block;
-		width: 100%;
-		height: 100%;
-		cursor: pointer;
-	}
-	.avatar-uploader-icon {
-		font-size: 28px;
-		color: #8c939d;
-		width:100%;
-		height:100%;
-		line-height:300px !important;
-		text-align: center;
-	}
-	.avatar {
-	    width:100%;
-	  	height:100%;
-	  	object-fit: contain;
-	  	display: block;
-	}
+	
 </style>

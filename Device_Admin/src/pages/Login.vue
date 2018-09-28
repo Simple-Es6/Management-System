@@ -137,7 +137,7 @@
 								type:res.data.musiciantype,
 								phone:_this.phone
 							};
-							obj.type = 5;
+							obj.type = 4;
 							_this.$store.dispatch('loginState',obj);
 							switch(obj.type){
 								case 2:

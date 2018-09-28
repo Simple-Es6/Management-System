@@ -2,7 +2,7 @@
   <div class="myNav">
 		<div class="myTitle">
 			<img src="../../build/logo.png"/>
-			<span><!--欢迎音乐人--></span>
+			<span>欢迎音乐人</span>
 		</div>
 		<div class="loginBox" v-if="login">
 			<!--<div class="myOrder">订单信息</div>-->
