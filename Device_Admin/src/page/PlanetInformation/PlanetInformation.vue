@@ -3,13 +3,13 @@
   	<input @change="upLoadStart($event)" id="avatar2" accept="image/jpeg,image/png" class="avatar-img" type="file"  />
   	<div class="plantitem">
   		<div class="item">
-  			<div class="avatarimg"></div>
+  			<div class="avatarimg" :style="{'background-image':'url('+head_portrait+')'}"></div>
   			<div class="info">
   				<div class="textMain h3Title">
-  					礼品动动
+  					{{nickname}}
   				</div>
   				<div class="textInfo h4Title">
-  					文艺星球星球主
+  					{{planet_name}}
   				</div>
   			</div>
   			<div class="goedit textBlue h3Title" @click="showMsy(1)">
@@ -35,18 +35,18 @@
   	</div>
   	<div class="plantitem">
   		<div class="item1 item">
-  			<div class="avatarimg"></div>
+  			<div class="avatarimg" :style="{'background-image':'url('+pic_url+')'}"></div>
   			<div class="info">
   				<div class="textMain h3Title">
-  					礼品动动
+  					{{planet_name }}
   				</div>
   				<div class="textInfo h4Title">
-  					文艺星球星球主
+  					{{signature}}
   				</div>
   			</div>
   			<div class="info info1" style="border-right:1px solid #8C939D;">
   				<div class="textMain h0Title">
-  					142
+  					{{specialcount}}
   				</div>
   				<div class="textMain h3Title">
   					专题
@@ -54,7 +54,7 @@
   			</div>
   			<div class="info info1">
   				<div class="textMain h0Title">
-  					142
+  					{{musiccount}}
   				</div>
   				<div class="textMain h3Title">
   					音乐
@@ -71,27 +71,27 @@
   		</div>
   		<div class="pitem">
   			<p class="textMain h1Title">
-  				机构
+  				音乐人
   			</p>
-  			<p class="textMain h0Title">142</p>
+  			<p class="textMain h0Title">{{musicusercount}}</p>
   		</div>
   		<div class="pitem">
   			<p class="textMain h1Title">
-  				机构
+  				星球居民
   			</p>
-  			<p class="textMain h0Title">142</p>
+  			<p class="textMain h0Title">{{planetusercount}}</p>
   		</div>
   		<div class="pitem">
   			<p class="textMain h1Title">
-  				机构
+  				审核员
   			</p>
-  			<p class="textMain h0Title">142</p>
+  			<p class="textMain h0Title">{{examineuser}}</p>
   		</div>
   		<div class="pitem">
   			<p class="textMain h1Title">
-  				机构
+  				粉丝
   			</p>
-  			<p class="textMain h0Title">142</p>
+  			<p class="textMain h0Title">{{fensicount}}</p>
   		</div>
   	</div>
   	<div class="msyBox" v-show="msyShow>0">
@@ -119,7 +119,7 @@
   					<el-input
   						size="mini"
 						  placeholder="请输入内容"
-						  v-model="nickname"
+						  v-model="planet_name"
 						  clearable>
 						</el-input>
   				</div>
@@ -128,9 +128,20 @@
   				<div class="boxl">头像</div>
   				<div class="boxr">
   					<div class="avatar-uploader">
-						 	<label for="avatar2">
-						 		<i v-if="!music_picture" class="el-icon-plus avatar-uploader-icon"></i>
-						 		<img v-if="music_picture" :src="music_picture" class="avatar">
+						 	<label for="avatar2" @click="changType(1)">
+						 		<i v-if="!head_portrait " class="el-icon-plus avatar-uploader-icon"></i>
+						 		<img v-if="head_portrait " :src="head_portrait " class="avatar">
+						 	</label>
+						</div>
+  				</div>
+  			</div>
+			<div class="msyBoxItem" v-show="msyShow==2">
+  				<div class="boxl">星球图片</div>
+  				<div class="boxr">
+  					<div class="avatar-uploader">
+						 	<label for="avatar2" @click="changType(2)">
+						 		<i v-if="!pic_url" class="el-icon-plus avatar-uploader-icon"></i>
+						 		<img v-if="pic_url" :src="pic_url" class="avatar">
 						 	</label>
 						</div>
   				</div>
@@ -139,9 +150,9 @@
   				<div class="boxl">星球背景图</div>
   				<div class="boxr">
   					<div class="avatar-uploader">
-						 	<label for="avatar2">
-						 		<i v-if="!music_picture" class="el-icon-plus avatar-uploader-icon"></i>
-						 		<img v-if="music_picture" :src="music_picture" class="avatar">
+						 	<label for="avatar2" @click="changType(3)">
+						 		<i v-if="!background_url" class="el-icon-plus avatar-uploader-icon"></i>
+						 		<img v-if="background_url" :src="background_url" class="avatar">
 						 	</label>
 						</div>
   				</div>
@@ -153,13 +164,13 @@
   						type="textarea"
 						  rows="5"
 						  placeholder="请输入内容"
-						  v-model="nickname"
+						  v-model="signature"
 						  clearable>
 						</el-input>
   				</div>
   			</div>
   			<div class="boxSub">
-  				<el-button type="success" style="width: 100%;" size="mini">提交</el-button>
+  				<el-button type="success" style="width: 100%;" size="mini"  @click="alter">提交</el-button>
   			</div>
   		</div>
   	</div>
