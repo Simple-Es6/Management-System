@@ -95,6 +95,7 @@
             openPage(val){
                 this.$router.push({name:'artistDetail',query:{
                     userid:val.userid,
+                   
                 }});
            
             }
