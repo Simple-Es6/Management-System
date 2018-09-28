@@ -84,10 +84,18 @@ let list = {
         //点击每行的编辑
         handleEdit(index, row) {
            	console.log(index, row);
-			this.$router.push({name:'UpLoadHome',params:{
-					specialid:row.specialid
-				}
-			});
+           	if(row.type==1){
+           		this.$router.push({name:'UpLoadTheme',params:{
+						specialid:row.specialid
+					}
+				});
+           	}else{
+           		this.$router.push({name:'UpLoadHome',params:{
+						specialid:row.specialid
+					}
+				});
+           	};
+			
         },
         //点击每行的取消
         handleDelete(index, row) {
@@ -131,6 +139,18 @@ let list = {
                 }
             })
             this.filters.topPositionIndex = _this.filters.topPositions[itemIdex]
+        },
+        goDetails(val){
+        	this.$router.push({name:'PlayMusic',params:{
+					music:val.music_path,
+					lrc:val.lyrics,
+					type:2,
+					musicname:val.music_name,
+                    singername:val.singer_name,
+                    music_picture:val.music_picture,
+                    music_id:val.musicid
+				}
+			});
         },
     },
     //使用的组件

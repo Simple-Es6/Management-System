@@ -1,6 +1,6 @@
 <template>
   <div>
-		<input @change="upLoadStart1($event)" id="avatar2" accept="image/jpeg,image/png" class="avatar-img" type="file"  />
+		<input @change="upLoadStart1($event)" :disabled="isDisEnble" id="avatar2" accept="image/jpeg,image/png" class="avatar-img" type="file"  />
   	<div class="uphome" v-show="mode==1">
 	  	<div class="title textMain">
 	  		请选择上传类型
@@ -117,6 +117,22 @@
 	  		</div>-->
 	  		<div class="formitem">
 	  			<div class="fiteml textMain h3Title">
+	  				发行日期:
+	  			</div>
+	  			<div class="fitemr">
+	  				<el-date-picker
+	  					:disabledDate="true"
+	  					size="mini"
+				      v-model="themeObj.show_time"
+				      type="date"
+				      placeholder="选择日期"
+				      format="yyyy 年 MM 月 dd 日"
+				      value-format="yyyy-MM-dd">
+				   	</el-date-picker>
+	  			</div>
+	  		</div>
+	  		<div class="formitem">
+	  			<div class="fiteml textMain h3Title">
 	  				专辑描述:
 	  			</div>
 	  			<div class="fitemr">
@@ -130,29 +146,45 @@
 						</el-input>
 	  			</div>
 	  		</div>
-  		</div>
-  		<div class="upformright">
-  			<div class="avatar-uploader">
-  				<p>横图</p>
-				 	<label for="avatar2">
-				 		<i v-if="!themeObj.special_picture" class="el-icon-plus avatar-uploader-icon"></i>
-				 		<img v-if="themeObj.special_picture" :src="themeObj.special_picture" class="avatar">
-				 	</label>
-				</div>
-				<div class="avatar-uploader">
-					<p>长图</p>
-				 	<label for="avatar2">
-				 		<i v-if="!themeObj.special_picture" class="el-icon-plus avatar-uploader-icon"></i>
-				 		<img v-if="themeObj.special_picture" :src="themeObj.special_picture" class="avatar">
-				 	</label>
-				</div>
-				<div class="avatar-uploader">
-					<p>小图</p>
-				 	<label for="avatar2">
-				 		<i v-if="!themeObj.special_picture" class="el-icon-plus avatar-uploader-icon"></i>
-				 		<img v-if="themeObj.special_picture" :src="themeObj.special_picture" class="avatar">
-				 	</label>
-				</div>
+	  		<div class="formitem">
+	  			<div class="fiteml textMain h3Title">
+	  				专辑图片:
+	  			</div>
+	  			<div class="fitemr">
+	  				<div class="avatar-uploader">
+						 	<label for="avatar2" @click="changeType(1)">
+						 		<i v-if="!themeObj.special_picture" class="el-icon-plus avatar-uploader-icon"></i>
+						 		<img v-if="themeObj.special_picture" :src="themeObj.special_picture" class="avatar">
+						 	</label>
+						</div>
+	  			</div>
+	  		</div>
+	  		<div class="formitem">
+	  			<div class="fiteml textMain h3Title">
+	  				首页展示图:
+	  			</div>
+	  			<div class="fitemr">
+	  				<div class="avatar-uploader">
+						 	<label for="avatar2" @click="changeType(2)">
+						 		<i v-if="!themeObj.show_picture" class="el-icon-plus avatar-uploader-icon"></i>
+						 		<img v-if="themeObj.show_picture" :src="themeObj.show_picture" class="avatar">
+						 	</label>
+						</div>
+	  			</div>
+	  		</div>
+	  		<div class="formitem">
+	  			<div class="fiteml textMain h3Title">
+	  				分享图片:
+	  			</div>
+	  			<div class="fitemr">
+	  				<div class="avatar-uploader">
+						 	<label for="avatar2" @click="changeType(3)">
+						 		<i v-if="!themeObj.share_special_picture" class="el-icon-plus avatar-uploader-icon"></i>
+						 		<img v-if="themeObj.share_special_picture" :src="themeObj.share_special_picture" class="avatar">
+						 	</label>
+						</div>
+	  			</div>
+	  		</div>
   		</div>
   	</div>
   	<el-button v-if="specialid==''&&mode==2" type="primary" @click="subClick">确认提交</el-button>
@@ -167,8 +199,13 @@ export default {
   data () {
     return {
       mode:1,
+      isDisEnble:false,
+      imgType:1,
      	themeObj:{
      		special_picture:'',
+     		show_time:'',
+     		show_picture:'',
+     		share_special_picture:'',
      		special_title:'',
      		special_describe:''
      	},
@@ -194,6 +231,9 @@ export default {
 	},
 	//方法
 	methods:{
+		changeType(val){
+			this.imgType = val; 
+		},
 		//创建专题
 		creatTheme(){
 			
@@ -209,7 +249,10 @@ export default {
   				let obj = {
   					special_picture:res.data.special_picture,
      				special_title:res.data.special_title,
-     				special_describe:res.data.special_describe
+     				special_describe:res.data.special_describe,
+     				share_special_picture:res.data.share_special_picture,
+     				show_time:res.data.show_time,
+     				show_picture:res.data.show_picture
   				};
   				that.themeObj = obj;
   			};
@@ -218,10 +261,9 @@ export default {
 		//提交创建专题
 		subClick(){
 			let obj = this.themeObj;
-			if(obj.special_picture==''||obj.special_title==''||obj.special_describe==''){return false};
+			if(obj.special_picture==''||obj.show_time==''||obj.show_picture==''||obj.share_special_picture==''||obj.special_title==''||obj.special_describe==''){return false};
 			let that = this;
 			that.$axios('post',that.Global.PATH.addfuspecial,obj,function(res){
-				console.log(res);
   			if(res.code==200){
   				that.$router.push({name:'UpLoadMusic',params:{
 							specialid:res.specialid,
@@ -234,11 +276,10 @@ export default {
 		//保存修改点击
 		saveClick(type){
 			let obj = this.themeObj;
-			if(obj.special_picture==''||obj.special_title==''||obj.special_describe==''){return false};
+			if(obj.special_picture==''||obj.show_time==''||obj.show_picture==''||obj.share_special_picture==''||obj.special_title==''||obj.special_describe==''){return false};
 			obj.specialid = this.specialid;
 			let that = this;
 			that.$axios('post',that.Global.PATH.updatesple,obj,function(res){
-				console.log(res);
   			if(res.code==200){
   				if(type==1){
   					that.$router.replace({name:'My-music'});
@@ -249,18 +290,25 @@ export default {
 							}
 						});
   				};
-
   			};
   		});
 		},
 		//上传图片
 		upLoadStart1(e){
 			let that = this;
+			that.isDisEnble = true;
   		that.$axios2('post',that.Global.PATH.upload,{
   			'mufile':e.target.files[0]
   		},function(res){
   			if(res.code==200){
-  				that.themeObj.special_picture = res.url;
+  				that.isDisEnble = false;
+  				if(that.imgType==1){
+  					that.themeObj.special_picture = res.url;
+  				}else if(that.imgType==2){
+  					that.themeObj.show_picture = res.url;
+  				}else{
+  					that.themeObj.share_special_picture = res.url;
+  				};
   			};
   		});
 		},
@@ -289,6 +337,6 @@ export default {
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 	@import url("./UpLoadTheme.css");
 </style>

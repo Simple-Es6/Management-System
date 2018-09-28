@@ -8,6 +8,7 @@ let list =  {
 	      	select:'1',
 	      	showType:1,
 	      	tableData:[],
+	      	tableData2:[],
 	      	tableData3:[],
 	      	totals:0,
 	      	deviceName:'',
@@ -25,7 +26,8 @@ let list =  {
   				this.getData();
   				break;
   			case 2:
-  				
+  				this.timeStart = this.$route.params.daytime;
+  				this.getData2();
   				break;
   			case 3:
   				this.timeStart = this.$route.params.daytime;
@@ -79,9 +81,38 @@ let list =  {
 		  		};
 	  		});
 		},
+		getData2(){
+			let that = this,
+			obj = {
+				pageNum:that.currentPage,
+	  			pageSize:that.pageSize,
+	  			userName:that.timeStart,
+	  			snCode:that.searchStr,
+	  			startTime:'',
+	  			endTime:''
+			};
+	  		that.$axios('post',that.Global.PATH.getBpByUserName,obj,function(res){
+		  		if(res.code==200){
+		  			that.allBp = res.data.allBp;
+		  			that.deviceName = res.data.deviceName;
+		  			that.totals = res.data.count;
+		  			that.tableData2 = res.data.xwBpDetailVoList;
+		  		};
+	  		});
+		},
 		searchbtn(){
 			this.currentPage = 1;
-			this.getData();
+			switch (this.showType){
+	        	case 1:
+	        		this.getData();
+	        		break;
+	        	case 2:
+	        		this.getData2();
+	        		break;
+	        	case 3:
+	        		this.getData3();
+	        		break;
+	        }
 		},
 		timeStartEnd(e){
 			console.log(e);
@@ -99,7 +130,17 @@ let list =  {
 	  	handleSizeChange(val) {
 	        console.log(`每页 ${val} 条`);
 	        this.pageSize = val;
-	        this.getData();
+	        switch (this.showType){
+	        	case 1:
+	        		this.getData();
+	        		break;
+	        	case 2:
+	        		this.getData2();
+	        		break;
+	        	case 3:
+	        		this.getData3();
+	        		break;
+	        }
 	    },
 	    handleCurrentChange(val) {
 	        console.log(`当前页: ${val}`);
@@ -109,12 +150,12 @@ let list =  {
 	        		this.getData();
 	        		break;
 	        	case 2:
+	        		this.getData2();
 	        		break;
 	        	case 3:
 	        		this.getData3();
 	        		break;
 	        }
-	        this.getData();
 	    }
 	},
 	//使用的组件

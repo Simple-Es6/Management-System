@@ -33,6 +33,18 @@ export default new Router({
                     component: resolve => require(['../page/Income/Income.vue'], resolve)
                 },
                 {
+                    path: '/home/incomelist',
+                    name: 'IncomeList',
+                    meta:{keepAlive:true,power:99},
+                    component: resolve => require(['../page/Income/IncomeList.vue'], resolve)
+                },
+                {
+                    path: '/home/IncomeDetails',
+                    name: 'IncomeDetails',
+                    meta:{keepAlive:false,power:99},
+                    component: resolve => require(['../page/Income/IncomeDetails.vue'], resolve)
+                },
+                {
                     path: '/home/voicebox',
                     name: 'VoiceBox',
                     meta:{keepAlive:false,power:5},
@@ -41,7 +53,7 @@ export default new Router({
                 {
                     path: '/home/blackpearl',
                     name: 'BlackPearl',
-                    meta:{keepAlive:false,power:5},
+                    meta:{keepAlive:true,power:5},
                     component: resolve => require(['../page/BlackPearl/BlackPearl.vue'], resolve)
                 },
                 {
@@ -89,7 +101,7 @@ export default new Router({
                 {
                     path: '/home/StarSong',
                     name: 'StarSong',
-                    meta:{keepAlive:true,power:5},
+                    meta:{keepAlive:false,power:5},
                     component: resolve => require(['../page/StarSong/StarSong.vue'], resolve)
                 },
                 {
@@ -175,6 +187,12 @@ export default new Router({
                     name: 'AdminSetting',
                     meta: {keepAlive: false,power:5},
                     component: resolve => require(['../page/AdminSetting/AdminSetting.vue'], resolve),
+                },
+                {
+                    path: '/home/VersionList',
+                    name: 'VersionList',
+                    meta: {keepAlive: false,power:5},
+                    component: resolve => require(['../page/VersionSetting/VersionList.vue'], resolve),
                 },
                 //Sun
                 {

@@ -53,14 +53,14 @@
   		<div class="boxitem">
   			<div class="boxitemleft">
   				<p class="textMain h2Title">
-  					未听完星歌
+  					音箱听歌得黑珍珠
   				</p>
   			</div>
   			<div class="boxitemcen">
   				<el-input-number size="mini" v-model="dataObj.noComplete"></el-input-number>
   			</div>
   			<div class="boxitemright">
-  				<p class="textInfo h4Title">未听完所有星歌音箱获得黑珍珠数</p>
+  				<p class="textInfo h4Title">听完设定值后，即算听完所有，可获得当天所有黑珍珠数</p>
   			</div>
   		</div>
   		<div class="boxitem">

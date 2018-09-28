@@ -8,6 +8,10 @@ const prefix1 = 'http://172.16.66.38:8080/';
 const tou = 'http://47.105.38.148:8081/futuremelody-admin/';
 const prefix1 = 'http://47.105.38.148:8081/futuremelody-admin/';*/
 const PATH = {
+	disableuser:tou+'/disableuser',//禁用用户
+	openuser:tou+'/openuser',//启用用户
+	deleteuser:tou+'/deleteuser',//删除用户
+	queryuserlist:tou+'/queryuserlist',//获取用户列表
 	getRule:tou1+'bpRule/getRule',//获取规则
 	bpRule:tou1+'bpRule/update',//修改规则
 	prlist: tou1+'pr/list',//获取小未听歌记录
@@ -27,11 +31,15 @@ const PATH = {
 	upload:tou+'upload',//上传图片
 	uploadmusic:tou+'uploadmusic',//上传音乐
 	uploadlrc:tou+'uploadlrc',//上传歌词
-	addSpecialmusic:tou+'specials/addSpecialmusic',//上传专题
+	addSpecialmusic:tou+'specials/addSpecialmusic',//上传专题音乐
 	queryspleByid:tou+'queryspleByid',//专辑详情
 	updatesple:tou+'updatesple',//修改专题
 	queryfensilist:tou+'queryfensilist',//粉丝列表
-	queryzichan:tou+'queryzichan'//收入列表
+	querymusicusershouyi:tou+'starmastuser/querymusicusershouyi',//收入列表
+	updatemusicdetail:tou + '/updatemusicdetail', //修改音乐
+	queryzoushitu:tou+'/starmastuser/queryzoushitu',//获取收入折线图
+	queryuserProfit:tou+'/starmastuser/queryuserProfit',//音乐人收益排行
+	queryuserProfitxiangqing:tou+'/starmastuser/queryuserProfitxiangqing'//音乐人收益详情
 },
 PATH1 = {
     querysplelist: tou + 'querysplelist', //音乐管理（专题列表)
@@ -54,7 +62,8 @@ PATH1 = {
 	queryplantbyid:tou1+'/starmastuser/queryplantbyid',//星球详情
 	updateplantbyid:prefix1+'/starmastuser/updateplantbyid',//修改星球详情
 	querymusicuserlist:tou1+'/starmastuser/querymusicuserlist',//艺人管理列表
-	querymusicuserbyid:tou1+'/starmastuser/querymusicuserbyid',//查询音乐人信息
+	querymusicuserbyid:tou1+'/starmastuser/querymusicuserbyid'//查询音乐人信息
+	
 },
 ajaxs = function(type,urls,dataObj,callback){
 	let params = new URLSearchParams();

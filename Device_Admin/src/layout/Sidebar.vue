@@ -228,7 +228,23 @@
                     	'icon':'',
                     	'showType':99,
                     	'index':'/home/income',
-                    	'isSon':false
+                    	'isSon':true,
+                    	'list':[
+                    		{
+								'name':'我的收益',
+								'path':'/home/income',
+								'icon':'',
+								'index':'/home/income',
+								'isSon':false
+							},
+							{
+								'name':'收入榜单',
+								'path':'/home/incomelist',
+								'icon':'',
+								'index':'/home/incomelist',
+								'isSon':false
+							}
+						]
 					},
 					{
 						'name':'居民管理',
@@ -344,6 +360,13 @@
 								'path':'AdminSetting',
 								'icon':'',
 								'index':'/home/AdminSetting',
+								'isSon':false
+							},
+							{
+								'name':'版本设置',
+								'path':'VersionSetting',
+								'icon':'',
+								'index':'/home/VersionList',
 								'isSon':false
 							}
                     	]

@@ -54,11 +54,11 @@
         <el-table-column prop="create_times" label="发布日期"></el-table-column>
         <el-table-column prop="singer_name" label="歌手"></el-table-column>
         <el-table-column prop="special_title" label="专辑" ></el-table-column>
-        <!-- <el-table-column prop="album_type" label="专辑类型" ></el-table-column>
-        <el-table-column prop="status" label="状态" ></el-table-column> -->
+        <!-- <el-table-column prop="album_type" label="专辑类型" ></el-table-column> -->
+        <!-- <el-table-column prop="is_examine" label="状态" ></el-table-column> -->
         <el-table-column prop="operate" label="操作" >
             <template slot-scope="scope">
-                <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                <el-button size="mini" @click="goDetails(scope.row)">编辑</el-button>
                 <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
             </template>
         </el-table-column>

@@ -135,6 +135,6 @@ import list from './UpLoadMusic.js'
 export default list;
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 	@import url("./UpLoadMusic.css" );	
 </style>

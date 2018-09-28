@@ -7,106 +7,151 @@
   	<div class="incomeitem">
   		<div class="list">
 				<p class="textMain h2Title">黑珍珠</p>
-				<p class="textMain h1Title">300000</p>
+				<p class="textMain h1Title">{{assets_bp}}</p>
 				<el-button size="mini">提    现</el-button>
   		</div>
   		<div class="list">
 				<p class="textMain h2Title">分贝</p>
-				<p class="textMain h1Title">300000</p>
+				<p class="textMain h1Title">{{integral}}</p>
 				<el-button size="mini">兑    换</el-button>
   		</div>
   	</div>
   	<div class="incomeitem">
-  		<span class="textMain h1Title">我的收益</span>
-  		<el-radio-group v-model="radioType" size="mini">
-	      <el-radio-button label="0">全部</el-radio-button>
-	      <el-radio-button label="1">黑珍珠</el-radio-button>
-	      <el-radio-button label="2">分贝</el-radio-button>
-	    </el-radio-group>
+  		<div class="axisleft">
+  			<div class="textMain h2Title">
+  				昨日收益
+  			</div>
+  			<div class="textMain h2Title">
+  				黑珍珠:{{zuoassets_bp}}
+  			</div>
+  			<div class="textMain h2Title">
+  				笔数:0
+  			</div>
+  			<div class="textMain h2Title">
+  				分贝:{{zuointegral}}
+  			</div>
+  			<div class="textMain h2Title">
+  				笔数:0
+  			</div>
+  		</div>
+  		<div class="axisCon" >
+  			<div class="axisConTop">
+  				<el-radio-group v-model="radioDay" @change="dayChange" size="mini">
+			      <el-radio-button label="7">7天</el-radio-button>
+			      <el-radio-button label="30">30天</el-radio-button>
+			    </el-radio-group>
+  			</div>
+  			<div ref="incomeitemaxis" class="axisConBot">
+  				
+  			</div>
+  		</div>
   	</div>
-  	<el-table
-      :data="tableData"
-      style="width: 100%">
-      <el-table-column
-        prop="create_times"
-        label="时间"
-      >
-      </el-table-column>
-      <el-table-column
-        prop="xinxi"
-        label="类型"
-      >
-      </el-table-column>
-      <el-table-column
-        prop="codeing"
-        label="数量">
-      </el-table-column>
-    </el-table>
-    <div class="pagebot">
-	    <el-pagination
-	      @size-change="handleSizeChange"
-	      @current-change="handleCurrentChange"
-	      :current-page="currentPage"
-	      :page-sizes="[10, 20, 50, 100]"
-	      :page-size="pageSize"
-	      layout="total, sizes, prev, pager, next, jumper"
-	      :total="total">
-	    </el-pagination>
-    </div>
+  	<div class="incomeitem">
+  		<span class="textMain h1Title">我的收益</span>
+  	</div>
+  	<div class="incomeitem">
+	    <el-tabs v-model="radioType" >
+    		<el-tab-pane label="全部" name="0">
+    			<el-table
+			      :data="tableData1"
+			      style="width: 100%">
+			      <el-table-column
+			        prop="create_times"
+			        label="时间"
+			      >
+			      </el-table-column>
+			      <el-table-column
+			        prop="xinxi"
+			        label="类型"
+			      >
+			      </el-table-column>
+			      <el-table-column
+			        prop="codeing"
+			        label="数量">
+			      </el-table-column>
+			    </el-table>
+			    <div class="pagebot">
+				    <el-pagination
+				      @size-change="handleSizeChange1"
+				      @current-change="handleCurrentChange1"
+				      :current-page="currentPage1"
+				      :page-sizes="[10, 20, 50, 100]"
+				      :page-size="pageSize1"
+				      layout="total, sizes, prev, pager, next, jumper"
+				      :total="total1">
+				    </el-pagination>
+			    </div>
+    		</el-tab-pane>
+		    <el-tab-pane label="分贝" name="1">
+		    	<el-table
+			      :data="tableData2"
+			      style="width: 100%">
+			      <el-table-column
+			        prop="create_times"
+			        label="时间"
+			      >
+			      </el-table-column>
+			      <el-table-column
+			        prop="xinxi"
+			        label="类型"
+			      >
+			      </el-table-column>
+			      <el-table-column
+			        prop="codeing"
+			        label="数量">
+			      </el-table-column>
+			    </el-table>
+			    <div class="pagebot">
+				    <el-pagination
+				      @size-change="handleSizeChange2"
+				      @current-change="handleCurrentChange2"
+				      :current-page="currentPage2"
+				      :page-sizes="[10, 20, 50, 100]"
+				      :page-size="pageSize2"
+				      layout="total, sizes, prev, pager, next, jumper"
+				      :total="total2">
+				    </el-pagination>
+			    </div>
+		    </el-tab-pane>
+		    <el-tab-pane label="黑珍珠" name="2">
+		    	<el-table
+			      :data="tableData3"
+			      style="width: 100%">
+			      <el-table-column
+			        label="时间"
+			      >
+							<template slot-scope="scope">{{Global.oTime(scope.row.create_time)}}</template>
+			      </el-table-column>
+			      <el-table-column
+			        prop="xinxi"
+			        label="类型"
+			      >
+			      </el-table-column>
+			      <el-table-column
+			        prop="codeing"
+			        label="数量">
+			      </el-table-column>
+			    </el-table>
+			    <div class="pagebot">
+				    <el-pagination
+				      @size-change="handleSizeChange3"
+				      @current-change="handleCurrentChange3"
+				      :current-page="currentPage3"
+				      :page-sizes="[10, 20, 50, 100]"
+				      :page-size="pageSize3"
+				      layout="total, sizes, prev, pager, next, jumper"
+				      :total="total3">
+				    </el-pagination>
+			    </div>
+		    </el-tab-pane>
+		  </el-tabs>
+  	</div>
+  	
   </div>
 </template>
 <script>
-export default {
-  name: 'Income',
-  data () {
-    return {
-    	radioType:0,
-      tableData:[],
-      currentPage:1,
-      total:0,
-      pageSize:10,
-      integral:0
-    }
-  },
-  //组件生成时执行事件
-  created:function(){
-  	this.getData(1);
-	},
-	//页面渲染完成事件
-	mounted(){
-		
-	},
-	//方法
-	methods:{
-		handleSizeChange(val) {
-	    console.log(`每页 ${val} 条`);
-	    this.pageSize = val;
-	    this.getData(this.currentPage);
-	  },
-	  handleCurrentChange(val) {
-	    console.log(`当前页: ${val}`);
-	    console.log(this.currentPage);
-	    this.getData(val);
-	  },
-	  getData(page){
-	  	let that = this;
-			that.$axios('post',that.Global.PATH.queryzichan,{
-				startRecord:page,
-				pageSize:that.pageSize
-			},function(res){
-	  			if(res.code==200){
-	  				that.tableData = res.data;
-	  				that.total = res.count;
-	  				that.integral = res.integral;
-	  			};
-			});
-	  }
-	},
-	//使用的组件
-  components:{
-		
-	}
-}
+import list from './Income.js';
+export default list;
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -40,8 +40,6 @@ let upmusic = {
   			this.getData();
   		};
 	},
-	mounted(){
-	},
 	methods:{
 		getData(){
 			let that = this;
@@ -167,10 +165,11 @@ let upmusic = {
 			let arr = that.musiclist;
 			console.log(arr);
 			for (let i = 0;i<arr.length;i++) {
-				if(arr[i].music_path==''||arr[i].music_picture==''){
-					/*that.$alert('请检查第'+(i)+'项的音乐图片或歌曲文件是否上传', '提示', {
+				if(arr[i].music_path==''||arr[i].music_picture==''||arr[i].music_name==''||arr[i].singer_name==''){
+					that.$alert('请检查第'+(i+1)+'项的音乐图片或歌曲文件是否上传', '提示', {
 			          	confirmButtonText: '确定'
-			        });*/
+			        });
+			       	break;
 					return false;
 				};
 			};
@@ -209,6 +208,7 @@ let upmusic = {
 		      });          
 		    });
 		},
+		//获取文件名
 		getFileName(path){ 
 
 			return path.substring(0, path.lastIndexOf("."));

@@ -147,6 +147,7 @@
 			      prop="bindingPhone"
 			      label="绑定手机号"
 			    >
+			    	<template slot-scope="scope"><span style="cursor: pointer;" class="textDanger" @click="goDetails(scope.row.bindingPhone,2)">{{(scope.row.bindingPhone)}}</span></template>
 			    </el-table-column>
 			    <el-table-column
 			      prop="deviceName"
@@ -159,9 +160,9 @@
 			    >
 			    </el-table-column>
 			    <el-table-column
-			      prop="snCode"
 			      label="mac地址"
 			    >
+			    	<template slot-scope="scope"><span style="cursor: pointer;" class="textDanger" @click="goDetails(scope.row.mac,3)">{{(scope.row.mac)}}</span></template>
 			    </el-table-column>
 			    <el-table-column
 			    	sortable

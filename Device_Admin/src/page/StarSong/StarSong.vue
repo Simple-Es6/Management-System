@@ -150,6 +150,7 @@
     	data(){
     		return{
     			timeStart:[],
+    			maxSheet:0,
     			totals:0,
     			pageSize:10,
     			currentPage:1,
@@ -168,12 +169,15 @@
         		this.getData1();
         	},
         	goDetails(val){
+        		console.log(val)
 	        	this.$router.push({name:'PlayMusic',params:{
 						music:val.music_path,
 						lrc:val.lyrics,
 						type:1,
 						musicname:val.music_name,
-						singername:val.singer_name
+						singername:val.singer_name,
+						music_picture:'',
+						music_id:'',
 					}
 				});
 	        },
@@ -191,6 +195,7 @@
 	    		},function(res){
 			  		if(res.code==200){
 			  			that.totals = res.count;
+			  			that.maxSheet = res.max;
 			  			that.tableData = res.data;
 			  		};
 		  		});
@@ -207,7 +212,7 @@
         	},
             func (){
                 this.$router.push({name:'Addsheet',params:{
-						sheet:this.totals+1
+						sheet:Number(this.maxSheet)+1
 					}		
                 });
             },
