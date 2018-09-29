@@ -368,6 +368,27 @@
 								'icon':'',
 								'index':'/home/VersionList',
 								'isSon':false
+							},
+							{
+								'name':'评论设置',
+								'path':'CommentSetting',
+								'icon':'',
+								'index':'/home/CommentList',
+								'isSon':false
+							},
+							{
+								'name':'主题设置',
+								'path':'ThemeSetting',
+								'icon':'',
+								'index':'/home/ThemeList',
+								'isSon':false
+							},
+							{
+								'name':'用户设置',
+								'path':'UserSetting',
+								'icon':'',
+								'index':'/home/UserList',
+								'isSon':false
 							}
                     	]
 					}
