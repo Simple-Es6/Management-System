@@ -288,7 +288,7 @@ export default new Router({
                 },
                 {
 					path: '/home/attend',
-					name: 'attend',
+					name: 'detail',
 					meta: { keepAlive: false ,power:5},
 					component: resolve => require(['../pages/ActivitiesSet/attend.vue'], resolve),
 				}

@@ -44,12 +44,12 @@ body{
 	width: 100%;
 	height: 100%;
 	 -webkit-overflow-scrolling : touch;
-	-webkit-user-select: none;
+	/*-webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; 
+  user-select: none; */
 }
-#app {
+#app{
 	width: 100%;
 	min-height: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

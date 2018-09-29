@@ -57,7 +57,7 @@
   				</p>
   			</div>
   			<div class="boxitemcen">
-  				<el-input-number size="mini" v-model="dataObj.noComplete"></el-input-number>
+  				<el-input-number size="mini" v-model="dataObj.smCount"></el-input-number>
   			</div>
   			<div class="boxitemright">
   				<p class="textInfo h4Title">听完设定值后，即算听完所有，可获得当天所有黑珍珠数</p>

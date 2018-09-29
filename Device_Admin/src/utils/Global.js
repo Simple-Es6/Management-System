@@ -1,12 +1,12 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 
-const tou1 = 'http://120.79.183.36:8081/futuremelody-admin/';
+/*const tou1 = 'http://120.79.183.36:8081/futuremelody-admin/';
 const tou = 'http://120.79.183.36:8081/futuremelody-admin/';
-const prefix1 = 'http://172.16.66.38:8080/';
-/*const tou1 = 'http://47.105.38.148:8081/futuremelody-admin/';
+const prefix1 = 'http://172.16.66.38:8080/';*/
+const tou1 = 'http://47.105.38.148:8081/futuremelody-admin/';
 const tou = 'http://47.105.38.148:8081/futuremelody-admin/';
-const prefix1 = 'http://47.105.38.148:8081/futuremelody-admin/';*/
+const prefix1 = 'http://47.105.38.148:8081/futuremelody-admin/';
 const PATH = {
 	disableuser:tou+'/disableuser',//禁用用户
 	openuser:tou+'/openuser',//启用用户
@@ -60,7 +60,7 @@ PATH1 = {
 	querystarmastuserbyid:tou1+'/starmastuser /querystarmastuserbyid',//查看用户资料
 	updatemastuserbyid:tou1+'/starmastuser/updatemastuserbyid',//修改用户资料
 	queryplantbyid:tou1+'/starmastuser/queryplantbyid',//星球详情
-	updateplantbyid:tou1+'/starmastuser/updateplantbyid',//修改星球详情
+	updateplantbyid:prefix1+'/starmastuser/updateplantbyid',//修改星球详情
 	querymusicuserlist:tou1+'/starmastuser/querymusicuserlist',//艺人管理列表
 	querymusicuserbyid:tou1+'/starmastuser/querymusicuserbyid'//查询音乐人信息
 	
