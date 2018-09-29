@@ -137,7 +137,7 @@
 								type:res.data.musiciantype,
 								phone:_this.phone
 							};
-							obj.type = 4;
+							obj.type = 5;
 							_this.$store.dispatch('loginState',obj);
 							switch(obj.type){
 								case 2:
@@ -154,7 +154,7 @@
 								break;	
 							}
 						}else{
-							alert(res.msg);
+							_this.$message.error(res.msg);
 						};
 					});
 				}else{

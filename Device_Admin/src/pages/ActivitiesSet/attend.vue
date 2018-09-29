@@ -83,8 +83,13 @@
               <el-table-column prop="" label="历史最高天数"></el-table-column>
               <el-table-column prop="" label="奖励总分贝"></el-table-column>
           </el-table>
+          <!-- 分页 -->
+            <el-col :span="24" class="toolbar">
+                <el-pagination layout="total, prev, pager, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="everyPageCount" :total="total"  :current-page.sync="currentPage" style="float:right;">
+                </el-pagination>
+            </el-col> 
       </div>
-        
+       
   </div>
 </template>
 <script>
@@ -110,6 +115,10 @@ export default {
       ],
       tableData:[],
       downIcon:true,
+      total: 0,
+      page: 1,
+      everyPageCount: 10,
+      currentPage: 1,
     }
   },
   //组件生成时执行事件

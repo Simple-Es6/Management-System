@@ -196,6 +196,24 @@ export default new Router({
                 },
                 //Sun
                 {
+                    path: '/home/CommentList',
+                    name: 'CommentList',
+                    meta: {keepAlive: false,power:5},
+                    component: resolve => require(['../pages/CommentSetting/CommentList.vue'], resolve),
+                },
+                {
+                    path: '/home/ThemeList',
+                    name: 'ThemeList',
+                    meta: {keepAlive: false,power:5},
+                    component: resolve => require(['../pages/ThemeSetting/ThemeList.vue'], resolve),
+                },
+                {
+                    path: '/home/UserList',
+                    name: 'UserList',
+                    meta: {keepAlive: false,power:5},
+                    component: resolve => require(['../pages/UserSetting/UserList.vue'], resolve),
+                },
+                {
                     path: '/home/MyMusic',
                     name: 'My-music',
                     meta:{keepAlive:false,power:99},
