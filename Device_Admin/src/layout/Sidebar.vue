@@ -26,7 +26,7 @@
 </template>
 <script>
 	import sidebar1 from './sidebar1.js';
-	import sidebar2 from './sidebar1.js';
+	import sidebar2 from './sidebar2.js';
     export default {
         data() {
             return {
