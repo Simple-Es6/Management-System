@@ -9,18 +9,18 @@
 			<el-row  type="flex"  justify="center" :gutter="30">
 				<el-col :span="9">
 					<div class="h1Title textMain">
-						手机号
+						账号
 					</div>
 				</el-col>
 			</el-row>
 			<el-row style="margin-top: 10px;" type="flex"  justify="center" :gutter="30">
 				<el-col :span="9">
-					<el-input @focus="phoneFocus" @blur="phoneBlur" type="tel" maxlength="11" v-model="phone" placeholder="请输入手机号"></el-input>
+					<el-input @focus="phoneFocus" @blur="phoneBlur" type="tel" maxlength="11" v-model="phone" placeholder="请输入账号"></el-input>
 				</el-col>
 			</el-row>
 			<el-row style="margin-top:0;" :gutter="30" type="flex"  justify="center" v-if="errorphone">
 				<el-col :span="9" >
-					<div v-if="errorphone" class="h3Title textDanger">手机号输入错误</div>
+					<div v-if="errorphone" class="h3Title textDanger">账号输入错误</div>
 				</el-col>
 			</el-row>
 			<!-- <el-row  type="flex"  justify="center" :gutter="30">
@@ -46,7 +46,7 @@
 			<el-row  type="flex"  justify="center" :gutter="30">
 				<el-col :span="9">
 					<div class="h1Title textMain">
-						登录密码
+						密码
 					</div>
 				</el-col>
 			</el-row>
@@ -74,7 +74,7 @@
 		data() {
 			return {
 				isLogin:0,
-				reg:/^(((19[0-9]{1})|(17[0-9]{1})|(16[0-9]{1})|(14[0-9]{1})|(13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/,
+				reg:/^(((19[0-9]{1})|(17[0-9]{1})|(16[0-9]{1})|(14[0-9]{1})|(12[0-9]{1})|(13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/,
 				phone:'',
 				times:'获取验证码',
 				ercode:'',
@@ -126,7 +126,7 @@
 		  	},
 		  	submitClick(){
 				let _this = this;
-				if(_this.reg.test(_this.phone)){
+				//if(_this.reg.test(_this.phone)){
 					let params={
 						user_name:this.phone,
 						password:this.password
@@ -137,7 +137,7 @@
 								type:res.data.musiciantype,
 								phone:_this.phone
 							};
-							obj.type = 5;
+							obj.type = 4;
 							_this.$store.dispatch('loginState',obj);
 							switch(obj.type){
 								case 2:
@@ -157,9 +157,9 @@
 							_this.$message.error(res.msg);
 						};
 					});
-				}else{
-					_this.errorphone;
-				}
+				//}else{
+					//_this.errorphone;
+				//}
 				
 		  	}
 		}

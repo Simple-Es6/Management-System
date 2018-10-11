@@ -93,7 +93,7 @@ let arr = [
     {
         path: '/home/AccountManage',
         name: 'AccountManage',
-        meta: { keepAlive: false ,power:5},
+        meta: { keepAlive: false ,power:99},
         component: resolve => require(['../pages/AccountManage/accountManage.vue'], resolve),
     },
     {

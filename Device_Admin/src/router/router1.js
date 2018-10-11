@@ -146,19 +146,19 @@ let arr1 = [
     {
         path: '/home/fanslist',
         name: 'FansList',
-        meta: {keepAlive: false,power:5},
+        meta: {keepAlive: false,power:99},
         component: resolve => require(['../page/Fans/FansList.vue'], resolve)
     },
     {
         path: '/home/FansReward',
         name: 'FansReward',
-        meta: {keepAlive: false,power:5},
+        meta: {keepAlive: false,power:99},
         component: resolve => require(['../page/Fans/FansReward.vue'], resolve)
     },
     {
         path: '/home/FansInteract',
         name: 'FansInteract',
-        meta: {keepAlive: false,power:5},
+        meta: {keepAlive: false,power:99},
         component: resolve => require(['../page/Fans/FansInteract.vue'], resolve)
     },
     {

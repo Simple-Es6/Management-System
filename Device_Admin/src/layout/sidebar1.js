@@ -8,7 +8,7 @@ let arr = [
     	'isSon':false
     },
     {
-    	'name':'艺人首页',
+    	'name':'音乐人首页',
     	'path':'Artist',
     	'icon':'',
     	'showType':2,

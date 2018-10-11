@@ -21,7 +21,7 @@
                     </el-col>
                     <el-col :span="12">
                         居民总数
-                        <p>171人</p>
+                        <p>{{jumincount}}人</p>
                     </el-col>
                 </el-row>
             </el-col>
@@ -35,8 +35,8 @@
         </div>
         <div class="dataEchars" ref="dataEchars"></div>        
         <el-table :data="tableData" stripe style="width: 100%" >
-            <el-table-column  prop=" " label="头像" ></el-table-column>
-            <el-table-column  prop=" " label="昵称" ></el-table-column>
+            <el-table-column  prop="head_portrait" label="头像" ></el-table-column>
+            <el-table-column  prop="nickname" label="昵称" ></el-table-column>
             <el-table-column  prop=" " label="加入" ></el-table-column>
             <el-table-column  prop=" " label="打赏" >
                 <template slot-scope="scope" width="30">

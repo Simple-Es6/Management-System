@@ -104,7 +104,7 @@ let arr = [
 		'name':'账号管理',
 		'path':'AccountManage',
 		'icon':'',
-		'showType':5,
+		'showType':99,
 		'index':'/home/AccountManage',
 		'isSon':false
 	},

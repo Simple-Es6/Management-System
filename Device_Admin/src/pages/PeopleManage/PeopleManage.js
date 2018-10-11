@@ -8,35 +8,68 @@ let list={
             everyPageCount: 10,
             currentPage:1,
             page: 1,
-            radio:''
+            radio:'',
+            qushilist:[],
+            jumincount:'',
+            times:[],
+            income_decibel:[],
+            axis:{
+	    		times:[],
+	    		income_decibel:[]
+	    	},
         }
     },
     //组件生成时执行事件
   	created:function(){
-  	
+        this.getData(1);
 	},
 	//页面渲染完成事件
 	mounted(){
-		this.myChart1 = this.$echarts.init(this.$refs.dataEchars);
-		this.myChart1.setOption({
-		    xAxis: {
-                type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [{
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                type: 'line',
-                // 显示数值
-                itemStyle : { normal: {label : {show: true}}}
-            }]
-		});
+		this.changeData();
 	},
 	//方法
 	methods:{
-		
+        changeData(){
+            this.myChart1 = this.$echarts.init(this.$refs.dataEchars);
+            this.myChart1.setOption({
+                xAxis: {
+                    type: 'category',
+                    data: this.axis.times,
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                tooltip: {
+			        trigger: 'axis'
+			    },
+                series: [{
+                    data: this.axis.income_decibel,
+                    type: 'line',
+                    // 显示数值
+                    itemStyle : { normal: {label : {show: true}}}
+                }]
+            });
+        },
+		getData(num){
+            let _this=this;
+            let params={
+                startRecord:num,
+                pageSize:_this.everyPageCount,
+            };
+            _this.$axios('post', _this.Global.PATH1.queryjumin, params, res => {
+                if (res.code == 200) {
+                    _this.tableData = res.data1;
+                    _this.qushilist=res.qushilist;
+                    _this.jumincount=res.jumincount;
+                    
+                    res.qushilist.reverse().forEach(function(ele) {
+                        _this.axis.times.push(ele.times);
+                        _this.axis.income_decibel.push(ele.income_decibel);
+                        _this.changeData()
+                    });
+                }
+            });
+        }
 	},
 	//使用的组件
   	components:{

@@ -24,7 +24,7 @@
           <el-table-column type="selection" width="55"></el-table-column>
             <el-table-column prop="special_picture" label="封面" width="80">
                  <template slot-scope="scope">
-                    <img   :src="scope.row.music_picture" alt="" style="width: 50px;height: 50px;">
+                    <img   :src="scope.row.special_picture" alt="" style="width: 50px;height: 50px;">
                  </template>
             </el-table-column>
             <el-table-column prop="create_times" label="上传时间" width="180"></el-table-column>

@@ -23,7 +23,7 @@
                 </template>
             </el-table-column>
     </el-table>
-    <el-dialog title="提示" :visible.sync="dialogVisible">
+    <el-dialog title="增加" :visible.sync="dialogVisible">
         <span>
             <el-input type="textarea" :rows="2" placeholder="请输入内容" v-model="textarea" class="textarea"></el-input>
             <el-button @click="dialogVisible = false">取 消</el-button>
@@ -81,37 +81,49 @@ export default {
         },
         confirm(){
             let _this=this;
-            _this.dialogVisible = false;
-            let params={
-                examine:_this.textarea,
-                type:this.radio1,
-            }
-            _this.$axios('post',_this.Global.PATH1.addExamine,params,res=>{
-                if(res.code==200){
-                    this.getData();
+            if(_this.textarea==''){
+                _this.$message('输入内容为空');
+                return false;
+            }else{
+                let params={
+                    examine:_this.textarea,
+                    type:this.radio1,
                 }
-            })
+                _this.dialogVisible = false;
+                _this.$axios('post',_this.Global.PATH1.addExamine,params,res=>{
+                    if(res.code==200){
+                        this.getData();
+                    }
+                }) 
+            }
+                        
         },
         confirmAmend(){
             let _this=this;
-            _this.dialogVisibleAmend = false;
-            
-            let params={
-                examine:_this.textareaA,
-                id:_this.dialogObj.id,
-            }
-            _this.$axios('post', _this.Global.PATH1.updateExamine, params, res => {
-                if (res.code == 200) {
-                   this.getData();
+            if(_this.textareaA==''){
+                _this.$message('输入内容为空');
+                return false;
+            }else{
+                _this.dialogVisibleAmend = false;
+                let params={
+                    examine:_this.textareaA,
+                    id:_this.dialogObj.id,
                 }
-            });
+                _this.$axios('post', _this.Global.PATH1.updateExamine, params, res => {
+                    if (res.code == 200) {
+                    this.getData();
+                    }
+                });
+            }
+
+            
         },
         tabType(){
             this.getData();
         },
         handleDelete(index, row) {
             let _this = this;
-            _this.$confirm('确定要通过该用户的信息?', '提示', {
+            _this.$confirm('确定要删除此条信息?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'

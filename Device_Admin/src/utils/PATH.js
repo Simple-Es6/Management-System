@@ -1,6 +1,8 @@
-let tou1 = 'http://47.105.38.148:8081/futuremelody-admin/',
-	tou = 'http://47.105.38.148:8081/futuremelody-admin/',
-	prefix1 = 'http://47.105.38.148:8081/futuremelody-admin/',
+// let tou1 = 'http://47.105.38.148:8081/futuremelody-admin/',
+// 	tou = 'http://47.105.38.148:8081/futuremelody-admin/',
+// 	prefix1 = 'http://47.105.38.148:8081/futuremelody-admin/',
+let tou = 'http://120.79.183.36:8081/futuremelody-admin/',
+	tou1 = 'http://120.79.183.36:8081/futuremelody-admin/',
 	PATH = {
 	disableuser:tou+'/disableuser',//禁用用户
 	openuser:tou+'/openuser',//启用用户

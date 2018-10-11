@@ -133,7 +133,7 @@ let list = {
                 let params={
                     specialid:val.specialid
                 }
-                _this.$axios('post', _this.Global.PATH1.queryspleByid, params, res => {
+                _this.$axios('post', _this.Global.PATH.queryspleByid, params, res => {
                     if (res.code == 200) {
                     _this.dialogVisible = true;
                     _this.specilIndex = index;
