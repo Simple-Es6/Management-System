@@ -231,7 +231,7 @@
     }
 </script>
 
-<style>
+<style scoped="scoped">
 	.el-table .cell, .el-table th>div{
 		padding: 0 !important;
 		text-align: center !important;

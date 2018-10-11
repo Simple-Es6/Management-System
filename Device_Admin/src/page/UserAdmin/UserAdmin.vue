@@ -142,7 +142,7 @@ export default {
   			obj.token = val.token;
   		};
   		arr.push(obj);
-  		that.$confirm('继续吗?', '提示', {
+  		that.$confirm('确定要禁用该用户吗?', '提示', {
 	      confirmButtonText: '确定',
 	      cancelButtonText: '取消',
 	      type: 'warning'
@@ -182,7 +182,7 @@ export default {
 	  		};
 	  		arr.push(obj);
   		});
-  		that.$confirm('继续吗?', '提示', {
+  		that.$confirm('确定要禁用选中的用户吗?', '提示', {
 	      confirmButtonText: '确定',
 	      cancelButtonText: '取消',
 	      type: 'warning'
@@ -202,7 +202,7 @@ export default {
   		obj = {};
   		obj.userid = val.userid;
   		arr.push(obj);
-  		that.$confirm('确定要删除吗?', '提示', {
+  		that.$confirm('确定要删除该用户吗?', '提示', {
 	      confirmButtonText: '确定',
 	      cancelButtonText: '取消',
 	      type: 'warning'
@@ -225,7 +225,7 @@ export default {
   			obj.userid = val.userid;
 	  		arr.push(obj);
   		});
-  		that.$confirm('确定要删除吗?', '提示', {
+  		that.$confirm('确定要删除选中的用户吗?', '提示', {
 	      confirmButtonText: '确定',
 	      cancelButtonText: '取消',
 	      type: 'warning'

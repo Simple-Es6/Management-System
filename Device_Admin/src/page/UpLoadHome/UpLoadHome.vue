@@ -212,7 +212,10 @@ export default {
 		//提交创建专题
 		subClick(){
 			let obj = this.themeObj;
-			if(obj.special_picture==''||obj.special_title==''||obj.special_describe==''){return false};
+			if(obj.special_picture==''||obj.special_title==''||obj.special_describe==''){
+				this.$message.error('请仔细检查各项是否填写完整');
+				return false;
+			};
 			let that = this;
 			that.$axios('post',that.Global.PATH.addfuspecial,obj,function(res){
 				console.log(res);
@@ -228,7 +231,10 @@ export default {
 		//保存修改点击
 		saveClick(type){
 			let obj = this.themeObj;
-			if(obj.special_picture==''||obj.special_title==''||obj.special_describe==''){return false};
+			if(obj.special_picture==''||obj.special_title==''||obj.special_describe==''){
+				this.$message.error('请仔细检查各项是否填写完整');
+				return false;
+			};
 			obj.specialid = this.specialid;
 			let that = this;
 			that.$axios('post',that.Global.PATH.updatesple,obj,function(res){

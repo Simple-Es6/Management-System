@@ -51,7 +51,7 @@
   	</div>
   	<div class="incomeitem">
 	    <el-tabs v-model="radioType" >
-    		<el-tab-pane label="全部" name="0">
+    		<!--<el-tab-pane label="全部" name="0">
     			<el-table
 			      :data="tableData1"
 			      style="width: 100%">
@@ -81,7 +81,7 @@
 				      :total="total1">
 				    </el-pagination>
 			    </div>
-    		</el-tab-pane>
+    		</el-tab-pane>-->
 		    <el-tab-pane label="分贝" name="1">
 		    	<el-table
 			      :data="tableData2"

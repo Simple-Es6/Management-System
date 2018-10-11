@@ -2,7 +2,8 @@ import axios from 'axios';
 import PATH from './PATH.js';
 import PATH1 from './PATH1.js';
 axios.defaults.withCredentials = true;
-const tou = 'http://47.105.38.148:8081/futuremelody-admin/',
+const tou = 'http://120.79.183.36:8081/futuremelody-admin/',
+//const tou = 'http://47.105.38.148:8081/futuremelody-admin/',
 ajaxs = function(type,urls,dataObj,callback){
 	let params = new URLSearchParams();
 	for (let key in dataObj) {
@@ -22,7 +23,7 @@ ajaxs = function(type,urls,dataObj,callback){
 },
 //上传文件
 ajaxs2 = function(type,urls,dataObj,callback){
-   	let param = new FormData(); // 创建form对象
+   	let param = new FormData(); //创建form对象
    	param.append('mufile',dataObj.mufile, dataObj.mufile.name);
 	axios({
 		method:type,

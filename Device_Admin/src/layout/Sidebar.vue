@@ -6,7 +6,7 @@
 		    active-text-color="#ffd04b"
        	>
             <template v-for="item in items">
-            	<template v-if="item.showType==showType||item.showType==99" >
+            	<template v-if="item.showType==showType||item.showType==99&&showType!=3" >
 	                <template v-if="item.isSon" >
 	                    <el-submenu :index="item.index">
 	                        <template slot="title"><i :class="item.icon"></i>{{item.name}}</template>

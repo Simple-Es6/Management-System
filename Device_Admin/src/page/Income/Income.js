@@ -2,7 +2,7 @@ let list = {
   	name: 'Income',
   	data () {
 	    return {
-	    	radioType:0,
+	    	radioType:'1',
 	    	radioDay:7,
 	      	tableData1:[],
 	      	currentPage1:1,
@@ -45,8 +45,14 @@ let list = {
 				title: {
 			        text: '收益趋势'
 			    },
-			    tooltip: {
-			        trigger: 'axis'
+			    tooltip : {
+			        trigger: 'axis',
+			        axisPointer: {
+			            type: 'cross',
+			            label: {
+			                backgroundColor: '#6a7985'
+			            }
+			        }
 			    },
 			    legend: {
 			        data:['黑珍珠','分贝']
@@ -75,12 +81,14 @@ let list = {
 			            name:'黑珍珠',
 			            type:'line',
 			            stack: '总量',
+			            areaStyle: {},
 			            data:that.axisBack
 			        },
 			        {
 			            name:'分贝',
 			            type:'line',
 			            stack: '总量',
+			            areaStyle: {},
 			            data:that.axisFen
 			        }
 			    ]
@@ -180,7 +188,9 @@ let list = {
 		 		if(this.mountedTrue){
 					this.changeData();
 				}else{
-					this.changeData();
+					setTimeout(function(){
+						this.changeData();
+					},300);
 				};
 	  		};
 	  	}

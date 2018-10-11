@@ -1,5 +1,8 @@
 <template>
   <div>
+  	<div class="incomeitle">
+  		<span class="textDanger">{{user_name}}</span>收益明细
+  	</div>
   	<el-tabs v-model="activeName">
 	    <el-tab-pane label="分贝收益" name="1">
 	    	<div class="tableList">
@@ -80,6 +83,7 @@ export default {
   data () {
     return {
       activeName:'1',
+      user_name:'',
       tableData1:[],
       pageSize1:10,
       total1:0,
@@ -95,7 +99,7 @@ export default {
   created:function(){
   	this.activeName = `${this.$route.params.type}`||'1';
   	this.userid = this.$route.params.userid||'';
-  	this.username = this.$route.params.username||'';
+  	this.user_name = this.$route.params.username||'';
   	this.getData(1);
   	this.getData(2);
 	},
@@ -149,11 +153,6 @@ export default {
 			};
 			this.getData(this.activeName);
 		},
-		
-	},
-	//使用的组件
-  components:{
-		
 	}
 }
 </script>

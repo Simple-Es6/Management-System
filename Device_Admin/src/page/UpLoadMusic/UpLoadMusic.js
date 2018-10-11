@@ -166,11 +166,10 @@ let upmusic = {
 			console.log(arr);
 			for (let i = 0;i<arr.length;i++) {
 				if(arr[i].music_path==''||arr[i].music_picture==''||arr[i].music_name==''||arr[i].singer_name==''){
-					that.$alert('请检查第'+(i+1)+'项的音乐图片或歌曲文件是否上传', '提示', {
+					that.$alert('请检查各项是否添加完整', '提示', {
 			          	confirmButtonText: '确定'
 			        });
-			       	break;
-					return false;
+			        return false;
 				};
 			};
 			that.$axios1('post',that.Global.PATH.addSpecialmusic,{
