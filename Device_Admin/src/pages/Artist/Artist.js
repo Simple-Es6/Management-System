@@ -1,4 +1,4 @@
-var list = {
+let list = {
     name:'Artist',
     data() {
         return {
