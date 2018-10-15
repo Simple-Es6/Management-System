@@ -1,6 +1,5 @@
-let tou1 = 'http://47.105.38.148:8081/futuremelody-admin/',
-	tou = 'http://47.105.38.148:8081/futuremelody-admin/',
-	prefix1 = 'http://120.79.183.36:8081/futuremelody-admin/',
+//let prefix1 = 'http://47.105.38.148:8081/futuremelody-admin/',
+let	prefix1 = 'http://120.79.183.36:8081/futuremelody-admin/',
 	local='http://172.16.66.52:8080/',
 	PATH1 = {
     querysplelist: prefix1 + 'querysplelist', //音乐管理（专题列表)

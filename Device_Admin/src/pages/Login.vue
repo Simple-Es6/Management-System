@@ -84,7 +84,7 @@
 				isDian:false,
 				errorphone:false,
 				errorpassword:false,
-				errorcode:false,
+				errorcode:false
 			}
 		},
 		created:function(){
@@ -137,7 +137,7 @@
 								type:res.data.musiciantype,
 								phone:_this.phone
 							};
-							obj.type = 4;
+							obj.type = 5;
 							_this.$store.dispatch('loginState',obj);
 							switch(obj.type){
 								case 2:

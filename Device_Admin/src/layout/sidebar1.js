@@ -16,7 +16,7 @@ let arr = [
     	'isSon':false
     },
     {
-    	'name':'设备',
+    	'name':'设备管理',
     	'path':'voicebox',
     	'isSon':true,
     	'showType':5,

@@ -35,6 +35,7 @@ ajaxs2 = function(type,urls,dataObj,callback){
 	});
 },
 ajaxs1 = function(type,urls,dataObj,callback){
+	
 	axios({
 		method:type,
 	  	url:urls,
