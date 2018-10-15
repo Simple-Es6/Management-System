@@ -58,7 +58,7 @@ let list={
             };
             _this.$axios('post', _this.Global.PATH1.queryjumin, params, res => {
                 if (res.code == 200) {
-                    _this.tableData = res.data1;
+                    _this.tableData = res.juminlist;
                     _this.qushilist=res.qushilist;
                     _this.jumincount=res.jumincount;
                     

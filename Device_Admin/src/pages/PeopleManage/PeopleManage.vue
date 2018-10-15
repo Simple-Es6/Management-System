@@ -35,9 +35,13 @@
         </div>
         <div class="dataEchars" ref="dataEchars"></div>        
         <el-table :data="tableData" stripe style="width: 100%" >
-            <el-table-column  prop="head_portrait" label="头像" ></el-table-column>
+            <el-table-column  prop="head_portrait" label="头像" width="80">
+                <template slot-scope="scope">
+                    <img :src="scope.row.head_portrait" alt="" style="width: 50px;height: 50px;">
+                </template>
+            </el-table-column>
             <el-table-column  prop="nickname" label="昵称" ></el-table-column>
-            <el-table-column  prop=" " label="加入" ></el-table-column>
+            <el-table-column  prop="date_time" label="加入时间" ></el-table-column>
             <el-table-column  prop=" " label="打赏" >
                 <template slot-scope="scope" width="30">
                     <el-button size="mini">打赏分贝</el-button>

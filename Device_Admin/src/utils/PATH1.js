@@ -26,5 +26,8 @@ let	prefix1 = 'http://120.79.183.36:8081/futuremelody-admin/',
 	queryuserzhanghulist:prefix1+'/starmastuser/queryuserzhanghulist',//用户账号列表
 	updateuserjuese:prefix1+'/starmastuser/updateuserjuese',//设置用户角色
 	queryjumin:prefix1+'/starmastuser/queryjumin',//居民管理
+	statistics:prefix1+'/sitrack/statistics',// 签到统计
+	siruleGet:prefix1+'/sirule/get',//获取签到设置
+	update:prefix1+'/sirule/update',//更新签到规则
 };
 export  default PATH1;
