@@ -76,9 +76,15 @@ let arr = [
     			'isSon':false
             },
             {
-    			'name':'我的音乐',
+    			'name':'音乐管理',
     			'path':'MyMusic',
     			'index':'/home/MyMusic',
+    			'isSon':false
+			},
+			{
+    			'name':'音乐推荐',
+    			'path':'MusicRecommend',
+    			'index':'/home/MusicRecommend',
     			'isSon':false
 			}
 			

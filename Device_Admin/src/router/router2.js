@@ -18,6 +18,12 @@ let arr = [
         component: resolve => require(['../pages/UserSetting/UserList.vue'], resolve),
     },
     {
+        path: '/home/MusicRecommend',
+        name: 'MusicRecommend',
+        meta:{keepAlive:false,power:99},
+        component: resolve => require(['../pages/MyMusic/MusicRecommend.vue'], resolve)
+    },
+    {
         path: '/home/MyMusic',
         name: 'My-music',
         meta:{keepAlive:false,power:99},

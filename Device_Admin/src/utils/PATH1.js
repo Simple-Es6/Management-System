@@ -29,5 +29,6 @@ let	prefix1 = 'http://120.79.183.36:8081/futuremelody-admin/',
 	statistics:prefix1+'/sitrack/statistics',// 签到统计
 	siruleGet:prefix1+'/sirule/get',//获取签到设置
 	update:prefix1+'/sirule/update',//更新签到规则
+	querytuijianlist:prefix1+'/starmastuser/querytuijianlist',//音乐推荐
 };
 export  default PATH1;
