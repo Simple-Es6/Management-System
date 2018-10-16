@@ -14,7 +14,7 @@
   	</div>
   	<div class="upform" v-show="mode==2">
   		<div class="upformleft">
-	  		<div class="formitem">
+	  		<!--<div class="formitem">
 	  			<div class="fiteml textMain h3Title">
 	  				专辑名称:
 	  			</div>
@@ -28,7 +28,7 @@
 						  clearable>
 						</el-input>
 	  			</div>
-	  		</div>
+	  		</div>-->
 	  		<!--<div class="formitem">
 	  			<div class="fiteml textMain h3Title">
 	  				专辑类型:
@@ -131,7 +131,7 @@
 				   	</el-date-picker>
 	  			</div>
 	  		</div>
-	  		<div class="formitem">
+	  		<!--<div class="formitem">
 	  			<div class="fiteml textMain h3Title">
 	  				专辑描述:
 	  			</div>
@@ -145,8 +145,8 @@
 						  v-model="themeObj.special_describe">
 						</el-input>
 	  			</div>
-	  		</div>
-	  		<div class="formitem">
+	  		</div>-->
+	  		<!--<div class="formitem">
 	  			<div class="fiteml textMain h3Title">
 	  				专辑图片:
 	  			</div>
@@ -158,7 +158,7 @@
 						 	</label>
 						</div>
 	  			</div>
-	  		</div>
+	  		</div>-->
 	  		<div class="formitem">
 	  			<div class="fiteml textMain h3Title">
 	  				首页展示图:
@@ -261,7 +261,7 @@ export default {
 		//提交创建专题
 		subClick(){
 			let obj = this.themeObj;
-			if(obj.special_picture==''||!obj.show_time||obj.show_picture==''||obj.share_special_picture==''||obj.special_title==''||obj.special_describe==''){
+			if(!obj.show_time||obj.show_picture==''||obj.share_special_picture==''){
 				this.$message.error('请仔细检查各项是否填写完整');
 				return false
 			};
@@ -280,7 +280,7 @@ export default {
 		saveClick(type){
 			let obj = this.themeObj;
 			console.log(obj.show_time);
-			if(obj.special_picture==''||!obj.show_time||obj.show_picture==''||obj.share_special_picture==''||obj.special_title==''||obj.special_describe==''){
+			if(!obj.show_time||obj.show_picture==''||obj.share_special_picture==''){
 				this.$message.error('请仔细检查各项是否填写完整');
 				return false
 			};

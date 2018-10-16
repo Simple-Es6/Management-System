@@ -103,12 +103,6 @@ let arr = [
         component: resolve => require(['../pages/ActivitiesSet/ActivitiesSet.vue'], resolve),
     },
     {
-		path: '/home/detail',
-		name: 'detail',
-		meta: { keepAlive: false ,power:5},
-		component: resolve => require(['../pages/ActivitiesSet/detail.vue'], resolve),
-    },
-    {
 		path: '/home/attend',
 		name: 'detail',
 		meta: { keepAlive: false ,power:5},
