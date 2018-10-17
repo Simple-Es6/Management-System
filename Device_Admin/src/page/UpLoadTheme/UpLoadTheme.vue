@@ -14,7 +14,7 @@
   	</div>
   	<div class="upform" v-show="mode==2">
   		<div class="upformleft">
-	  		<div class="formitem">
+	  		<!--<div class="formitem">
 	  			<div class="fiteml textMain h3Title">
 	  				专辑名称:
 	  			</div>
@@ -28,7 +28,7 @@
 						  clearable>
 						</el-input>
 	  			</div>
-	  		</div>
+	  		</div>-->
 	  		<!--<div class="formitem">
 	  			<div class="fiteml textMain h3Title">
 	  				专辑类型:
@@ -117,6 +117,22 @@
 	  		</div>-->
 	  		<div class="formitem">
 	  			<div class="fiteml textMain h3Title">
+	  				专题默认点赞数:
+	  			</div>
+	  			<div class="fitemr">
+	  				<el-input-number  size="mini" v-model="themeObj.like_base"></el-input-number>
+	  			</div>
+	  		</div>
+	  		<div class="formitem">
+	  			<div class="fiteml textMain h3Title">
+	  				专题默认分享数:
+	  			</div>
+	  			<div class="fitemr">
+	  				<el-input-number  size="mini" v-model="themeObj.share_base"></el-input-number>
+	  			</div>
+	  		</div>
+	  		<div class="formitem">
+	  			<div class="fiteml textMain h3Title">
 	  				发行日期:
 	  			</div>
 	  			<div class="fitemr">
@@ -131,7 +147,7 @@
 				   	</el-date-picker>
 	  			</div>
 	  		</div>
-	  		<div class="formitem">
+	  		<!--<div class="formitem">
 	  			<div class="fiteml textMain h3Title">
 	  				专辑描述:
 	  			</div>
@@ -145,8 +161,8 @@
 						  v-model="themeObj.special_describe">
 						</el-input>
 	  			</div>
-	  		</div>
-	  		<div class="formitem">
+	  		</div>-->
+	  		<!--<div class="formitem">
 	  			<div class="fiteml textMain h3Title">
 	  				专辑图片:
 	  			</div>
@@ -158,7 +174,7 @@
 						 	</label>
 						</div>
 	  			</div>
-	  		</div>
+	  		</div>-->
 	  		<div class="formitem">
 	  			<div class="fiteml textMain h3Title">
 	  				首页展示图:
@@ -202,12 +218,11 @@ export default {
       isDisEnble:false,
       imgType:1,
      	themeObj:{
-     		special_picture:'',
      		show_time:'',
+     		like_base:0,
+     		share_base:0,
      		show_picture:'',
-     		share_special_picture:'',
-     		special_title:'',
-     		special_describe:''
+     		share_special_picture:''
      	},
       dynamicTags: ['标签一', '标签二', '标签三'],
       inputVisible: false,
@@ -220,6 +235,8 @@ export default {
   	this.specialid = this.$route.params.specialid||'';
 		if(this.specialid==''){
 			this.mode=1;
+			this.themeObj.like_base = this.Global.MinorMax(500,1000);
+			this.themeObj.share_base = this.Global.MinorMax(300,500);
 		}else{
 			this.mode=2;
 			this.getData();
@@ -247,9 +264,11 @@ export default {
 			},function(res){
   			if(res.code==200){
   				let obj = {
-  					special_picture:res.data.special_picture,
-     				special_title:res.data.special_title,
-     				special_describe:res.data.special_describe,
+  					//special_picture:res.data.special_picture,
+     				//special_title:res.data.special_title,
+     				//special_describe:res.data.special_describe,
+     				share_base:res.data.share_base,
+     				like_base:res.data.like_base,
      				share_special_picture:res.data.share_special_picture,
      				show_time:res.data.show_time,
      				show_picture:res.data.show_picture
@@ -261,7 +280,7 @@ export default {
 		//提交创建专题
 		subClick(){
 			let obj = this.themeObj;
-			if(obj.special_picture==''||!obj.show_time||obj.show_picture==''||obj.share_special_picture==''||obj.special_title==''||obj.special_describe==''){
+			if(!obj.show_time||obj.show_picture==''||obj.share_special_picture==''||!obj.like_base||!obj.share_base){
 				this.$message.error('请仔细检查各项是否填写完整');
 				return false
 			};
@@ -280,7 +299,7 @@ export default {
 		saveClick(type){
 			let obj = this.themeObj;
 			console.log(obj.show_time);
-			if(obj.special_picture==''||!obj.show_time||obj.show_picture==''||obj.share_special_picture==''||obj.special_title==''||obj.special_describe==''){
+			if(!obj.show_time||obj.show_picture==''||obj.share_special_picture==''||!obj.like_base||!obj.share_base){
 				this.$message.error('请仔细检查各项是否填写完整');
 				return false
 			};

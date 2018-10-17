@@ -13,10 +13,10 @@
 				<el-button type="primary">新增用户</el-button>
 			</el-col>
 			<el-col  :span="9">
-			  <el-input placeholder="请输入用户账号或昵称" clearable v-model="userinput" class="input-with-select">
+			  <el-input placeholder="请输入用户账号或昵称" @keyup.enter.native="search"  clearable v-model="userinput" class="input-with-select">
 			    	<el-select v-model="selectOption" slot="prepend" placeholder="请选择">
-				      	<el-option label="用户电话" value="1"></el-option>
-				      	<el-option label="用户昵称" value="2"></el-option>
+				      	<el-option label="用户电话" value="2"></el-option>
+				      	<el-option label="用户昵称" value="1"></el-option>
 				    </el-select>
 				    <el-button slot="append" icon="el-icon-search" @click="search"></el-button>
 				</el-input>
@@ -79,9 +79,9 @@
 				      	label="操作"
 				    	width="230">
 						<template slot-scope="scope">
-							<el-button size="mini" type="success" icon="el-icon-check" circle></el-button>
+							<el-button v-show="scope.row.disable==1" size="mini" @click="disabled(scope.row,scope.$index)" type="success" icon="el-icon-check" circle></el-button>
 							<el-button size="mini" type="primary" icon="el-icon-edit" circle></el-button>
-							<el-button @click="disabled(scope.row,scope.$index)" size="mini" type="warning" icon="el-icon-remove-outline" circle></el-button>
+							<el-button v-show="scope.row.disable==2" @click="disabled(scope.row,scope.$index)" size="mini" type="warning" icon="el-icon-remove-outline" circle></el-button>
 							<el-button @click="delectUser(scope.row,scope.$index)" size="mini" type="danger" icon="el-icon-delete" circle></el-button>
 						</template>
 				    </el-table-column>
@@ -133,16 +133,19 @@ export default {
   	disabled(val,index){
   		let arr = [],
   		that = this,
+  		strs = '',
   		obj = {};
   		obj.userid = val.userid;
   		if(val.disable==1){
+  			strs = '确定要启用该用户吗?';
   			obj.disable = 2;
   		}else{
+  			strs = '确定要禁用该用户吗?';
   			obj.disable = 1;
   			obj.token = val.token;
   		};
   		arr.push(obj);
-  		that.$confirm('确定要禁用该用户吗?', '提示', {
+  		that.$confirm(strs, '提示', {
 	      confirmButtonText: '确定',
 	      cancelButtonText: '取消',
 	      type: 'warning'
@@ -172,8 +175,7 @@ export default {
   		let arr = [];
   		this.multipleSelection.forEach(function(val){
   			let obj = {};
-  			obj.userid = val.userid;
-  			
+  			obj.userid = val.userid;  			
   			if(val.disable==1){
 	  			obj.disable = 2;
 	  		}else{
@@ -182,7 +184,7 @@ export default {
 	  		};
 	  		arr.push(obj);
   		});
-  		that.$confirm('确定要禁用选中的用户吗?', '提示', {
+  		that.$confirm('确定要禁用/启用选中的用户吗?', '提示', {
 	      confirmButtonText: '确定',
 	      cancelButtonText: '取消',
 	      type: 'warning'
@@ -244,7 +246,7 @@ export default {
   		let that = this;
   		that.$axios1('post',that.Global.PATH.deleteuser,{'list':obj},function(res){
 	  		if(res.code==200){
-	  			this.$message({
+	  			that.$message({
 	        	type: 'success',
 	        	message: '删除成功!'
 	      	});

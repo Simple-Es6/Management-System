@@ -116,7 +116,7 @@ let arr = [
     },
     {
 		path: '/home/attend',
-		name: 'detail',
+		name: 'attend',
 		meta: { keepAlive: false ,power:5},
 		component: resolve => require(['../pages/ActivitiesSet/attend.vue'], resolve),
 	}
