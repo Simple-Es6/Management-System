@@ -31,7 +31,7 @@ let	prefix1 = 'http://120.79.183.36:8081/futuremelody-admin/',
 	siruleupdate:prefix1+'sirule/update',//更新签到规则
 	sicrdelete:prefix1+'sicr/delete',//删除周期规则
 	sicrsave:prefix1+'sicr/save',//添加周期规则
-	sicrupdate:prefix1+'sicr/update'//添加周期规则
-	
+	sicrupdate:prefix1+'sicr/update',//添加周期规则
+	querytuijianlist:prefix1+'/starmastuser/querytuijianlist',//音乐推荐
 };
 export  default PATH1;
