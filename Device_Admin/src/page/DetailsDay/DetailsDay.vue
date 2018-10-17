@@ -5,12 +5,10 @@
 				黑珍珠明细
 			</div>
 			<div class="textInfo h2Title" v-if="showType==1||showType==3">
-				设备名称:<span class="textDanger" style="margin-right: 20px;">{{deviceName}}</span>获得黑珍珠数:<span class="textDanger">{{allBp}}</span>
+				设备名称:<span class="textDanger">{{deviceName}}</span>获得黑珍珠数:<span class="textDanger">{{allBp}}</span>
 			</div>
 			<div class="textInfo h2Title" v-else>
-				手机号:<span class="textDanger" style="margin-right: 20px;">{{timeStart}}</span>
-				获得黑珍珠数:<span class="textDanger" style="margin-right: 20px;">{{allBp}}</span>
-				音箱数量:<span class="textDanger" style="margin-right: 20px;">{{xwCount}}</span>
+				手机号:<span class="textDanger">{{timeStart}}</span>获得黑珍珠数:<span class="textDanger">{{allBp}}</span>
 			</div>
 			<div class="searchDiv" v-show="showType==1">
 				<el-input placeholder="请输入内容" size="small" @keyup.enter.native="searchbtn"  v-model="searchStr" class="input-with-select">

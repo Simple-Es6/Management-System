@@ -40,11 +40,8 @@ export default {
 				console.log(this.login);
 			},
 			logOut(){
-				let that = this;
-				this.$axios('post',this.Global.PATH.colseuser,{}, res => {
-					that.$store.dispatch('loginOut');
-					that.$router.push({name:'Login'});
-				});
+				this.$store.dispatch('loginOut');
+				this.$router.push({name:'Login'});
 			}
   	},
   	watch: {

@@ -78,7 +78,7 @@
 	  			<div @click="closeBox" class="closeBtn textInfo"><i class="el-icon-close"></i></div>
 	  			<div  class="boxTitle h0Title textMain">添加音乐<span style="margin-left: 20px;" class="textInfo h2Title">{{selectMusic.length}}/12</span></div>
 	  			<div class="nameBox">
-	  				<el-input style="width:35%;margin-right:2%;" @clear="btnSub" @keyup.enter.native="btnSub" clearable prefix-icon="el-icon-search" v-model="searchStr" placeholder="请输入名称"></el-input>
+	  				<el-input style="width:35%;margin-right:2%;" @clear="btnSub" clearable prefix-icon="el-icon-search" v-model="searchStr" placeholder="请输入名称"></el-input>
 	  				<el-button style="width:8%;margin-right: 12%;"  @click="btnSub">搜索</el-button>
 	  				<el-radio-group v-model="radio3" style="width: 25%;margin-right: 10%;">
 				      <el-radio-button label="1">来自用户上传</el-radio-button>
@@ -98,7 +98,7 @@
 					      	label="歌曲名称">
 					    </el-table-column>
 					    <el-table-column
-					      	prop="singerName"
+					      	prop="nickname"
 					      	label="歌手">
 					    </el-table-column>
 					    <el-table-column
@@ -106,7 +106,7 @@
 					      	label="星球">
 					    </el-table-column>
 					    <el-table-column
-					      	prop="nickname"
+					      	prop="singerName"
 					      	label="上传用户">
 					    </el-table-column>
 					    <el-table-column
@@ -184,6 +184,9 @@ export default {
 	  		};
 	  	});		
 	},
+    components:{         
+//          vPageTitle
+    },
     methods:{
     	upClick(index){
     		let arr1 = this.musicData[index],
@@ -307,9 +310,7 @@ export default {
 		    	});
 		    	this.musicList = [];
 	    		this.musicList = arr;
-	    	}else{
-	    		this.musicList = [];
-	    	};
+	    	};    		
 	    },
 	    delectSel(id){
 	    	let arr = this.selectMusic,

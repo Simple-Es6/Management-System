@@ -194,7 +194,7 @@ let list={
         }
 	},
 	//使用的组件
-  	components:{
+  components:{
 		
 	}
 }

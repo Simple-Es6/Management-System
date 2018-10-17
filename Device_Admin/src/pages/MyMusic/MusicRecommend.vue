@@ -41,6 +41,7 @@ export default {
             _this.$axios('post', _this.Global.PATH1.querytuijianlist, params, res => {
                 if (res.code == 200) {
                     _this.tableData=res.data;
+                    _this.total=res.count;
                 }
             });
         },

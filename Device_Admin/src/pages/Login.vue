@@ -84,7 +84,7 @@
 				isDian:false,
 				errorphone:false,
 				errorpassword:false,
-				errorcode:false
+				errorcode:false,
 			}
 		},
 		created:function(){

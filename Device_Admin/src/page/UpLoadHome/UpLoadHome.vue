@@ -138,22 +138,6 @@
 						</el-input>
 	  			</div>
 	  		</div>
-	  		<div class="formitem">
-	  			<div class="fiteml textMain h3Title">
-	  				专题默认点赞数:
-	  			</div>
-	  			<div class="fitemr">
-	  				<el-input-number  size="mini" v-model="themeObj.like_base"></el-input-number>
-	  			</div>
-	  		</div>
-	  		<div class="formitem">
-	  			<div class="fiteml textMain h3Title">
-	  				专题默认分享数:
-	  			</div>
-	  			<div class="fitemr">
-	  				<el-input-number  size="mini" v-model="themeObj.share_base"></el-input-number>
-	  			</div>
-	  		</div>
   		</div>
   		<div class="upformright">
   			<div class="avatar-uploader">
@@ -180,8 +164,6 @@ export default {
       mode:1,
      	themeObj:{
      		special_picture:'',
-     		like_base:0,
-     		share_base:0,
      		special_title:'',
      		special_describe:''
      	},
@@ -196,9 +178,6 @@ export default {
   	this.specialid = this.$route.params.specialid||'';
 		if(this.specialid==''){
 			this.mode=1;
-			console.log(this.Global.MinorMax(500,1000));
-			this.themeObj.like_base = this.Global.MinorMax(500,1000);
-			this.themeObj.share_base = this.Global.MinorMax(300,500);
 		}else{
 			this.mode=2;
 			this.getData();
@@ -222,8 +201,6 @@ export default {
 			},function(res){
   			if(res.code==200){
   				let obj = {
-  					share_base:res.data.share_base,
-     				like_base:res.data.like_base,
   					special_picture:res.data.special_picture,
      				special_title:res.data.special_title,
      				special_describe:res.data.special_describe
@@ -235,7 +212,7 @@ export default {
 		//提交创建专题
 		subClick(){
 			let obj = this.themeObj;
-			if(obj.special_picture==''||obj.special_title==''||obj.special_describe==''||!obj.like_base||!obj.share_base){
+			if(obj.special_picture==''||obj.special_title==''||obj.special_describe==''){
 				this.$message.error('请仔细检查各项是否填写完整');
 				return false;
 			};
@@ -254,7 +231,7 @@ export default {
 		//保存修改点击
 		saveClick(type){
 			let obj = this.themeObj;
-			if(obj.special_picture==''||obj.special_title==''||obj.special_describe==''||!obj.like_base||!obj.share_base){
+			if(obj.special_picture==''||obj.special_title==''||obj.special_describe==''){
 				this.$message.error('请仔细检查各项是否填写完整');
 				return false;
 			};

@@ -18,6 +18,12 @@ let arr = [
         component: resolve => require(['../pages/UserSetting/UserList.vue'], resolve),
     },
     {
+        path: '/home/MusicRecommend',
+        name: 'MusicRecommend',
+        meta:{keepAlive:false,power:99},
+        component: resolve => require(['../pages/MyMusic/MusicRecommend.vue'], resolve)
+    },
+    {
         path: '/home/MyMusic',
         name: 'My-music',
         meta:{keepAlive:false,power:99},
@@ -101,6 +107,12 @@ let arr = [
         name: 'ActivitiesSet',
         meta: { keepAlive: false ,power:5},
         component: resolve => require(['../pages/ActivitiesSet/ActivitiesSet.vue'], resolve),
+    },
+    {
+		path: '/home/detail',
+		name: 'detail',
+		meta: { keepAlive: false ,power:5},
+		component: resolve => require(['../pages/ActivitiesSet/detail.vue'], resolve),
     },
     {
 		path: '/home/attend',

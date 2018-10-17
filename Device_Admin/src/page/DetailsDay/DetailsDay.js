@@ -7,7 +7,6 @@ let list =  {
 	      	searchStr:'',
 	      	select:'1',
 	      	showType:1,
-	      	xwCount:0,
 	      	tableData:[],
 	      	tableData2:[],
 	      	tableData3:[],
@@ -79,7 +78,6 @@ let list =  {
 		  			that.deviceName = res.data.deviceName;
 		  			that.totals = res.data.count;
 		  			that.tableData3 = res.data.xwBpDetailVoList;
-		  			that.xwCount = res.data.xwCount;
 		  		};
 	  		});
 		},
