@@ -44,6 +44,9 @@ ajaxs1 = function(type,urls,dataObj,callback){
 	    callback(res.data);
 	});
 },
+MinorMax = function(min,max){
+	return Math.floor(Math.round((Math.random() * (max - min) + min) * 10) / 10);
+},
 oTime = function(timestamp) {
     let date = new Date(timestamp),//时间戳为10位需*1000，时间戳为13位的话不需乘1000
     Y = date.getFullYear() + '-',
@@ -61,5 +64,6 @@ export default{
   	ajaxs,
   	ajaxs1,
   	ajaxs2,
-  	oTime
+  	oTime,
+  	MinorMax
 }
