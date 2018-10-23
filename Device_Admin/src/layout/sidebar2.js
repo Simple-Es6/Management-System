@@ -209,6 +209,13 @@ let arr = [
 				'isSon':false
 			},
 			{
+				'name':'广告设置',
+				'path':'Advertisement',
+				'icon':'',
+				'index':'/home/Advertisement',
+				'isSon':false
+			},
+			{
 				'name':'版本设置',
 				'path':'VersionSetting',
 				'icon':'',

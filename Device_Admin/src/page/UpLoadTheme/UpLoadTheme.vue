@@ -1,7 +1,7 @@
 <template>
   <div>
 		<input @change="upLoadStart1($event)" :disabled="isDisEnble" id="avatar2" accept="image/jpeg,image/png" class="avatar-img" type="file"  />
-  	<div class="uphome" v-show="mode==1">
+  	<!--<div class="uphome" v-show="mode==1">
 	  	<div class="title textMain">
 	  		请选择上传类型
 	  	</div>
@@ -11,7 +11,7 @@
 	  			<p class="textInfo h4Title">粉丝可以免费收听你的专辑</p>
 	  		</div>
 	  	</div>
-  	</div>
+  	</div>-->
   	<div class="upform" v-show="mode==2">
   		<div class="upformleft">
 	  		<!--<div class="formitem">
@@ -175,46 +175,50 @@
 						</div>
 	  			</div>
 	  		</div>-->
-	  		<div class="formitem">
-	  			<div class="fiteml textMain h3Title">
-	  				首页展示图:
-	  			</div>
-	  			<div class="fitemr">
-	  				<div class="avatar-uploader">
-						 	<label for="avatar2" @click="changeType(2)">
-						 		<i v-if="!themeObj.show_picture" class="el-icon-plus avatar-uploader-icon"></i>
-						 		<img v-if="themeObj.show_picture" :src="themeObj.show_picture" class="avatar">
-						 	</label>
-						</div>
-	  			</div>
-	  		</div>
-	  		<div class="formitem">
-	  			<div class="fiteml textMain h3Title">
-	  				分享图片:
-	  			</div>
-	  			<div class="fitemr">
-	  				<div class="avatar-uploader">
-						 	<label for="avatar2" @click="changeType(3)">
-						 		<i v-if="!themeObj.share_special_picture" class="el-icon-plus avatar-uploader-icon"></i>
-						 		<img v-if="themeObj.share_special_picture" :src="themeObj.share_special_picture" class="avatar">
-						 	</label>
-						</div>
-	  			</div>
-	  		</div>
+	  		
   		</div>
+  		<div class="upformright">
+		  		<div class="formitem">
+		  			<div class="fiteml textMain h3Title">
+		  				首页展示图:
+		  			</div>
+		  			<div class="fitemr">
+		  				<div class="avatar-uploader">
+							 	<label for="avatar2" @click="changeType(2)">
+							 		<i v-if="!themeObj.show_picture" class="el-icon-plus avatar-uploader-icon"></i>
+							 		<img v-if="themeObj.show_picture" :src="themeObj.show_picture" class="avatar">
+							 	</label>
+							</div>
+		  			</div>
+		  		</div>
+		  		<div class="formitem">
+		  			<div class="fiteml textMain h3Title">
+		  				分享图片:
+		  			</div>
+		  			<div class="fitemr">
+		  				<div class="avatar-uploader">
+							 	<label for="avatar2" @click="changeType(3)">
+							 		<i v-if="!themeObj.share_special_picture" class="el-icon-plus avatar-uploader-icon"></i>
+							 		<img v-if="themeObj.share_special_picture" :src="themeObj.share_special_picture" class="avatar">
+							 	</label>
+							</div>
+		  			</div>
+		  		</div>
+	  		</div>
   	</div>
-  	<el-button v-if="specialid==''&&mode==2" type="primary" @click="subClick">确认提交</el-button>
+  	<UpLoadMusic @saveClick="saveClick" @subClick="subClick" :specialid="specialid" :musiclist="musiclist"></UpLoadMusic>
+  	<!--<el-button v-if="specialid==''&&mode==2" type="primary" @click="subClick">确认提交</el-button>
   	<el-button v-if="specialid&&mode==2" type="primary" @click="saveClick(1)">保存修改</el-button>
-  	<el-button v-if="specialid&&mode==2" type="primary" @click="saveClick(2)">修改音乐</el-button>
+  	<el-button v-if="specialid&&mode==2" type="primary" @click="saveClick(2)">修改音乐</el-button>-->
   </div>
 </template>
 <script>
-//import croper from '../../components/croper.vue';
+import UpLoadMusic from '../UpLoadMusic/UpLoadMusic.vue';
 export default {
   name: 'UpLoadTheme',
   data () {
     return {
-      mode:1,
+      mode:2,
       isDisEnble:false,
       imgType:1,
      	themeObj:{
@@ -227,18 +231,18 @@ export default {
       dynamicTags: ['标签一', '标签二', '标签三'],
       inputVisible: false,
       inputValue: '',
-      specialid:''
+      specialid:'',
+      musiclist:[]
     }
   },
   //组件生成时执行事件
   created:function(){
   	this.specialid = this.$route.params.specialid||'';
+  	console.log(this.$route.params.specialid)
 		if(this.specialid==''){
-			this.mode=1;
 			this.themeObj.like_base = this.Global.MinorMax(500,1000);
 			this.themeObj.share_base = this.Global.MinorMax(300,500);
 		}else{
-			this.mode=2;
 			this.getData();
 		};
 	},
@@ -253,7 +257,6 @@ export default {
 		},
 		//创建专题
 		creatTheme(){
-			
 			this.mode = 2;
 		},
 		//请求数据
@@ -274,11 +277,16 @@ export default {
      				show_picture:res.data.show_picture
   				};
   				that.themeObj = obj;
+  				let arr = res.data.listmusic;
+  				arr.forEach(val=>{
+  					val.state = 1;
+  				});
+  				that.musiclist = arr; 
   			};
   		});
 		},
 		//提交创建专题
-		subClick(){
+		subClick(arr){
 			let obj = this.themeObj;
 			if(!obj.show_time||obj.show_picture==''||obj.share_special_picture==''||!obj.like_base||!obj.share_base){
 				this.$message.error('请仔细检查各项是否填写完整');
@@ -287,16 +295,41 @@ export default {
 			let that = this;
 			that.$axios('post',that.Global.PATH.addfuspecial,obj,function(res){
   			if(res.code==200){
-  				that.$router.push({name:'UpLoadMusic',params:{
-							specialid:res.specialid,
-							isNew:1
-						}
-					});
+  				that.$message({
+	          message:'已提交',
+	          type: 'success'
+	        });
+  				that.specialid = res.specialid;
+  				that.subMusic(arr,1);
   			};
   		});
 		},
+		subMusic(arr,type){
+			let that = this,
+			urls = type==1?that.Global.PATH.addSpecialmusic:that.Global.PATH.updatemusicqwe;
+			if(type==1){
+				that.$axios1('post',urls,{
+		  			specialid:that.specialid,
+		  			listmusic:arr
+		  		},res=>{
+		  			if(res.code==200){
+		  				that.$message({
+		          	message:'已修改',
+		          	type: 'success'
+		        	});
+		  				that.$router.replace({name:'MusicRecommend'});
+		  			};
+				});
+			}else{
+				that.$message({
+	      	message:'已修改',
+	      	type: 'success'
+	    	});
+				that.$router.replace({name:'My-music'});
+			};
+		},
 		//保存修改点击
-		saveClick(type){
+		saveClick(arr){
 			let obj = this.themeObj;
 			console.log(obj.show_time);
 			if(!obj.show_time||obj.show_picture==''||obj.share_special_picture==''||!obj.like_base||!obj.share_base){
@@ -307,15 +340,7 @@ export default {
 			let that = this;
 			that.$axios('post',that.Global.PATH.updatesple,obj,function(res){
   			if(res.code==200){
-  				if(type==1){
-  					that.$router.replace({name:'My-music'});
-  				}else{
-  					that.$router.push({name:'UpLoadMusic',params:{
-								specialid:that.specialid,
-								isNew:0
-							}
-						});
-  				};
+  				that.subMusic(arr,2);
   			};
   		});
 		},
@@ -358,7 +383,7 @@ export default {
 	},
 	//使用的组件
   components:{
-//		croper
+		UpLoadMusic
 	}
 }
 </script>

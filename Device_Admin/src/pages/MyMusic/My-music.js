@@ -93,7 +93,6 @@ let list = {
         },
         //点击每行的编辑
         handleEdit(index, row) {
-           	console.log(index, row);
            	if(row.type==1){
            		this.$router.push({name:'UpLoadTheme',params:{
 						specialid:row.specialid
@@ -111,7 +110,7 @@ let list = {
         handleDelete(index, row) {
             console.log(index, row);
             let _this = this;
-            _this.$confirm('确定要通过该用户的信息?', '提示', {
+            _this.$confirm('确定要删除该专题吗?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'

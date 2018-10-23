@@ -1,6 +1,7 @@
 //let tou = 'http://47.105.38.148:8081/futuremelody-admin/',
 let tou = 'http://120.79.183.36:8081/futuremelody-admin/',
 	PATH = {
+		queryguanliyuan:tou+'queryguanliyuan',//管理员首页数据
 		colseuser:tou+'user/colseuser',//退出登录
 		disableuser:tou+'disableuser',//禁用用户
 		openuser:tou+'openuser',//启用用户
@@ -26,6 +27,7 @@ let tou = 'http://120.79.183.36:8081/futuremelody-admin/',
 		uploadmusic:tou+'uploadmusic',//上传音乐
 		uploadlrc:tou+'uploadlrc',//上传歌词
 		addSpecialmusic:tou+'specials/addSpecialmusic',//上传专题音乐
+		updatemusicqwe:tou+'specials/updatemusicqwe',//修改专题音乐
 		queryspleByid:tou+'queryspleByid',//专辑详情
 		updatesple:tou+'updatesple',//修改专题
 		queryfensilist:tou+'queryfensilist',//粉丝列表
@@ -33,6 +35,15 @@ let tou = 'http://120.79.183.36:8081/futuremelody-admin/',
 		updatemusicdetail:tou + 'updatemusicdetail', //修改音乐
 		queryzoushitu:tou+'starmastuser/queryzoushitu',//获取收入折线图
 		queryuserProfit:tou+'starmastuser/queryuserProfit',//音乐人收益排行
-		queryuserProfitxiangqing:tou+'starmastuser/queryuserProfitxiangqing'//音乐人收益详情
+		queryuserProfitxiangqing:tou+'starmastuser/queryuserProfitxiangqing',//音乐人收益详情
+		adlist:tou+'adlist/list',//获取广告列表
+		adlistoperation:tou+'adlist/operation',//获取广告列表
+		adlistdelbatch:tou+'adlist/del/batch',//批量删除广告
+		addictlist:tou+'addict/list',//获取广告下拉列表
+		adlistsave:tou+'adlist/save',//创建广告
+		adlistupdate:tou+'adlist/update',//创建广告
+		adlistgetone:tou+'adlist/getone',//获取广告设置
+		addictsave:tou+'addict/save',//添加渠道/范围
+		addictdelete:tou+'addict/delete'//删除渠道/范围
 };
 export  default PATH;

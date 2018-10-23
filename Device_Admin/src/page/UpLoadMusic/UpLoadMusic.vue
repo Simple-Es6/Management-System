@@ -2,7 +2,7 @@
   <div>
   	<audio ref="audiodom" :src="musicPath" @canplay="musicCanPlay"></audio>
   	<input @change="musiclrcupload" type="file" id="lrcinput" />
-  	<input @change="upLoadStart($event)" id="avatar2" accept="image/jpeg,image/png" class="avatar-img" type="file"  />
+  	<input @change="upLoadStart($event)" id="avatar" accept="image/jpeg,image/png" class="avatar-img" type="file"  />
   	<input @change="musicupload" type="file" accept="audio/x-pn/realaudio,audio/x-waw,audio/x-aiff,audio/basic,audio/x-mpeg" id="musicinput" />
   	<div class="upitem">
   		<div class="upitemLeft" >
@@ -52,7 +52,7 @@
   							</div>
   							<div class="mitemr">
   								<div class="avatar-uploader">
-									 	<label for="avatar2" @click="changIndex(index)">
+									 	<label for="avatar" @click="changIndex(index)">
 									 		<i v-if="!val.music_picture" class="el-icon-plus avatar-uploader-icon"></i>
 									 		<img v-if="val.music_picture" :src="val.music_picture" class="avatar">
 									 	</label>
@@ -125,8 +125,8 @@
   		<p>6. 如果没有词曲作者请在相应的空格内填写无</p>
   	</div>
   	<div class="subclick">
-  		<el-button v-if="isNew==1" size="small" @click="subMusic" type="primary">提交发布</el-button>
-  		<el-button  size="small" @click="subMusic" type="primary" v-else>保存修改</el-button>
+  		<el-button v-if="isNew==1" size="small" @click="subMusic(1)" type="primary">提交发布</el-button>
+  		<el-button  size="small" @click="subMusic(2)" type="primary" v-else>保存修改</el-button>
   	</div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div>
-  	<div class="uphome" v-show="mode==1">
+  	<!--<div class="uphome" v-show="mode==1">
 	  	<div class="title textMain">
 	  		请选择上传类型
 	  	</div>
@@ -19,7 +19,7 @@
 	  		<span class="el-icon-plus"></span>
 	  		上传作品至已发布专辑
 	  	</div>
-  	</div>
+  	</div>-->
   	<div class="upform" v-show="mode==2">
   		<div class="upformleft">
 	  		<div class="formitem">
@@ -29,7 +29,7 @@
 	  			<div class="fitemr">
 	  				<el-input
 	  					size="mini"
-	  					maxlength="15"
+	  					maxlength="100"
 	  					minlength="2"
 						  placeholder="请输入内容"
 						  v-model="themeObj.special_title"
@@ -166,18 +166,20 @@
   			<!--<croper></croper>-->	
   		</div>
   	</div>
-  	<el-button v-if="specialid==''&&mode==2" type="primary" @click="subClick">确认提交</el-button>
+  	<UpLoadMusic @saveClick="saveClick" @subClick="subClick" :specialid="specialid" :musiclist="musiclist"></UpLoadMusic>
+  	<!--<el-button v-if="specialid==''&&mode==2" type="primary" @click="subClick">确认提交</el-button>
   	<el-button v-if="specialid&&mode==2" type="primary" @click="saveClick(1)">保存修改</el-button>
-  	<el-button v-if="specialid&&mode==2" type="primary" @click="saveClick(2)">修改音乐</el-button>
+  	<el-button v-if="specialid&&mode==2" type="primary" @click="saveClick(2)">修改音乐</el-button>-->
   </div>
 </template>
 <script>
-//import croper from '../../components/croper.vue';
+import UpLoadMusic from '../UpLoadMusic/UpLoadMusic.vue';
 export default {
   name: 'UpLoadHome',
   data () {
     return {
-      mode:1,
+      mode:2,
+      musiclist:[],
      	themeObj:{
      		special_picture:'',
      		like_base:0,
@@ -195,8 +197,7 @@ export default {
   created:function(){
   	this.specialid = this.$route.params.specialid||'';
 		if(this.specialid==''){
-			this.mode=1;
-			console.log(this.Global.MinorMax(500,1000));
+			this.mode=2;
 			this.themeObj.like_base = this.Global.MinorMax(500,1000);
 			this.themeObj.share_base = this.Global.MinorMax(300,500);
 		}else{
@@ -229,11 +230,16 @@ export default {
      				special_describe:res.data.special_describe
   				};
   				that.themeObj = obj;
+  				let arr = res.data.listmusic;
+  				arr.forEach(val=>{
+  					val.state = 1;
+  				});
+  				that.musiclist = arr; 
   			};
   		});
 		},
 		//提交创建专题
-		subClick(){
+		subClick(arr){
 			let obj = this.themeObj;
 			if(obj.special_picture==''||obj.special_title==''||obj.special_describe==''||!obj.like_base||!obj.share_base){
 				this.$message.error('请仔细检查各项是否填写完整');
@@ -241,18 +247,42 @@ export default {
 			};
 			let that = this;
 			that.$axios('post',that.Global.PATH.addfuspecial,obj,function(res){
-				console.log(res);
   			if(res.code==200){
-  				that.$router.push({name:'UpLoadMusic',params:{
-							specialid:res.specialid,
-							isNew:1
-						}
-					});
+  				that.$message({
+	          message:'已提交',
+	          type: 'success'
+	        });
+  				that.specialid = res.specialid;
+  				that.subMusic(arr,1);
   			};
   		});
 		},
+		subMusic(arr,type){
+			let that = this,
+			urls = type==1?that.Global.PATH.addSpecialmusic:that.Global.PATH.updatemusicqwe;
+			if(type==1){
+				that.$axios1('post',urls,{
+		  			specialid:that.specialid,
+		  			listmusic:arr
+		  		},res=>{
+		  			if(res.code==200){
+		  				that.$message({
+		          	message:'已修改',
+		          	type: 'success'
+		        	});
+		  				that.$router.replace({name:'My-music'});
+		  			};
+				});
+			}else{
+				that.$message({
+	      	message:'已修改',
+	      	type: 'success'
+	    	});
+				that.$router.replace({name:'My-music'});
+			};
+		},
 		//保存修改点击
-		saveClick(type){
+		saveClick(arr){
 			let obj = this.themeObj;
 			if(obj.special_picture==''||obj.special_title==''||obj.special_describe==''||!obj.like_base||!obj.share_base){
 				this.$message.error('请仔细检查各项是否填写完整');
@@ -261,18 +291,8 @@ export default {
 			obj.specialid = this.specialid;
 			let that = this;
 			that.$axios('post',that.Global.PATH.updatesple,obj,function(res){
-				console.log(res);
   			if(res.code==200){
-  				if(type==1){
-  					that.$router.replace({name:'My-music'});
-  				}else{
-  					that.$router.push({name:'UpLoadMusic',params:{
-								specialid:that.specialid,
-								isNew:0
-							}
-						});
-  				};
-
+  				that.subMusic(arr,2);
   			};
   		});
 		},
@@ -307,7 +327,7 @@ export default {
 	},
 	//使用的组件
   components:{
-//		croper
+		UpLoadMusic
 	}
 }
 </script>

@@ -80,18 +80,27 @@ let list ={
       		],
       	
       	},
-      	myChart1:'',
-      	myChart2:'',
-      	myChart3:''
+      	dataObj:{
+      		myChart1:'',
+      		myChart2:'',
+      		myChart3:'',
+      		tadayspecial:0,//今天专题数  
+      		tadaymusic:0,//今天音乐数  
+      		tadayuser:0,//今天注册用户数 
+      		tadayxw_sn:0,//今天绑定音响数 
+      		specialcount:0,//专题总数 
+      		musiccount:0,//音乐总数  
+      		usercount:0,//用户总数  
+      		xw_sncont:0//绑定音响总数
+      	}
     }
   },
   //组件生成时执行事件
   created:function(){
-  	
+  	this.getData();
 	},
 	//页面渲染完成事件
 	mounted(){
-		console.log(this.$refs);
 		let that = this;
 		this.myChart1 = this.$echarts.init(this.$refs.AdPieChart1);
 		this.myChart2 = this.$echarts.init(this.$refs.AdPieChart2);
@@ -202,8 +211,14 @@ let list ={
 	},
 	//方法
 	methods:{
+		//请求数据
 		getData(){
-			
+			let that = this;
+			that.$axios('post',that.Global.PATH.queryguanliyuan,{},function(res){
+  			if(res.code==200){
+  				that.dataObj = res.data;
+  			};
+  		});
 		}
 	},
 	//使用的组件

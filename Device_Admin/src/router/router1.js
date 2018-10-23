@@ -178,6 +178,24 @@ let arr1 = [
         name: 'VersionList',
         meta: {keepAlive: false,power:5},
         component: resolve => require(['../page/VersionSetting/VersionList.vue'], resolve),
-    }		
+    },
+    {
+        path: '/home/Advertisement',
+        name: 'Advertisement',
+        meta: {keepAlive: false,power:5},
+        component: resolve => require(['../page/Advertisement/Advertisement.vue'], resolve),
+    },
+    {
+        path: '/home/AddAdvert',
+        name: 'AddAdvert',
+        meta: {keepAlive: false,power:5},
+        component: resolve => require(['../page/AddAdvert/AddAdvert.vue'], resolve),
+    },
+    {
+        path: '/home/AdvertSet',
+        name: 'AdvertSet',
+        meta: {keepAlive: false,power:5},
+        component: resolve => require(['../page/AdvertSet/AdvertSet.vue'], resolve),
+    }
 ];
 export  default arr1;

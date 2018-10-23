@@ -1,4 +1,5 @@
 let upmusic = {
+	props:['specialid','musiclist'],
 	name: 'UpLoadMusic',
   	data () {
     	return {
@@ -21,8 +22,6 @@ let upmusic = {
 		    	}
 	    	],
 	    	kaiIndex:0,
-			musiclist:[],
-			specialid:'6588c2bd3a3f43228098d51434abafe0',
 			isNew:1,
 			upIndex:0,
 			musicPath:'',
@@ -30,18 +29,16 @@ let upmusic = {
     	}
 	},
   	created:function(){
-  		this.specialid = this.$route.params.specialid||'';
+  		console.log()
   		if(this.specialid==''){
-  			this.$router.replace({name:'UpLoadHome'});
-  			return false;
-  		};
-  		this.isNew = this.$route.params.isNew;
-  		if(this.isNew==0){
-  			this.getData();
+  			this.isNew = 1;
+  		}else{
+  			this.isNew=0;
+  			//this.getData();
   		};
 	},
 	methods:{
-		getData(){
+		/*getData(){
 			let that = this;
 			that.$axios('post',that.Global.PATH.queryspleByid,{
 				specialid:that.specialid
@@ -54,7 +51,7 @@ let upmusic = {
 	  				that.musiclist = arr; 
 	  			};
   			});
-		},
+		},*/
 		musiclrcupload(e){
 			let name = e.target.files[0].name;
 			let houzhui = name.substring(name.lastIndexOf(".")+1);
@@ -98,7 +95,6 @@ let upmusic = {
 			that.musiclist.push(obj);
 			that.kaiIndex = that.musiclist.length-1;
 			that.upmusic(that.musiclist.length-1,e.target.files[0]);
-			
 		},
 		//获取文件的地址
 		getObjectURL(file) {
@@ -121,7 +117,6 @@ let upmusic = {
 	  			let obj = that.musiclist[index];
 	  			if(res.code==200){
 	  				obj.lyrics = res.url;
-	  				
 	  			};
 	  			that.$set(that.musiclist,index,obj);
 			});
@@ -160,31 +155,22 @@ let upmusic = {
 				this.kaiIndex  = index;
 			};
 		},
-		subMusic(){
+		subMusic(type){
 			let that = this;
 			let arr = that.musiclist;
-			console.log(arr);
 			for (let i = 0;i<arr.length;i++) {
 				if(arr[i].music_path==''||arr[i].music_picture==''||arr[i].music_name==''||arr[i].singer_name==''){
-					that.$alert('请检查各项是否添加完整', '提示', {
+					that.$alert('请检查各项是否添加完整','提示', {
 			          	confirmButtonText: '确定'
 			        });
 			        return false;
 				};
 			};
-			that.$axios1('post',that.Global.PATH.addSpecialmusic,{
-	  			specialid:that.specialid,
-	  			listmusic:that.musiclist
-	  		},res=>{
-	  			if(res.code==200){
-	  				if(that.isNew ==1){
-	  					
-	  					that.$router.push({name:'UpLoadHome'});
-	  				}else{
-	  					that.$router.replace({name:'My-music'});
-	  				};
-	  			};
-			});
+			if(type==1){
+				that.$emit('subClick',arr);
+			}else{
+				that.$emit('saveClick',arr);
+			};
 		},
 		delitem(val,index){
 			let that = this;
@@ -238,9 +224,6 @@ let upmusic = {
 	        };
 	        return t;
 	    }
-	},
-  	components:{
-		
 	}
 };
 export default upmusic;

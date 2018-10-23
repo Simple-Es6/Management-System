@@ -4,6 +4,11 @@
             <el-table-column prop="nickname" label="用户昵称" width="120"></el-table-column>
             <el-table-column prop="create_times" label="上传时间"></el-table-column>
             <el-table-column prop="show_time" label="展示时间" ></el-table-column>
+            <el-table-column prop="operate" label="操作" width="260" >
+                <template slot-scope="scope">
+                    <el-button size="mini" @click="handleEdit(scope.row)">编辑</el-button>
+                </template>
+            </el-table-column>
     </el-table>
     <el-col :span="24" class="toolbar" style="margin-top:20px;">
         <el-pagination layout="total, prev, pager, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="everyPageCount" :total="total" style="float:right;">
@@ -32,6 +37,12 @@ export default {
 	},
 	//方法
 	methods:{
+				handleEdit(row){
+					this.$router.push({name:'UpLoadTheme',params:{
+							specialid:row.specialid
+						}
+					});
+				},
         getData(num){
             let _this=this;
             let params={

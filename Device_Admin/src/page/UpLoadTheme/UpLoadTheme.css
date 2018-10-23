@@ -43,6 +43,7 @@
 	color: #606266;
 }
 /**/
+
 .upform{
 	display: flex;
 	justify-content:space-between;
@@ -79,9 +80,18 @@
 	width: 60%;
 	height:400px;
 }
+.upform .upformright .formitem{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content:flex-start;
+}
+.upform .upformright .formitem .fiteml{
+	line-height: 30px;
+}
 .avatar-uploader{
-	width:300px;
-	height:300px;
+	width:200px;
+	height:200px;
 	border: 1px dashed #d9d9d9;
 	border-radius: 6px;
 }
@@ -104,7 +114,7 @@
 	color: #8c939d;
 	width:100%;
 	height:100%;
-	line-height:300px !important;
+	line-height:200px !important;
 	text-align: center;
 }
 .avatar{

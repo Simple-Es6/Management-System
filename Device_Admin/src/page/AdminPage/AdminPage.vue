@@ -7,10 +7,10 @@
   			</div>
   			<div class="listBot">
   				<span>
-  					今日:0
+  					今日:{{dataObj.tadayspecial}}
   				</span>
   				<span>
-  					累计:0
+  					累计:{{dataObj.specialcount}}
   				</span>	
   			</div>
   		</div>
@@ -20,10 +20,10 @@
   			</div>
   			<div class="listBot">
   				<span>
-  					今日:0
+  					今日:{{dataObj.tadaymusic}}
   				</span>
   				<span>
-  					累计:0
+  					累计:{{dataObj.musiccount}}
   				</span>	
   			</div>
   		</div>
@@ -33,23 +33,23 @@
   			</div>
   			<div class="listBot">
   				<span>
-  					今日:0
+  					今日:{{dataObj.tadayuser}}
   				</span>
   				<span>
-  					累计:0
+  					累计:{{dataObj.usercount}}
   				</span>	
   			</div>
   		</div>
   		<div class="list">
   			<div class="listTop">
-  				音箱启动数
+  				音箱绑定数
   			</div>
   			<div class="listBot">
   				<span>
-  					今日:0
+  					今日:{{dataObj.tadayxw_sn}}
   				</span>
   				<span>
-  					累计:0
+  					累计:{{dataObj.xw_sncont}}
   				</span>
   			</div>
   		</div>
@@ -67,9 +67,7 @@
 	      	<el-radio-button label="4">本月</el-radio-button>
 			</el-radio-group>
 		</div>
-		<div ref="AdAxis" class="axisCon">
-			
-		</div>
+		<div ref="AdAxis" class="axisCon"></div>
   </div>
 </template>
 <script>
