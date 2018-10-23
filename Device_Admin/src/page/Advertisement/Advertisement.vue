@@ -11,7 +11,7 @@
 			    </el-radio-group>
 			</el-col>
 			<el-col  :span="6">
-				<el-button type="primary" size="mini" @click="goAdd">新增广告</el-button>
+				<el-button type="primary" size="mini" @click="goAdd(0)">新增广告</el-button>
   			<el-button type="primary" size="mini" @click="goSet">广告设置</el-button>
 			</el-col>
 			<el-col  :span="9">
