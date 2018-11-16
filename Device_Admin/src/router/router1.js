@@ -196,6 +196,24 @@ let arr1 = [
         name: 'AdvertSet',
         meta: {keepAlive: false,power:5},
         component: resolve => require(['../page/AdvertSet/AdvertSet.vue'], resolve),
-    }
+    },
+    {
+        path: '/home/AssetsList',
+        name: 'AssetsList',
+        meta:{keepAlive:false,power:99},
+        component: resolve => require(['../page/AssetsList/AssetsList.vue'], resolve)
+   	},
+   	{
+        path: '/home/AddAssets',
+        name: 'AddAssets',
+        meta:{keepAlive:false,power:99},
+        component: resolve => require(['../page/AddAssets/AddAssets.vue'], resolve)
+   	},
+   	{
+        path: '/home/ChangeBit',
+        name: 'ChangeBit',
+        meta:{keepAlive:false,power:99},
+        component: resolve => require(['../page/ChangeBit/ChangeBit.vue'], resolve)
+   	}
 ];
 export  default arr1;

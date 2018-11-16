@@ -1,11 +1,8 @@
 let list =  {
-  name: 'VoiceBox',
+  name: 'ChangeBit',
   data () {
     return {
     		multipleSelection:[],
-    		selectList:[],
-    		dialogFormVisible:false,
-    		currencysList:[],
       	timeStart:[],
       	searchStr:'',
       	select:'1',
@@ -55,24 +52,6 @@ let list =  {
 	  		};
   		});
 		},
-		saveChange(){
-			let that = this;
-			that.$axios1('post',that.Global.PATH.xwcurrencyupadte,{
-				cIdLIst:that.selectList,
-				mac:that.setMac
-				
-			},function(res){
-	  		if(res.code==200){
-	  			that.dialogFormVisible = false;
-	  			that.setMac = '';
-	  			that.selectList = [];
-		  		that.$message({
-		        message: '修改成功',
-		        type: 'success'
-		      });
-	  		};
-	  	});
-		},
 		searchbtn(){
 			this.currentPage = 1;
 			this.getData();
@@ -88,45 +67,13 @@ let list =  {
 			this.bindingState = val.order[0];
 			this.getData();
 		},
-		setting(val){
-			this.setMac = val;
-			this.getSetData(val);
-		},
-		getSetData(mac){
-			let that = this,
-			obj = {
-				mac:mac
-			};
-			that.$axios('post',that.Global.PATH.xwcurrencys,obj,function(res){
-	  		if(res.code==200){
-	  			let obj = res.data;
-	  			let arr = [];
-	  			that.currencysList = res.data;
-	  			new Promise(function(resolve,reject){
-	  				obj.forEach(function(val){
-	  					if(val.isHave==1){
-	  						arr.push(val.cId);
-	  					};
-	  				});
-	  				resolve();
-	  				reject();
-	  			}).then(function(){
-	  				that.selectList = arr;
-		  			that.dialogFormVisible = true;
-	  			}).catch(function(){
-	  				window.location.reload();
-	  			});
-	  		}else{
-	  			that.$message.error(res.msg);
-	  		};
-  		});
-		},
 		//解绑/绑定
 		bangding(val,index){
 			let that = this,
 			obj = {
 				mac:val.mac
 			};
+			
 			that.$axios('post',that.Global.PATH.updateUntied,obj,function(res){
 	  		if(res.code==200){
 	  			that.$message({
@@ -167,7 +114,7 @@ let list =  {
     }
 	},
 	//使用的组件
-  	components:{
+  components:{
 		
 	}
 };

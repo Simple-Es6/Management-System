@@ -39,12 +39,12 @@
                     注意：请勿频繁修改“签到”的设置；正确设置后再开启“签到”功能。
                 </div>
                 <div>
-                    <el-switch  @change="disenbleAct" v-model="value2" active-color="#13ce66" inactive-color="#ff4949" style="margin-top:40px;" active-text="启用"
+                    <el-switch  @change="disenbleAct" v-model="isEnable" active-color="#13ce66" inactive-color="#ff4949" style="margin-top:40px;" active-text="启用"
         inactive-text="未启用"></el-switch>
                 </div>
             </div>
             <div class="container">
-            	<div class="bg" v-show="!value2"></div>
+            	<div class="bg" v-show="!isEnable"></div>
 	            <el-form :inline="true" :v-model="form">
 	                <el-form-item label="活动名称：">
 	                    <el-input v-model="form.activeName" placeholder="请输入内容" style="width:300px;"></el-input>
@@ -63,15 +63,16 @@
 	                    <el-radio-group v-model="form.rewardType">
 	                        <el-radio :label="0">分贝</el-radio>
 	                        <el-radio :label="1">黑珍珠</el-radio>
-	                    </el-radio-group>
-	                    
+	                    </el-radio-group>  
 	                </el-form-item>
 	                <el-form-item label="签到方式：" style="width:100%;">
 	                    <el-radio-group v-model="form.siType">
-	                        <el-radio :label="0">登录APP</el-radio>
-	                        <el-radio :label="1">听完星歌</el-radio>
+	                      <el-radio :label="0">登录APP</el-radio>
+	                      <el-radio :label="1">听完星歌</el-radio>
 	                    </el-radio-group>
-	                    
+	                </el-form-item>
+	                <el-form-item label="默认签到数：" style="width:100%;">
+	                    <el-input-number v-model="baseParticipateCount" size="mini" :min="1000" :max="1500" label="请输入签到数"></el-input-number>
 	                </el-form-item>
 	                <hr>
 	                <el-form-item style="margin-top:20px;">
@@ -109,7 +110,7 @@
 	                    </div>
 	                </el-form-item>
 	                <br>
-	                <el-form-item style="display:flex; justify-content: center;">
+	                <el-form-item style="display:flex;justify-content: center;">
 	                    <el-button @click="save">
 	                     	保存
 	                    </el-button>

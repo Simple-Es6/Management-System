@@ -1,16 +1,15 @@
 let list =  {
-  name: 'Advertisement',
+  name: 'AssetsList',
   data () {
     return {
     	currentPage:1,
     	viewPath:'',
-    	dialogFormVisible:false,
     	contentType:1,
     	contentHtml:'',
     	multipleSelection:[],
     	pageSize:10,
     	tableData:[],
-    	userradio:'0',
+    	userradio:'2',
     	userinput:'',
     	totals:0,
     	selectOption:'1'
@@ -23,27 +22,14 @@ let list =  {
   	goLink(){
   		window.open(this.showPicBic); 
   	},
-  	views(val){
-  		this.contentType = val.contentType;
-  		if(val.contentType==1){
-  			this.showPicBic = val.picBic;
-  			this.viewPath = val.picPath;
-  		}else{
-  			this.contentHtml = val.codeContent;
-  		};
-  		this.dialogFormVisible = true;
-  	},
   	goAdd(id){
   		if(id){
-  			this.$router.push({name:'AddAdvert',params:{
+  			this.$router.push({name:'AddAssets',params:{
   				adId:id
   			}});
   		}else{
-  			this.$router.push({name:'AddAdvert'});  			
+  			this.$router.push({name:'AddAssets'});  			
   		};
-  	},
-  	goSet(){
-  		this.$router.push({name:'AdvertSet'});
   	},
   	//禁用单个
   	disabled(val,index){
@@ -51,9 +37,9 @@ let list =  {
   		that = this,
   		strs = '';
   		if(val.isDisable==1){
-  			strs = '确定要启用该广告吗?';
+  			strs = '确定要启用该币种吗?';
   		}else{
-  			strs = '确定要禁用该广告吗?';
+  			strs = '确定要禁用该币种吗?';
   		};
   		that.$confirm(strs, '提示', {
 	      confirmButtonText: '确定',
@@ -68,7 +54,7 @@ let list =  {
 	      });          
 	    });
   	},
-  	//禁用广告
+  	//禁用币种
   	sendDis(id){
   		let that = this,
   		urls = '';
@@ -94,7 +80,7 @@ let list =  {
 	  		};*/
 	  		arr.push(obj);
   		});
-  		that.$confirm('确定要禁用/启用选中的广告吗?', '提示', {
+  		that.$confirm('确定要禁用/启用选中的币种吗?', '提示', {
 	      confirmButtonText: '确定',
 	      cancelButtonText: '取消',
 	      type: 'warning'
@@ -112,7 +98,7 @@ let list =  {
   		let arr = [],
   		that = this;
   		arr.push(val.adId);
-  		that.$confirm('确定要删除该广告吗?', '提示', {
+  		that.$confirm('确定要删除该币种吗?', '提示', {
 	      confirmButtonText: '确定',
 	      cancelButtonText: '取消',
 	      type: 'warning'
@@ -133,7 +119,7 @@ let list =  {
   			let obj = [];
 	  		arr.push(val.adId);
   		});
-  		that.$confirm('确定要删除选中的广告吗?', '提示', {
+  		that.$confirm('确定要删除选中的币种吗?', '提示', {
 	      confirmButtonText: '确定',
 	      cancelButtonText: '取消',
 	      type: 'warning'
@@ -147,7 +133,7 @@ let list =  {
 	      });          
 	    });	
   	},
-  	//删除广告
+  	//删除币种
   	sendDelect(obj){
   		let that = this;
   		that.$axios1('post',that.Global.PATH.adlistdelbatch,{'idList':obj},function(res){
@@ -160,7 +146,7 @@ let list =  {
 	  		};
 	  	});
   	},
-  	//切换广告类型
+  	//切换币种类型
   	tabclick(){
   		this.getData(1);
   	},
@@ -171,19 +157,19 @@ let list =  {
   			pageNum:num,
   			pageSize:that.pageSize
   		};
-  		if(that.userradio==0){
-  			obj.state = '';
+  		if(that.userradio==2){
+  			obj.isEnable = '';
   		}else{
-  			obj.state = that.userradio;
+  			obj.isEnable = that.userradio;
   		};
   		if(that.selectOption==1){
   			obj.name = that.userinput;
   		}else{
   			obj.name = that.userinput;
   		};
-  		that.$axios('post',that.Global.PATH.adlist,obj,function(res){
+  		that.$axios('post',that.Global.PATH.cmanagelist,obj,function(res){
 	  		if(res.code==200){
-	  			that.tableData = res.data.adListList;
+	  			that.tableData = res.data.cManagementList;
 	  			that.totals = res.data.count;
 	  		};
 	  	});

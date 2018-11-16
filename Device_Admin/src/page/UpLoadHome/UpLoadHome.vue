@@ -260,7 +260,6 @@ export default {
 		subMusic(arr,type){
 			let that = this,
 			urls = type==1?that.Global.PATH.addSpecialmusic:that.Global.PATH.updatemusicqwe;
-			if(type==1){
 				that.$axios1('post',urls,{
 		  			specialid:that.specialid,
 		  			listmusic:arr
@@ -273,13 +272,6 @@ export default {
 		  				that.$router.replace({name:'My-music'});
 		  			};
 				});
-			}else{
-				that.$message({
-	      	message:'已修改',
-	      	type: 'success'
-	    	});
-				that.$router.replace({name:'My-music'});
-			};
 		},
 		//保存修改点击
 		saveClick(arr){

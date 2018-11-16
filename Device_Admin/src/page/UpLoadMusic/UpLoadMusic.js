@@ -166,6 +166,7 @@ let upmusic = {
 			        return false;
 				};
 			};
+			console.log(arr);
 			if(type==1){
 				that.$emit('subClick',arr);
 			}else{

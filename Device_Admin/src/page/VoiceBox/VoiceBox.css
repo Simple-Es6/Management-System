@@ -5,7 +5,7 @@
 	width:100%;
 	height:80px;
 }
-.el-select .el-input {
+.searchDiv .el-select{
     width: 110px;
 }
 .input-with-select .el-input-group__prepend {
@@ -20,4 +20,7 @@
 	justify-content:space-between;
 	width: 100%;
 	height: 50px;
+}
+.aditem1{
+	padding-bottom:20px;
 }

@@ -60,29 +60,40 @@
 		    </el-date-picker>
  			</div>
  		</div>
- 		<div class="additem">
- 			<div class="additeml">
- 				广告渠道
- 			</div>
- 			<div class="additemr">
- 				<el-select size="mini" v-model="dataObj.channel" placeholder="请选择">
-			    <el-option
-			      v-for="item in channelList"
-			      :key="item.value"
-			      :label="item.name"
-			      :value="item.adId">
-			    </el-option>
-			  </el-select>
- 			</div>
- 		</div>
+ 		
  		<div class="additem">
  			<div class="additeml">
  				显示范围
  			</div>
  			<div class="additemr">
- 				<el-checkbox-group size="mini" v-model="dataObj.addictKeyList">
-			    <el-checkbox  v-for="check in checkboxList" :key="check.value"  :label="check.adId">{{check.name}}</el-checkbox>
+ 				<el-checkbox-group size="mini" v-model="dataObj.dRValueList">
+			    <el-checkbox  v-for="check in checkboxList" :label="check.value"  :key="check.adId">{{check.name}}</el-checkbox>
+			    <el-checkbox  :label="6" @change="starChange">星球首页</el-checkbox>
 			  </el-checkbox-group>
+			  <!--<el-checkbox-group v-model="starPage">
+			    <el-checkbox  :label="6">星球首页</el-checkbox>
+			  </el-checkbox-group>-->
+ 			</div>
+ 		</div>
+ 		<div class="additem" v-show="starPage">
+ 			<div class="additeml">
+ 				显示星球
+ 			</div>
+ 			<div class="additemr">
+ 				<el-checkbox-group size="mini" v-model="dataObj.plantIdList">
+			    <el-checkbox  
+			    	v-for="item in channelList"
+			      :key="item.planetId"
+			      :label="item.planetId">{{item.planetName}}</el-checkbox>
+			  </el-checkbox-group>
+ 				<!--<el-select size="mini" v-model="dataObj.channel" placeholder="请选择">
+			    <el-option
+			      v-for="item in channelList"
+			      :key="item.planetId"
+			      :label="item.planetName"
+			      :value="item.planetId">
+			    </el-option>
+			  </el-select>-->
  			</div>
  		</div>
  		<div class="additem">
@@ -133,6 +144,7 @@
 							  v-model="dataObj.picBic"
 							  clearable>
 							</el-input>
+							<el-button style="float: right;margin-top: 10px;" size="mini"  @click="goUrl">跳转</el-button>
 						</div>
 					</div>
 					<div class="additem">

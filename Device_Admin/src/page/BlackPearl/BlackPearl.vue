@@ -58,7 +58,7 @@
 			    	prop="allocationTime"
 			      label="发放时间"
 			    >
-			    	<template slot-scope="scope">{{Global.oTime(scope.row.allocationTime)}}</template>
+			    	<template slot-scope="scope">{{scope.row.allocationTimeStr}}</template>
 			    </el-table-column>
 			    <el-table-column
 			    	sortable
@@ -213,6 +213,6 @@ export default list;
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 	@import url("./BlackPearl.css");
 </style>

@@ -1,6 +1,24 @@
 //let tou = 'http://47.105.38.148:8081/futuremelody-admin/',
-let tou = 'http://120.79.183.36:8081/futuremelody-admin/',
-	PATH = {
+let tou = '';
+//const tou = 'http://47.105.38.148:8081/futuremelody-admin/';
+switch (process.env.NODE_ENV){
+	case 'production':
+		tou = 'http://47.105.38.148:8081/futuremelody-admin/';
+		break;
+	case 'testing':
+		tou = 'http://120.79.183.36:8081/futuremelody-admin/';
+		break;
+	default:
+		tou = 'http://120.79.183.36:8081/futuremelody-admin/';
+		break;
+};
+let	PATH = {
+		cmanagegetone:tou+'cmanage/getone',//获取单一币种
+		cmanagesave:tou+'cmanage/save',//添加币种
+		cmanageupdate:tou+'cmanage/update',//修改币种
+		cmanagelist:tou+'cmanage/list',//币种列表
+		xwcurrencys:tou+'xw/currencys',//根据音响获取其参与的币种
+		xwcurrencyupadte:tou+'xw/currency/upadte',//更新音响其参与的币种
 		queryguanliyuan:tou+'queryguanliyuan',//管理员首页数据
 		colseuser:tou+'user/colseuser',//退出登录
 		disableuser:tou+'disableuser',//禁用用户
@@ -44,6 +62,7 @@ let tou = 'http://120.79.183.36:8081/futuremelody-admin/',
 		adlistupdate:tou+'adlist/update',//创建广告
 		adlistgetone:tou+'adlist/getone',//获取广告设置
 		addictsave:tou+'addict/save',//添加渠道/范围
-		addictdelete:tou+'addict/delete'//删除渠道/范围
+		addictdelete:tou+'addict/delete',//删除渠道/范围
+		adlistgetPlanet:tou+'adlist/getPlanet'//获取星球列表
 };
 export  default PATH;

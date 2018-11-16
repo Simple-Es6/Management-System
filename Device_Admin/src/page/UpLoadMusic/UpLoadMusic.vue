@@ -43,7 +43,7 @@
   								上传歌词
   							</div>
   							<div class="mitemr">
-  								<label class="labelinput" for="lrcinput">{{val.lyrics?'已上传':'上传'}}</label>
+  								<label class="labelinput" @click="changIndex(index)" for="lrcinput">{{val.lyrics?'已上传':'上传'}}</label>
   							</div>
   						</div>
   						<div class="mitem">

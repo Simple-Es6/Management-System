@@ -1,15 +1,5 @@
 <template>
   <div>
-  	<el-dialog title="参与币种" width="40%" :visible.sync="dialogFormVisible">
-		  <div class="aditem1">
-		  	<el-checkbox-group v-model="selectList">
-			    <el-checkbox v-for="city in currencysList" :label="city.cId" :key="city.cId">{{city.name}}</el-checkbox>
-			  </el-checkbox-group>
-		  </div>
-		  <div class="aditem1">
-		  	<el-button type="primary" @click="saveChange" size="mini">确定</el-button>
-		  </div>
-		</el-dialog>
   	<div class="VoiceBox">
 			<div class="textMain h0Title">
 				小未音箱
@@ -108,10 +98,8 @@
 		    </el-table-column>
 		    <el-table-column
 		      label="操作"
-		      width="160"
 		    >
 		    	<template slot-scope="scope">
-						<el-button @click="setting(scope.row.mac)" size="mini" >设定</el-button>
 						<el-button @click="bangding(scope.row,scope.$index)" size="mini" type="danger" v-show="scope.row.bindingState==1">解绑</el-button>
 						<el-button @click="bangding(scope.row,scope.$index)" size="mini" type="success" v-show="scope.row.bindingState==0">绑定</el-button>
 					</template>
@@ -140,11 +128,11 @@
   </div>
 </template>
 <script>
-import list from './VoiceBox.js';
+import list from './ChangeBit.js';
 export default list;
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	@import url("./VoiceBox.css");
+	@import url("./ChangeBit.css");
 </style>

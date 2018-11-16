@@ -95,8 +95,8 @@ export default list;
 .el-radio__inner{
     display:none;
 }
-.el-select .el-input {
-    width: 110px;
+.el-select{
+    width:90px !important;
 }
 .el-radio-button:focus:not(.is-focus):not(:active){
     box-shadow: -1px 0 0 0 #fff!important;

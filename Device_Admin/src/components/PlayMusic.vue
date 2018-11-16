@@ -137,7 +137,9 @@ export default {
   	this.music_picture = this.$route.params.music_picture||'';
   	//let lrc = this.$route.params.lrc||'';
   	let lrc = this.$route.params.lrc||'';
-  	this.loadLrc(lrc);
+  	if(lrc){
+  		this.loadLrc(lrc);
+  	};	
 	},
 	methods:{
 		//保存修改

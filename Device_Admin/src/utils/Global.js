@@ -2,9 +2,21 @@ import axios from 'axios';
 import PATH from './PATH.js';
 import PATH1 from './PATH1.js';
 axios.defaults.withCredentials = true;
-const tou = 'http://120.79.183.36:8081/futuremelody-admin/',
-//const tou = 'http://47.105.38.148:8081/futuremelody-admin/',
-ajaxs = function(type,urls,dataObj,callback){
+
+let tou = '';
+//const tou = 'http://47.105.38.148:8081/futuremelody-admin/';
+switch (process.env.NODE_ENV){
+	case 'production':
+		tou = 'http://47.105.38.148:8081/futuremelody-admin/';
+		break;
+	case 'testing':
+		tou = 'http://120.79.183.36:8081/futuremelody-admin/';
+		break;
+	default:
+		tou = 'http://120.79.183.36:8081/futuremelody-admin/';
+		break;
+};
+const ajaxs = function(type,urls,dataObj,callback){
 	let params = new URLSearchParams();
 	for (let key in dataObj) {
 		if(dataObj[key].constructor == Array){

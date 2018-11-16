@@ -1,5 +1,15 @@
 <template>
   <div>
+  	<el-dialog title="显示范围" width="40%" :visible.sync="dialogFormVisible">
+		  <div class="aditem1" v-show="contentType==1">
+		  	<img @click="goLink" :src="viewPath"/>
+		  </div>
+		  <div class="aditem1" v-show="contentType==0">
+		  	<div  v-html="contentHtml">
+		  		
+		  	</div>
+		  </div>
+		</el-dialog>
  		<el-row type="flex"  justify="center" :gutter="30">
  			<el-col  :span="8">
  				<el-radio-group v-model="userradio" size="mini" @change="tabclick">
@@ -12,15 +22,17 @@
 			</el-col>
 			<el-col  :span="6">
 				<el-button type="primary" size="mini" @click="goAdd(0)">新增广告</el-button>
-  			<el-button type="primary" size="mini" @click="goSet">广告设置</el-button>
+  			<!--<el-button type="primary" size="mini" @click="goSet">广告设置</el-button>-->
 			</el-col>
 			<el-col  :span="9">
-			  <el-input size="mini" placeholder="请输入广告账号或昵称" @keyup.enter.native="search"  clearable v-model="userinput" class="input-with-select">
-			    	<el-select v-model="selectOption" slot="prepend" placeholder="请选择">
-				      	<el-option label="广告名称" value="1"></el-option>
-				    </el-select>
-				    <el-button slot="append" icon="el-icon-search" @click="search"></el-button>
-				</el-input>
+				<div class="inputwrap">
+				  <el-input size="mini" placeholder="请输入广告账号或昵称" @keyup.enter.native="search"  clearable v-model="userinput" class="input-with-select">
+				    	<el-select v-model="selectOption" slot="prepend" placeholder="请选择">
+					      	<el-option label="广告名称" value="1"></el-option>
+					    </el-select>
+					    <el-button slot="append" icon="el-icon-search" @click="search"></el-button>
+					</el-input>
+				</div>
  			</el-col>
 		</el-row>	
 		<el-row type="flex"  justify="center" :gutter="30">
@@ -41,18 +53,26 @@
 				      	width="80">
 				    </el-table-column>
 				    <el-table-column
-				      	prop="channelStr"
-				      	label="广告渠道">
-				    </el-table-column>
-				    <el-table-column
 				      label="显示范围"
-				      width="200"
 				    >
 				    	<template slot-scope="scope">
-				    		<span v-for="(val,indexs) in scope.row.displayRangeStrList" :key="indexs">
+				    		<span v-for="(val,indexs) in scope.row.adDisplayRangeList" :key="indexs">
 				    			<span v-show="indexs!=0">-</span>
-				    			{{val}}
+				    			{{val.valueStr}}
 				    		</span>
+				    	</template>	
+				    </el-table-column>
+				    <el-table-column
+				      label="显示星球"
+				    >
+				    	<template slot-scope="scope">
+				    		<span v-if="scope.row.adPlanetList">
+					    		<span v-for="(val,indexs) in scope.row.adPlanetList" :key="indexs" >
+					    			<span v-show="indexs!=0">-</span>
+					    			{{val.planetName}}	
+					    		</span>
+				    		</span>
+				    		<span v-else>暂无</span>
 				    	</template>	
 				    </el-table-column>
 				    <el-table-column
@@ -85,12 +105,13 @@
 				    </el-table-column>
 				    <el-table-column
 				      	label="广告状态">
-				      <template slot-scope="scope"><p>{{scope.row.disable==2?'正常广告':'禁用广告'}}</p></template>	
+				      <template slot-scope="scope">{{scope.row.isDisable==0?'正常广告':'禁用广告'}}</template>	
 				    </el-table-column>
 				    <el-table-column
 				      label="操作"
-				    	width="230">
+				    	width="290">
 							<template slot-scope="scope">
+								<el-button type="primary" @click="views(scope.row)"  size="mini">预览</el-button>
 								<el-button @click="goAdd(scope.row.adId)" size="mini">修改</el-button>
 								<el-button v-show="scope.row.isDisable==1" size="mini" @click="disabled(scope.row,scope.$index)" type="success">启用</el-button>
 								<el-button v-show="scope.row.isDisable==0" @click="disabled(scope.row,scope.$index)" size="mini" type="warning">禁用</el-button>
@@ -129,8 +150,22 @@ export default list;
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	.el-select .el-input {
+	.inputwrap .el-select{
 	  width: 110px !important;
 	}
-	
+	.aditem1{
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		height: 400px;
+	}
+	.aditem1>div{
+		width: 100%;
+		height: 380px;
+		overflow-y:auto;
+	}
+	.aditem1 img{
+		width: auto;
+		height:360px;
+	}
 </style>

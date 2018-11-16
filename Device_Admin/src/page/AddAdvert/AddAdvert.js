@@ -3,6 +3,7 @@ let list =  {
   data () {
     return {
     	showType:1,
+    	starPage:false,
     	channelList:[
     		{
           "adId":"9b8eaa49bef9473cb3338494eddcdb5a",
@@ -30,34 +31,40 @@ let list =  {
         {
           "adId": "9284cebae9ca464bad005c8b8848a563",
           "parentId": "2",
-          "name": "发现",
+          "name": "星空",
           "value": 2,
           "childAdDict": null
         },
         {
-          "adId": "ea0dff832a9b4d27bb24f4937af43954",
+          "adId": "4d27bb24f4937af43954",
           "parentId": "2",
-          "name": "我的",
+          "name": "发现",
           "value": 3,
           "childAdDict": null
         },
         {
-          "adId": "12df8187e794413bbe04abacc7d99d4f",
+          "adId": "12df7d99d4f",
           "parentId": "2",
-          "name": "星空",
+          "name": "活动",
           "value": 4,
+          "childAdDict": null
+        },
+        {
+          "adId": "12df8187e794413bbe04a",
+          "parentId": "2",
+          "name": "我的",
+          "value": 5,
           "childAdDict": null
         }
     	],
     	adId:'',//主键id ,
     	dataObj:{
 				appShow:0,// app显示（ 0每次启动；1每天只显示一次；默认0） ,
-				channel:'',//广告渠道（来自广告字典值） ,
-				channelStr:'',//渠道字符串描述 ,
 				codeContent:'',//代码内容 ,
 				contentType:0,//广告内容类型（0代码；1图片；默认0） ,
 				createTime:'',//创建时间 ,
-				addictKeyList:[],//显示范围 ,
+				dRValueList:[],//显示范围 ,
+				plantIdList:[],//显示的星球
 				endTime:'',//投放结束时间 ,
 				name:'',//广告位名称 ,
 				picBic:'',//图片内置连接 ,
@@ -80,6 +87,16 @@ let list =  {
   	};
   },
   methods:{
+  	starChange(val){
+  		this.starPage = val;
+  	},
+  	goUrl(){
+  		if(this.regUrl(this.dataObj.picBic)){
+  			window.open(this.dataObj.picBic);
+  		}else{
+  			this.$message.error('请输入正确的广告图片的链接地址');
+  		};
+  	},
   	back(){
   		this.$router.replace({name:'Advertisement'});
   	},
@@ -91,21 +108,13 @@ let list =  {
   			that.$message.error('请输入广告名称');
   			return false;
   		};
-  		if (that.dataObj.addictKeyList.length==0) {
+  		if (that.dataObj.dRValueList.length==0) {
   			that.$message.error('请选择广告的显示范围');
   			return false;
   		};
-  		if (!that.dataObj.channel) {
-  			that.$message.error('请选择广告渠道');
+  		if (that.starPage&&that.dataObj.plantIdList.length==0) {
+  			that.$message.error('请勾选要显示的星球');
   			return false;
-  		}else{
-  			let arr = that.channelList;
-  			for (let i = 0;i<arr.length;i++) {
-  				if(arr[i].adId == that.dataObj.channel){
-  					that.dataObj.channelStr = arr[i].name;
-  					break;
-  				};
-  			};
   		};
   		if(that.dataObj.timeLimit==1){
   			if (!that.dataObj.endTime||!that.dataObj.startTime) {
@@ -114,8 +123,8 @@ let list =  {
 	  		};
   		};
   		if(that.dataObj.contentType==1){
-  			if (!that.dataObj.picBic) {
-	  			that.$message.error('请输入广告图片的链接地址');
+  			if (!that.regUrl(that.dataObj.picBic)) {
+	  			that.$message.error('请输入正确的广告图片的链接地址');
 	  			return false;
 	  		};
 	  		if (!that.dataObj.picDescription) {
@@ -176,10 +185,9 @@ let list =  {
 		//请求下拉数据
   	getDataList(){
   		let that = this;
-  		that.$axios('post',that.Global.PATH.addictlist,{},function(res){
+  		that.$axios('post',that.Global.PATH.adlistgetPlanet,{},function(res){
 	  		if(res.code==200){
-	  			that.channelList = res.data[0].childAdDict;
-	  			that.checkboxList = res.data[1].childAdDict;
+	  			that.channelList = res.data;
 	  		};
 	  	});
   	},
@@ -188,6 +196,9 @@ let list =  {
 	    //let re=new RegExp(strRegex);
 	    if (!strRegex.test(val)) {
 	      this.$message.error('图片链接输入错误');
+	      return false;
+	    }else{
+	    	return true;
 	    };
   	},
   	//请求数据
@@ -195,18 +206,37 @@ let list =  {
   		let that = this;
   		that.$axios('post',that.Global.PATH.adlistgetone,{adId:that.adId},function(res){
 	  		if(res.code==200){
-	  			console.log(res);
+	  			//console.log(res);
 	  			let obj = res.data;
-	  			obj.addictKeyList = res.data.displayRangeIdList;
-	  			delete obj.displayRangeStrList;
-	  			delete obj.displayRangeIdList;
-	  			delete obj.isDisable;
-	  			that.dataObj = obj;
+	  			obj.dRValueList = [];
+	  			obj.plantIdList = [];
+	  			new Promise(function(resolve,reject){
+	  				console.log(obj.adDisplayRangeList)
+	  				for (let i = 0;i<obj.adDisplayRangeList.length;i++) {
+	  					obj.dRValueList.push(obj.adDisplayRangeList[i].value);
+	  					if(obj.adDisplayRangeList[i].value==6){
+	  						that.starPage = true;
+	  					};
+	  				};
+	  				for (let i = 0;i<obj.adPlanetList.length;i++) {
+	  					obj.plantIdList.push(obj.adPlanetList[i].planetId);
+	  				};
+	  				resolve();
+	  				reject();
+	  			}).then(function(){
+	  				console.log(123);
+	  				delete obj.adDisplayRangeList;
+		  			delete obj.adPlanetList;
+		  			delete obj.isDisable;
+		  			delete obj.clickCount;
+		  			console.log(obj)
+		  			that.dataObj = obj;
+	  			}).catch(function(){
+	  				window.location.reload();
+	  			});
 	  		};
 	  	});
   	}
-  },
-  components:{
-	}
+  }
 };
 export default list;

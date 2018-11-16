@@ -129,7 +129,7 @@
     import list from './signDetail.js';
     export default list;
 </script>
-<style>
+<style scoped>
 .signDetail{
     background:#c5abf6;
 }

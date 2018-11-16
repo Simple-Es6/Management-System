@@ -3,15 +3,17 @@ require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
 
-const ora = require('ora')
-const rm = require('rimraf')
-const path = require('path')
-const chalk = require('chalk')
-const webpack = require('webpack')
-const config = require('../config')
-const webpackConfig = require('./webpack.prod.conf')
-
-const spinner = ora('building for production...')
+let ora = require('ora')
+let rm = require('rimraf')
+let path = require('path')
+let chalk = require('chalk')
+let webpack = require('webpack')
+let config = require('../config')
+let webpackConfig = require('./webpack.prod.conf')
+//console.log(process.argy)
+//let buildtype = process.argy.slice(2)[0]||'development'
+//let spinner = ora('building for production')
+const spinner = ora('building for' + process.env.NODE_ENV + 'of' + process.env.env_config + 'mode...')
 spinner.start()
 
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {

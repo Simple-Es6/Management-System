@@ -4,6 +4,7 @@ let list={
   	data () {
 	    return {
 	    	upIndex:0,
+	    	baseParticipateCount:1000,
 	    	dialogVisible:false,
 	    	dialogPic:'',
 	    	dialogReward:0,
@@ -23,12 +24,11 @@ let list={
 		    page: 1,
 		    everyPageCount: 10,
 		    id:'',
-		    isEnable:'',
+		    isEnable:"",
 	    }
   	},
   	//组件生成时执行事件
-  	created:function(){
-      
+  	created:function(){      
       this.getData();
 	},
 	//方法
@@ -39,7 +39,10 @@ let list={
             this.dialogPic = '';
 	   	},
 		disenbleAct(){
-			this.save();
+			if(this.id){
+				this.save();
+			};
+			
 		},
 		add(){
 			this.dialogVisible = true;
@@ -116,8 +119,8 @@ let list={
         save(){
             let _this=this;
             let params={
-                id:_this.id,
-                isEnable:_this.isEnable,
+                baseParticipateCount:_this.baseParticipateCount,
+                isEnable:_this.isEnable?1:0,
                 activeName:_this.form.activeName,
                 sharingCopy:_this.form.sharingCopy,
                 startTime:_this.time[0],
@@ -126,14 +129,25 @@ let list={
                 rewardType:_this.form.rewardType,
                 siType:_this.form.siType
             };
-            _this.$axios('post',_this.Global.PATH1.siruleupdate,params,res => {
+            let urls = "",
+            	strs = "";
+            if(_this.id){
+            	strs = "修改成功";
+            	params.id = _this.id;
+            	urls = _this.Global.PATH1.siruleupdate;
+            }else{
+            	strs = "添加成功";
+            	urls = _this.Global.PATH1.siruleSave;
+            };
+            _this.$axios('post',urls,params,res => {
                 if(res.code==200){
 					_this.$message({
-			          	message: '修改成功',
+			          	message:strs,
 			          	type: 'success'
 			        });
+			        _this.getData();
                 }else{
-                	_this.isEnable = false;
+                	_this.isEnable = !_this.isEnable;
                 	_this.$message.error(res.msg);
                 };
             });
@@ -143,11 +157,27 @@ let list={
             let params={};
             _this.$axios('post', _this.Global.PATH1.siruleGet, params, res => {
                 if (res.code == 200) {
-                   	_this.form=res.data;
-                   	_this.time=[_this.Global.oTime(res.data.startTime),_this.Global.oTime(res.data.endTime)];
-                   	_this.list = res.data.siCycleRuleList;
-                  	_this.id=res.data.siId;
-                  	_this.isEnable=res.data.isEnable;
+                	if(res.data){
+                   		_this.form=res.data;
+                   		_this.time=[_this.Global.oTime(res.data.startTime),_this.Global.oTime(res.data.endTime)];
+                   		_this.list = res.data.siCycleRuleList;
+                  		_this.id=res.data.siId;
+                  		_this.baseParticipateCount = res.data.baseParticipateCount;
+                  		_this.isEnable=res.data.isEnable==0?false:true;
+                  	}else{
+                  		_this.baseParticipateCount = _this.Global.MinorMax(1000,1500);
+                  		_this.form={
+                  			activeDescription:"",
+                  			activeName:"",
+                  			rewardType:0,
+                  			sharingCopy:"",
+                  			siType:0
+                  		};
+                   		_this.time=[];
+                   		_this.list = [];
+                  		_this.id = "";
+                  		_this.isEnable = false;	
+                  	};
                 }
             });
         },
@@ -159,7 +189,7 @@ let list={
         	let _this = this;
             let params={
                 id:val.cycleId
-            }
+            };
             _this.$axios('post', _this.Global.PATH1.sicrdelete, params, res => {
                 if (res.code == 200) {
                 	_this.list.splice(index,1);
@@ -192,10 +222,6 @@ let list={
                 }
             });
         }
-	},
-	//使用的组件
-  	components:{
-		
 	}
 }
 export default list;

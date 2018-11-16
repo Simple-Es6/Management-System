@@ -40,9 +40,24 @@
 	      	width="55">
 		    </el-table-column>
 		    <el-table-column
-		      label="播放时间"
+		      label="开始时间"
 		    >
-		    	<template slot-scope="scope">{{Global.oTime(scope.row.createTime)}}</template>
+		    	<template slot-scope="scope">{{Global.oTime(scope.row.startTime)}}</template>
+		    </el-table-column>
+		    <el-table-column
+		      label="停止时间"
+		    >
+		    	<template slot-scope="scope">{{Global.oTime(scope.row.endTime)}}</template>
+		    </el-table-column>
+		    <el-table-column
+		      label="播放时间"
+		      prop="playTime"
+		    >
+		    </el-table-column>
+		    <el-table-column
+		      label="音乐总时长"
+		      prop="playTime"
+		    >
 		    </el-table-column>
 		    <el-table-column
 		      prop="musicName"
@@ -57,11 +72,6 @@
 		    <el-table-column
 		      prop="deviceId"
 		      label="sn机器码"
-		    >
-		    </el-table-column>
-		    <el-table-column
-		      prop="mac"
-		      label="Mac地址"
 		    >
 		    </el-table-column>
 		    <el-table-column

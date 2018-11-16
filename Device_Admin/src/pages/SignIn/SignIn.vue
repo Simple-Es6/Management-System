@@ -31,7 +31,7 @@
         }
     }
 </script>
-<style>
+<style scoped>
 .signIn .title{
     text-align:center;
     margin:30px auto;

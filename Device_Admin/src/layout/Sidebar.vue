@@ -8,14 +8,14 @@
             <template v-for="item in items">
             	<template v-if="item.showType==showType||item.showType==99&&showType!=3" >
 	                <template v-if="item.isSon" >
-	                    <el-submenu :index="item.index">
+	                    <el-submenu :index="item.path">
 	                        <template slot="title"><i :class="item.icon"></i>{{item.name}}</template>
-	                        <el-menu-item v-for="(subItem,i) in item.list"  :key="i" :index="subItem.index" @click="handleOpen(item,subItem)">{{subItem.name}}
+	                        <el-menu-item v-for="(subItem,i) in item.list"  :key="i" :index="subItem.path" @click="handleOpen(item,subItem)">{{subItem.name}}
 	                        </el-menu-item>
 	                    </el-submenu>
 	                </template>
 	                <template v-else>
-	                    <el-menu-item :index="item.index" @click="handleOpen1(item)">
+	                    <el-menu-item :index="item.path" @click="handleOpen1(item)">
 	                        <i :class="item.icon"></i>{{item.name}}
 	                    </el-menu-item>
 	                </template>
@@ -51,25 +51,25 @@
 		    	let arr = [
 		    		{
 		    			'name':val.name,
-		    			'path':val.index
+		    			'path':val.path
 		    		},
 		    		{
 		    			'name':value.name,
-		    			'path':value.index
+		    			'path':value.path
 		    		}
 		    	];
 		    	this.$store.dispatch('changePage',arr);
-		    	this.$router.replace({path:value.index});
+		    	this.$router.replace({path:value.path});
 		    },
 		    handleOpen1(val) {
 		    	let arr = [
 		    		{
 		    			'name':val.name,
-		    			'path':val.index
+		    			'path':val.path
 		    		}
 		    	];
 		    	this.$store.dispatch('changePage',arr);
-		    	this.$router.replace({path:val.index});
+		    	this.$router.replace({path:val.path});
 		    }
     	}
     }

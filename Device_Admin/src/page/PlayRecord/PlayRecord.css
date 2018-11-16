@@ -5,11 +5,11 @@
 	width:100%;
 	height:80px;
 }
-.el-select .el-input {
-    width: 110px;
+.searchDiv .el-select{
+    width:110px !important;
 }
 .input-with-select .el-input-group__prepend {
-    background-color: #fff;
+    background-color: #fff !important;
 }
 .el-input-group__append{
 	background-color: #FFFFFF;

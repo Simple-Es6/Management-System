@@ -293,7 +293,7 @@ export default {
 		    	let arr1 = this.selectMusic;
 		    	arr.forEach(function(val){
 		    		val.selected = false;
-		    		val.isMust = 1;
+		    		val.isMust = 2;
 		    		if(arr1.length>0){
 		    			for (let i = 0;i<arr1.length;i++) {
 		    				if(val.musicid==arr1[i].musicid){
